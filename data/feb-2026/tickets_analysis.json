@@ -1,0 +1,5925 @@
+[
+  {
+    "ticket_id": "2026020401553",
+    "chat_name": "2026020401553【国电投】【云文档2504b】通讯录组织...",
+    "customer": "国电投",
+    "problem": "大佬 就是三方同步完，架构顺序是无法调整的吧？",
+    "solution": "那还需要那边的人  在处理下了",
+    "has_solution": true,
+    "message_count": 148
+  },
+  {
+    "ticket_id": "2026020401317",
+    "chat_name": "2026020401317【招商银行】【v7_202511】文档中台的pdf文件的批注换行不正确",
+    "customer": "招商银行",
+    "problem": "大佬\n 一，目前这个问题是的原因是 ：1.之前为了解决调用审核http会将\\n自动转成\\r\\n导致审核的时候可能超过1000个字符导致审核不过，前端人为将\\n换成\\r\\n（\\r\\n不会被http自动转）以保持最后给审核的数据一直。但是之前的处理有问题，selectionStart不能识别到\\r,导致再换行的时候添加换行符的位置不对。2.还发现一个新的问题，已经输了1000个字符，换行还能输入，这还是会导致审核失败，研发都一起解决了  \n二，问题目前已经修复完成 公网三月小版本带出去的   私网也会在三月版本带出",
+    "solution": "大佬\n 一，目前这个问题是的原因是 ：1.之前为了解决调用审核http会将\\n自动转成\\r\\n导致审核的时候可能超过1000个字符导致审核不过，前端人为将\\n换成\\r\\n（\\r\\n不会被http自动转）以保持最后给审核的数据一直。但是之前的处理有问题，selectionStart不能识别到\\r,导致再换行的时候添加换行符的位置不对。2.还发现一个新的问题，已经输了1000个字符，换行还能输入，这还是会导致审核失败，研发都一起解决了  \n二，问题目前已经修复完成 公网三月小版本带出去的   私网也会在三月版本带出",
+    "has_solution": true,
+    "message_count": 108
+  },
+  {
+    "ticket_id": "2026020400909",
+    "chat_name": "2026020400909【方正印刷】有泰文内容预览异常",
+    "customer": "方正印刷",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026020400909\n工单标题: 【方正印刷】文档中台预览WORD文档包含泰文内容出现乱码\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2018923838328348674\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "大佬 目前看单子还没结论 这边已经给研发发过信息问进展如何  有消息第一时间通知您",
+    "has_solution": true,
+    "message_count": 48
+  },
+  {
+    "ticket_id": "2026020401235",
+    "chat_name": "2026020401235【华为】-EDM-2506b-Excel在线预览数字自定义格式 hh:mm",
+    "customer": "华为",
+    "problem": "家祺大佬，这个问题的根因有分析到嘛，预计排期能否给到，问题遗留有点久了，辛苦看看",
+    "solution": "预计4月份版本支持，后续我通知大佬具体解决时间",
+    "has_solution": true,
+    "message_count": 88
+  },
+  {
+    "ticket_id": "2026020401320",
+    "chat_name": "2026020401320【汾酒】手动执行账号同步报错“",
+    "customer": "汾酒",
+    "problem": "不是这个问题，是另外一个单子的",
+    "solution": "之前是出问题 手动处理的吧",
+    "has_solution": true,
+    "message_count": 172
+  },
+  {
+    "ticket_id": "2026020400374",
+    "chat_name": "2026020400374【河南水务集团】-【私有云文档】WPS客...",
+    "customer": "河南水务集团",
+    "problem": "河南水务集团反馈如下问题：\n1.内网客户端未登录状态显示授权已到期，无法登录，会员功能无法使用；\n2.登录问题导致的无法使用影响客户激活和活跃，影响用户体验，需现场搞好服务帮忙解决登录以及使用问题以促活；\n3.新打的客户端安装包无内置序列号，用户明早发客户端授权截图，需明天上午定位好问题，给出解决方案处理客户端授权过期问题；\n如上三条需要重视并尽快解决， 晚会给你补单子协助处理下",
+    "solution": "选准确到客户端后，会有人接单处理的哈",
+    "has_solution": true,
+    "message_count": 144
+  },
+  {
+    "ticket_id": "2026020401661",
+    "chat_name": "2026020401661银联商务账号同步问题",
+    "customer": "",
+    "problem": "应该是这个问题导致的，云文档侧 根部门不应该有三方id",
+    "solution": "试试采集的时候改成这个",
+    "has_solution": true,
+    "message_count": 172
+  },
+  {
+    "ticket_id": "2026020400889",
+    "chat_name": "2026020400889【东风汽车集团】【文档中心V7】个人年度使用文档情况报表",
+    "customer": "东风汽车集团",
+    "problem": "看一下上面的统计数据能不能给一些sql查询到",
+    "solution": "这个是私网埋点平台的表，比如活跃的账号需要去 clickhouse 里面处理，确定字段含义，取数规则不需要找产研对接吗？ \n类似这样：\nSELECT\n    toDate(_time) AS date1,\n    countDistinct(_account_id, _device_id) AS active_account_devices\nFROM events_view\nWHERE \n    _app_token = 'faff59cc758e47b09b71b016f9b4dcf6'\n    AND _name IN ('renew_session', 'login_account')\n    AND op_account_id = ?\n    AND _time >= toDateTime(?)\nGROUP BY date1\nORDER BY date1 DESC;",
+    "has_solution": true,
+    "message_count": 172
+  },
+  {
+    "ticket_id": "2026020401114",
+    "chat_name": "2026020401114【美的】文档中心，表格中数据统计表，数据...",
+    "customer": "美的",
+    "problem": "已报bug，下个版本修复",
+    "solution": "已报bug，下个版本修复",
+    "has_solution": true,
+    "message_count": 152
+  },
+  {
+    "ticket_id": "2026020401716",
+    "chat_name": "2026020401716【齐鲁制药】移动端多维表点击电话号码无法拨打",
+    "customer": "齐鲁制药",
+    "problem": "#2026020401716 【齐鲁制药】移动端多维表点击电话号码无法拨打 \nhttps://cst-ach.kso.net/workOrderList/workOrderList/info?type=info&id=2018979164415139842 \n 大佬，工单转到您这边了啊",
+    "solution": "修复已合入rc_5.37.0_private_v7_0109_QiLu分支",
+    "has_solution": true,
+    "message_count": 156
+  },
+  {
+    "ticket_id": "2026020400400",
+    "chat_name": "2026020400400【香港政府DPO】AI文档入库出现解析失败的情况",
+    "customer": "香港政府DPO",
+    "problem": "大佬这有个知识库文件解析失败的问题麻烦帮看看",
+    "solution": "客户想自己测试复现下，给到对应团队去调整，我们这个测试的请求和返回内容可以有详细信息给到他们吗",
+    "has_solution": true,
+    "message_count": 140
+  },
+  {
+    "ticket_id": "2026020400088",
+    "chat_name": "2026020400088【国网江苏】智能公文报错",
+    "customer": "国网江苏",
+    "problem": "还真是，没注意看报错日志[捂脸]",
+    "solution": "套红裂图重新导入好了，现在诗词成语这些是空的",
+    "has_solution": true,
+    "message_count": 116
+  },
+  {
+    "ticket_id": "2026020401884",
+    "chat_name": "2026020401884【紫金矿业】内容操作接口后最后一页水印变淡了",
+    "customer": "紫金矿业",
+    "problem": "昨天说的临时方案，能解决问题吗，是否还需要继续关注，是否还需要在旧版本上修复？",
+    "solution": "昨天说的临时方案，能解决问题吗，是否还需要继续关注，是否还需要在旧版本上修复？",
+    "has_solution": true,
+    "message_count": 76
+  },
+  {
+    "ticket_id": "2026020401959",
+    "chat_name": "2026020401959【天津城投】多维表脚本运行报错",
+    "customer": "天津城投",
+    "problem": "我还是先和客户沟通沟通吧 如果都是太基础的问题 咱们也不用太浪费时间去看了",
+    "solution": "嗯 像这种问题该咋处理合适啊",
+    "has_solution": true,
+    "message_count": 68
+  },
+  {
+    "ticket_id": "2026020401969",
+    "chat_name": "2026020401969【中国石油国际勘探开发有限公司】客户调用...",
+    "customer": "中国石油国际勘探开发有限公司",
+    "problem": "2026020401969【中国石油国际勘探开发有限公司】客户调用...",
+    "solution": "实施大佬帮忙看下也可以",
+    "has_solution": true,
+    "message_count": 168
+  },
+  {
+    "ticket_id": "2026020400351",
+    "chat_name": "2026020400351【中国标准化研究院】【中台】【v7.24...",
+    "customer": "中国标准化研究院",
+    "problem": "您采用最新发版包试一试  24657版本 不复现问题",
+    "solution": "大佬 目前还在产研排期处理中 已经给研发那边发过信息 进行提醒 加快处理速度",
+    "has_solution": true,
+    "message_count": 172
+  },
+  {
+    "ticket_id": "2026020401653",
+    "chat_name": "2026020401653预览文件时提示“服务器异常，请稍后再试”",
+    "customer": "",
+    "problem": "这个问题客户那边找到原因没有",
+    "solution": "他们没头绪，想让咱们配合处理下",
+    "has_solution": true,
+    "message_count": 128
+  },
+  {
+    "ticket_id": "2026020401721",
+    "chat_name": "2026020401721绿发-云文档通讯录自定义字段可以扩容吗",
+    "customer": "",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026020401721\n工单标题: 绿发-云文档通讯录自定义字段可以扩容吗\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2018979322234216449\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "/org/admin/v1/companies/{company_id}/user/field管理后台这个post接口可以创建",
+    "has_solution": true,
+    "message_count": 80
+  },
+  {
+    "ticket_id": "2026020401052",
+    "chat_name": "2026020401052【中海油】【文档中心V7】由2504a升...",
+    "customer": "中海油",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026020401052\n工单标题: 【中海油】【文档中心V7】由2504a升级到2601a后，打开一个空word、excel都需要40秒以上\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2018934620453675009\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 64
+  },
+  {
+    "ticket_id": "2026020401246",
+    "chat_name": "2026020401246【国网山东】【文档中心v7】【客户反馈文...",
+    "customer": "国网山东",
+    "problem": "这个先这样吧，测试公网也有相同问题，生成后再修改单元格格式可以接受",
+    "solution": "这个先这样吧，测试公网也有相同问题，生成后再修改单元格格式可以接受",
+    "has_solution": true,
+    "message_count": 140
+  },
+  {
+    "ticket_id": "2026020400692",
+    "chat_name": "2026020400692【完美世界】服务calendar-notify的日志5分钟的error日志",
+    "customer": "完美世界",
+    "problem": "大佬， 方便联系一下实施大佬，帮忙看看，kafka链接超时的问题吗？",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 64
+  },
+  {
+    "ticket_id": "2026020400102",
+    "chat_name": "2026020400102【四川长虹】【文档中台】 用户移动端不想加载字体",
+    "customer": "四川长虹",
+    "problem": "和预览没有关系，他这个操作已经说明中台没有默认下载字体，只有缓存字体会加载，这个是中台无法控制的",
+    "solution": "和预览没有关系，他这个操作已经说明中台没有默认下载字体，只有缓存字体会加载，这个是中台无法控制的",
+    "has_solution": true,
+    "message_count": 96
+  },
+  {
+    "ticket_id": "2026020400460",
+    "chat_name": "2026020400460云文档中的文件夹中上传文件时中断，重新上...",
+    "customer": "",
+    "problem": "上传的历史记录会保留的（成功/失败的记录），你取消上传只是吧未完成的任务清除了",
+    "solution": "不需要上传这么多文件，你上传几个文件，复现这个步骤试试，再看看上传面板里的记录",
+    "has_solution": true,
+    "message_count": 64
+  },
+  {
+    "ticket_id": "2026020401416",
+    "chat_name": "2026020401416【南网总部文档中台】五区文档中台回调接口异常",
+    "customer": "南网总部文档中台",
+    "problem": "大佬有空帮忙看下用户这个问题吗。编辑链接获取是正常的（token正常），但是后续的回调接口好像没获取到 token。现在是获取编辑链接后，通过转发的方式请求五区金山服务，但有的转发报”500 Internal Server Error“（如图）",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 16
+  },
+  {
+    "ticket_id": "2026020401138",
+    "chat_name": "2026020401138【搜狐】云文档iframe嵌套到业务系统若云文档登录状态失效影响业务页面登",
+    "customer": "搜狐",
+    "problem": "客户云文档集成业务系统，将云文档的页面用iframe嵌入到业务系统的页面中，现在遇到一个登录状态的问题，外层嵌套的业务系统是登陆状态，云文档若登陆失效，会跳我们的单点登录（因为云文档跟客户erp做了账号同步和单点登录），由于单点会把整个站点跳走，导致业务系统需要重新登录，体验不太好，客户咨询云文档能否可以允许在url上加入某种参数，避免业务系统再手动重新登陆",
+    "solution": "是定制，但是也是按照咱们标准的账号对接方案来做的",
+    "has_solution": true,
+    "message_count": 24
+  },
+  {
+    "ticket_id": "2026020401109",
+    "chat_name": "2026020401109在线文字中，表格内容显示异常，跑版的问题...",
+    "customer": "",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026020401109\n工单标题: 在线文字中，表格内容显示异常，跑版的问题，协助OA排查原因\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2018938579440443393\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 8
+  },
+  {
+    "ticket_id": "2026020400783",
+    "chat_name": "2026020400783【江西省人民政府】【文档中台预览】带密码...",
+    "customer": "江西省人民政府",
+    "problem": "下午帮忙看下这个问题 已经改成ordinary模式了 还是有以上提示",
+    "solution": "下午帮忙看下这个问题 已经改成ordinary模式了 还是有以上提示",
+    "has_solution": true,
+    "message_count": 72
+  },
+  {
+    "ticket_id": "2026020400550",
+    "chat_name": "2026020400550【广西政府办公厅】新建文稿上传转版预览耗时过长",
+    "customer": "广西政府办公厅",
+    "problem": "2026020400550【广西政府办公厅】新建文稿上传转版预览耗时过长",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 16
+  },
+  {
+    "ticket_id": "2026020400527",
+    "chat_name": "2026020400527【中广核】【文档中心v7】中心添加模板后...",
+    "customer": "中广核",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026020400527\n工单标题: 【中广核】【文档中心v7】中心添加模板后，网页端生成ppt时，无法挑选企业模板；但是客户端wps365生成ppt时，可以挑选\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2018885548769767425\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "客户端AI PPT生成时可以选择企业模板",
+    "has_solution": true,
+    "message_count": 56
+  },
+  {
+    "ticket_id": "2026020400273",
+    "chat_name": "2026020400273【闽政务】客户存储在应用文档中的OA文件...",
+    "customer": "闽政务",
+    "problem": "大佬看看这个问题，客户存储在应用文档中的OA文件被扫描出可能包含涉密文件，如何从存储中彻底删除？目前在接口文档中找到/v7/appfiles/drives/{drive_id}/files/{file_id}/delete 删除文件接口，但需确认是逻辑删除还是物理删除",
+    "solution": "可以点调用这个接口删除文件，然后在进存储删除实体文件",
+    "has_solution": true,
+    "message_count": 96
+  },
+  {
+    "ticket_id": "2026020400458",
+    "chat_name": "2026020400458【华夏银行】PC端打开投票链接，点登录没反应",
+    "customer": "华夏银行",
+    "problem": "点登录后 F12能提供一下报错吗？",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 8
+  },
+  {
+    "ticket_id": "2026020501599",
+    "chat_name": "2026020501599[招商证券][文档中心]AI帮我写-打开...",
+    "customer": "",
+    "problem": "请问这个bug 报上了嘛",
+    "solution": "这块后面确认了已经提bug，4月版本修复是嘛",
+    "has_solution": true,
+    "message_count": 172
+  },
+  {
+    "ticket_id": "2026020501124",
+    "chat_name": "2026020501124【国电投】【文档中台】移动端设定修订为最...",
+    "customer": "国电投",
+    "problem": "哈喽，这个问题和测试大佬对齐好了，以 bugfix 形式在 0409 版本带出",
+    "solution": "哈喽，这个问题和测试大佬对齐好了，以 bugfix 形式在 0409 版本带出",
+    "has_solution": true,
+    "message_count": 156
+  },
+  {
+    "ticket_id": "2026020500642",
+    "chat_name": "2026020500642【大疆】【v7.2405a】PPT版本丢...",
+    "customer": "大疆",
+    "problem": "大佬 客户基本满意这个结果 后续大文件就使用客户端打开了 防止大文件出现问题😂",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 144
+  },
+  {
+    "ticket_id": "2026020500903",
+    "chat_name": "2026020500903【京办】【中台】【v7.2511】应用管理平台访问异常，显示服务异常，无法",
+    "customer": "京办",
+    "problem": "目前环境已经正式上线使用了，近期不能再重启复现了，如果生产环境超过7天日志的日志被清理了，可以尝试在测试环境重启试试能不能复现",
+    "solution": "目前环境已经正式上线使用了，近期不能再重启复现了，如果生产环境超过7天日志的日志被清理了，可以尝试在测试环境重启试试能不能复现",
+    "has_solution": true,
+    "message_count": 156
+  },
+  {
+    "ticket_id": "2026020501078",
+    "chat_name": "2026020501078【中船黄埔文冲】【文档V7】中心WPS ...",
+    "customer": "中船黄埔文冲",
+    "problem": "这个另外再提个问题单排查吧",
+    "solution": "这种如果明确是问前端问题的，后续可以直接找",
+    "has_solution": true,
+    "message_count": 164
+  },
+  {
+    "ticket_id": "2026020501294",
+    "chat_name": "2026020501294【深交所】【文档中心】 创建的团队，无法...",
+    "customer": "深交所",
+    "problem": "我在看了 看着是前端问题",
+    "solution": "大佬  协调到实施大佬  帮忙拉这个群哈 明天9：30处理",
+    "has_solution": true,
+    "message_count": 184
+  },
+  {
+    "ticket_id": "2026020501069",
+    "chat_name": "2026020501069【上海银行】WPS AI写作助手生成日文内容",
+    "customer": "上海银行",
+    "problem": "我发群里后面整理资料用  正式环境还会有这个问题",
+    "solution": "目前提示词的通过postman调用接口的方式都修改好了",
+    "has_solution": true,
+    "message_count": 108
+  },
+  {
+    "ticket_id": "2026020501219",
+    "chat_name": "2026020501219【北方华创】需要提供一段sql，可以查询...",
+    "customer": "北方华创",
+    "problem": "帮忙评估下 这两个数据 能查到么    客户高层咨询[抱拳]",
+    "solution": "如果是分表，要是一个表 一个表查询可以，也行",
+    "has_solution": true,
+    "message_count": 120
+  },
+  {
+    "ticket_id": "2026020501020",
+    "chat_name": "2026020501020【vivo】【文档中台】回复评论消息提示回复失败",
+    "customer": "vivo",
+    "problem": "不止回复评论失败，回复一条出现多条，恢复评论也失败，别人可以删除自己的评论",
+    "solution": "可以先关单吧，客户反馈了再提一个",
+    "has_solution": true,
+    "message_count": 164
+  },
+  {
+    "ticket_id": "2026020501019",
+    "chat_name": "2026020501019多维表智能提取 输入提取信息提示词，用户...",
+    "customer": "",
+    "problem": "这块看能不能做成配置",
+    "solution": "本次需求是针对的现有京东在用的字段。后面新的AI字段适配私有化后，配置开关跟现在这个还有点不太一样，需要在字段插件的协议里来配置，京东这边可以根据需求在插件协议里配置提取要求上限。回头辛苦 帮忙把配置手册发这儿。",
+    "has_solution": true,
+    "message_count": 160
+  },
+  {
+    "ticket_id": "2026020501183",
+    "chat_name": "2026020501183【容诚会所】用户集成的文档中台，JSSD...",
+    "customer": "容诚会所",
+    "problem": "其他项目都是这么改的  有问题了就要找产研看 文档是他们提供的 本身也是非标操作",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 148
+  },
+  {
+    "ticket_id": "2026020500163",
+    "chat_name": "2026020500163【中煤集团】调用文档合并接口报错",
+    "customer": "中煤集团",
+    "problem": "我打开不了，那更像是资源问题",
+    "solution": "格式处理走的是ofdtool",
+    "has_solution": true,
+    "message_count": 156
+  },
+  {
+    "ticket_id": "2026020501215",
+    "chat_name": "2026020501215【中广核文档中台】文档粘贴内容监听保存成...",
+    "customer": "中广核文档中台",
+    "problem": "他这个问题两次手动调用保存是正常的，自动保存也是正常的，就是前一次没读取到内容",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 40
+  },
+  {
+    "ticket_id": "2026020500182",
+    "chat_name": "2026020500182【招联金融】【v7_202509】个别用...",
+    "customer": "招联金融",
+    "problem": "跟大疆一样是相同问题吗？",
+    "solution": "我收到的列表有清理方法吗",
+    "has_solution": true,
+    "message_count": 136
+  },
+  {
+    "ticket_id": "2026020501457",
+    "chat_name": "2026020501457【南航】移动端缺少值班中的标识",
+    "customer": "南航",
+    "problem": "看复现视频还以为只有按钮没被挤出去就没问题呢，忘记还有标签了。看起来iOS一样也有问题，",
+    "solution": "可以的，跟随42即可",
+    "has_solution": true,
+    "message_count": 152
+  },
+  {
+    "ticket_id": "2026020501823",
+    "chat_name": "2026020501823【交通银行】【智能文档】打开智能问答团队文档解析卡在99%",
+    "customer": "交通银行",
+    "problem": "没啥问题，大致是这样",
+    "solution": "不重启就是修复的时间会慢一点，也能修",
+    "has_solution": true,
+    "message_count": 140
+  },
+  {
+    "ticket_id": "2026020501420",
+    "chat_name": "2026020501420【国信证券】【文档中台】客户生产环境和测...",
+    "customer": "国信证券",
+    "problem": "我看文档写的是opensdk的问题  那不用opensdk  直接使用iframe标签嵌入  是不是就是正常的  那如果是的  那就这个一个不同点  那就是opensdk的问题",
+    "solution": "嗯嗯  解决了就好啊  我看上面文档也是这样说的",
+    "has_solution": true,
+    "message_count": 148
+  },
+  {
+    "ticket_id": "2026020500141",
+    "chat_name": "2026020500141【海螺】】管理后台用户组名称修改后成员可见性范围中的用户组名称不实时更新",
+    "customer": "海螺",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026020500141\n工单标题: 【海螺集团】【文档中心】管理后台用户组名称修改后成员字段可见性范围中的用户组名称不实时更新\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2019223717086601217\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "这个修复在三月版本是会带出的是不",
+    "has_solution": true,
+    "message_count": 144
+  },
+  {
+    "ticket_id": "2026020501403",
+    "chat_name": "2026020501403【国网北京】内存占用高，看着都是业务服务...",
+    "customer": "国网北京",
+    "problem": "大佬 咨询一下   mcp-gateway   这个服务是干嘛的  客户环境之前遇到一个问题",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 120
+  },
+  {
+    "ticket_id": "2026020501092",
+    "chat_name": "2026020501092【顺德农商行】11页word会加载26页",
+    "customer": "顺德农商行",
+    "problem": "大佬 目前这个问题 已经新报了bug 研发那边准备修复了",
+    "solution": "大佬 目前没法确定，预期可能在4月份的公网版本进行修复",
+    "has_solution": true,
+    "message_count": 60
+  },
+  {
+    "ticket_id": "2026020501650",
+    "chat_name": "2026020501650多维表按照脚本示例在脚本编辑器运行生成的...",
+    "customer": "",
+    "problem": "上面的api我验证确实会有宽度问题，下面的api就没有这个问题了",
+    "solution": "大佬们，私有化环境建议使用这个文档里的api",
+    "has_solution": true,
+    "message_count": 24
+  },
+  {
+    "ticket_id": "2026020501589",
+    "chat_name": "2026020501589[招商证券][文档中心]AI帮我写-确认...",
+    "customer": "",
+    "problem": "大佬 产研问公网会复现这个问题么",
+    "solution": "那个私网环境只有客户能打开？有vpn么？让我们下载后也可以登录测试",
+    "has_solution": true,
+    "message_count": 87
+  },
+  {
+    "ticket_id": "2026020500008",
+    "chat_name": "2026020500008【兆芯集团】几十w文件拖拽上传很慢且部分文件没有传成功",
+    "customer": "兆芯集团",
+    "problem": "周五的包自签证书异常，大佬，看看这个要再找用户测试下不",
+    "solution": "大佬，周末给的包可以正常传文件了",
+    "has_solution": true,
+    "message_count": 120
+  },
+  {
+    "ticket_id": "2026020501581",
+    "chat_name": "2026020501581【生态】【蓝凌】word 在中台编辑和普通预览跑版",
+    "customer": "生态",
+    "problem": "2026020501581【生态】【蓝凌】word 在中台编辑和普通预览跑版",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 12
+  },
+  {
+    "ticket_id": "2026020501654",
+    "chat_name": "2026020501654【重庆富民银行】文档中心升级到2509版...",
+    "customer": "重庆富民银行",
+    "problem": "感觉不是菜单的问题，还是权限有问题",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 102
+  },
+  {
+    "ticket_id": "2026020501587",
+    "chat_name": "2026020501587【齐鲁制药】【S15】云文档，重命名后聊天记录中文件名为旧文件名",
+    "customer": "齐鲁制药",
+    "problem": "2026020501587【齐鲁制药】【S15】云文档，重命名后聊天记录中文件名为旧文件名",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 9
+  },
+  {
+    "ticket_id": "2026020501416",
+    "chat_name": "2026020501416【国网山东】-WPSAI-智能抽取点击没反应",
+    "customer": "国网山东",
+    "problem": "两位大佬的问题超出了我的认知范围[捂脸]",
+    "solution": "大佬可以实现系统升级后自动更新包吗，遇到几例都是忘记在二开平台发布版本了",
+    "has_solution": true,
+    "message_count": 120
+  },
+  {
+    "ticket_id": "2026020501643",
+    "chat_name": "2026020501643文档中台对接问题",
+    "customer": "",
+    "problem": "这个就是产品的bug",
+    "solution": "大佬 帮忙确认下 这个问题，按照临时解决，可以维持多久 不报401",
+    "has_solution": true,
+    "message_count": 69
+  },
+  {
+    "ticket_id": "2026020501104",
+    "chat_name": "2026020501104【广东电网】测试环境mysql数据库迁移...",
+    "customer": "广东电网",
+    "problem": "预览正常的说明模板文件是正常的，使用后预览失败参考上面廖伟哥发的原因",
+    "solution": "[O了]好的，把file_location表的数据删掉之后可以正常打开了",
+    "has_solution": true,
+    "message_count": 108
+  },
+  {
+    "ticket_id": "2026020501431",
+    "chat_name": "2026020501431【南航】内置浏览器新建文档时区显示错误",
+    "customer": "南航",
+    "problem": "等会麻烦你参下会。划词器的问题需要协助排查下",
+    "solution": "客户研发应该可以查下这个的",
+    "has_solution": true,
+    "message_count": 81
+  },
+  {
+    "ticket_id": "2026020501813",
+    "chat_name": "2026020501813【中国石油国际勘探开发有限公司】文档套红...",
+    "customer": "中国石油国际勘探开发有限公司",
+    "problem": "东哥 麻烦帮忙看一下这个问题被，以前V4是做过什么处理么",
+    "solution": "是的，但是是在转Pdf里完成的",
+    "has_solution": true,
+    "message_count": 54
+  },
+  {
+    "ticket_id": "2026020501288",
+    "chat_name": "2026020501288【国投网盘】 web端文件夹上传失败",
+    "customer": "国投网盘",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026020501288\n工单标题: 【国投网盘】 web端文件夹上传失败\n工单详情链接: https://cst-ach.kso.net/workOrderList/workOrderList/info?type=info&id=2019316948421304322\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 6
+  },
+  {
+    "ticket_id": "2026020501406",
+    "chat_name": "2026020501406【广州银行】【文档中台】word文件在线...",
+    "customer": "广州银行",
+    "problem": "只有这一个文档保存失败，在demo测试的保存是正常的。重新上传文件保存也是失败",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 48
+  },
+  {
+    "ticket_id": "2026020501571",
+    "chat_name": "2026020501571【四川长虹】【文档中台】 用户需求设置窗...",
+    "customer": "四川长虹",
+    "problem": "#2026020501571 【四川长虹】【文档中台】 用户需求设置窗口缩放 目前移动端不支持  \nhttps://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2019334642436661249 \n 辛苦大佬 看看这个问题  高优问题\n1.用户的需求是 想要移动端使用api进行窗口缩放 但是目前移动端还不支持 \n2.麻烦研发这边看看能不能提供一下支持的方法",
+    "solution": "#2026020501571 【四川长虹】【文档中台】 用户需求设置窗口缩放 目前移动端不支持  \nhttps://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2019334642436661249 \n 辛苦大佬 看看这个问题  高优问题\n1.用户的需求是 想要移动端使用api进行窗口缩放 但是目前移动端还不支持 \n2.麻烦研发这边看看能不能提供一下支持的方法",
+    "has_solution": true,
+    "message_count": 27
+  },
+  {
+    "ticket_id": "2026020500544",
+    "chat_name": "2026020500544【四川长虹】【文档中台】在线预览word...",
+    "customer": "四川长虹",
+    "problem": "提了需求，产研说要走问题单",
+    "solution": "上面一个普通的可以撤掉吗",
+    "has_solution": true,
+    "message_count": 72
+  },
+  {
+    "ticket_id": "2026020500575",
+    "chat_name": "2026020500575华为-EDM-2506b-问题咨询-wo...",
+    "customer": "",
+    "problem": "是基于2506b的bugfix",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 66
+  },
+  {
+    "ticket_id": "2026020501138",
+    "chat_name": "2026020501138【华能集团】开放平台登录后无法创建应用，...",
+    "customer": "华能集团",
+    "problem": "【华能集团】开放平台登录后无法创建应用，提示访问受限，当前账号类型不支持访问开放平台，这三个管理员账号都提示访问受限：wpsadmin\\adminroot\\admin",
+    "solution": "大佬，这个单可以结了，用无痕模式就正常了",
+    "has_solution": true,
+    "message_count": 39
+  },
+  {
+    "ticket_id": "2026020501464",
+    "chat_name": "2026020501464【生态】【致远】【深圳信息职业技术大学】txt类型文档在中台编辑预览跑版",
+    "customer": "生态",
+    "problem": "这种应该是用word组件渲染的， 不能跟纯文本编辑器对比吧",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 9
+  },
+  {
+    "ticket_id": "2026020500085",
+    "chat_name": "2026020500085【雅江】-文档中台-扩容环境检查卡住",
+    "customer": "雅江",
+    "problem": "你不能滥用研发资源啊",
+    "solution": "后面这种问题自己解决哈[坏笑]",
+    "has_solution": true,
+    "message_count": 102
+  },
+  {
+    "ticket_id": "2026020501388",
+    "chat_name": "2026020501388【国投】【私有化文档中心AI】空召回接口...",
+    "customer": "国投",
+    "problem": "这项目是反馈过这个问答有问题么  刚才看还没事，现在提示开小差",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 81
+  },
+  {
+    "ticket_id": "2026020500441",
+    "chat_name": "2026020500441【城商行联盟】【文档中心增强版V7】对接...",
+    "customer": "城商行联盟",
+    "problem": "说下载失败的是这个问题。",
+    "solution": "已经协调部署升级2601了",
+    "has_solution": true,
+    "message_count": 117
+  },
+  {
+    "ticket_id": "2026020501521",
+    "chat_name": "2026020501521【公安一所】【云文档】【v7.2508】...",
+    "customer": "公安一所",
+    "problem": "而且这个问题只有表单空白，其他文件都正常，估计是只有表单校验了",
+    "solution": "这个sign里应该有当前访问的地址信息，大概率会去和配置的代理地址进行验证。\n现在有问题的是CS端，访问地址里的端口号CS端端口号10305\n\n但是服务访问的代理里加的是BS端的代理地址，BS端代理地址和CS端代理地址唯一差别就是端口号不一样，BS端口号是10252\n\n我把代理地址改成CS端的之后就可以了",
+    "has_solution": true,
+    "message_count": 69
+  },
+  {
+    "ticket_id": "2026020500322",
+    "chat_name": "2026020500322【农行】【文档中台】【2507】【接口】...",
+    "customer": "农行",
+    "problem": "肖总，这个health接口，用户问我们能不能给他们用来对接他们的监控平台？",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 27
+  },
+  {
+    "ticket_id": "2026020501622",
+    "chat_name": "2026020501622【科学技术部】【文档中台】隐藏审阅-限制编辑功能",
+    "customer": "科学技术部",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026020501622\n工单标题: 【科学技术部】【文档中台】隐藏审阅-限制编辑功能\n工单详情链接: https://cst-ach.kso.net/workOrderList/workOrderList/info?type=info&id=2019337582475993089\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 3
+  },
+  {
+    "ticket_id": "2026020501600",
+    "chat_name": "2026020501600【科学技术部】【文档中台】配置中台点 打...",
+    "customer": "科学技术部",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026020501600\n工单标题: 【科学技术部】【文档中台】配置中台点 打印 时，不弹出打印的页面\n工单详情链接: https://cst-ach.kso.net/workOrderList/workOrderList/info?type=info&id=2019336424877449217\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 9
+  },
+  {
+    "ticket_id": "2026020501634",
+    "chat_name": "2026020501634【科学技术部】【文档中台】指导水印的接口...",
+    "customer": "科学技术部",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026020501634\n工单标题: 【科学技术部】【文档中台】指导水印的接口在业务系统通过代码增加自定义水印\n工单详情链接: https://cst-ach.kso.net/workOrderList/workOrderList/info?type=info&id=2019338233297756161\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 3
+  },
+  {
+    "ticket_id": "2026020500252",
+    "chat_name": "2026020500252【国寿投资】V6云文档通讯录搜到的用户无法添加团队",
+    "customer": "国寿投资",
+    "problem": "大佬,问题解决了。  退出项目上的统一认证后恢复。",
+    "solution": "大佬,问题解决了。  退出项目上的统一认证后恢复。",
+    "has_solution": true,
+    "message_count": 114
+  },
+  {
+    "ticket_id": "2026020501608",
+    "chat_name": "2026020501608【科学技术部】【文档中台】更换中台窗口右...",
+    "customer": "科学技术部",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026020501608\n工单标题: 【科学技术部】【文档中台】更换中台窗口右上角的图标样式\n工单详情链接: https://cst-ach.kso.net/workOrderList/workOrderList/info?type=info&id=2019337042274803713\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 3
+  },
+  {
+    "ticket_id": "2026020600918",
+    "chat_name": "2026020600918【太平金融】【文档中心】生产环境自建应用...",
+    "customer": "太平金融",
+    "problem": "还是组件openweb包的问题，那得重新出一个包了",
+    "solution": "上传之后你需要重新在本地扫描按钮出现文件，你就可以选中该文件进行解析了",
+    "has_solution": true,
+    "message_count": 123
+  },
+  {
+    "ticket_id": "2026020601199",
+    "chat_name": "2026020601199【人保集团】商密功能，权益导入，菜单开启...",
+    "customer": "人保集团",
+    "problem": "这个是你们部署插件有问题，不需要开发处理呀",
+    "solution": "这个是你们部署插件有问题，不需要开发处理呀",
+    "has_solution": true,
+    "message_count": 90
+  },
+  {
+    "ticket_id": "2026020601453",
+    "chat_name": "2026020601453华为-场景AI-生产环境-doc文件结果...",
+    "customer": "",
+    "problem": "我咨询了下，好像已经过了排期窗口，要等下一个排期了",
+    "solution": "可以的。不区分公私网",
+    "has_solution": true,
+    "message_count": 144
+  },
+  {
+    "ticket_id": "2026020600095",
+    "chat_name": "2026020600095【交通银行】【文档中心v7】区域权限设置，添加权限名单后，同一人会显示多个",
+    "customer": "交通银行",
+    "problem": "这边复现概率高不，怀疑是添加成员时，界面卡主了，或者有其他异常",
+    "solution": "但是用户已经移除过权限了",
+    "has_solution": true,
+    "message_count": 117
+  },
+  {
+    "ticket_id": "2026020601302",
+    "chat_name": "2026020601302洛阳钼业中台项目-调用表格add接口慢",
+    "customer": "",
+    "problem": "表格接口问题，需要表格团队解答",
+    "solution": "内核方法，websocket 的",
+    "has_solution": true,
+    "message_count": 111
+  },
+  {
+    "ticket_id": "2026020600438",
+    "chat_name": "2026020600438【中粮集团】【文档中台v7 2512】泛...",
+    "customer": "中粮集团",
+    "problem": "现在看报错，截图那个请求也有问题。用了集群版redis应该都受影响。",
+    "solution": "大佬，你好，我们年前可以把数据清了重装一遍\n不过泛微团队要验证的话，需要放假回来之后了",
+    "has_solution": true,
+    "message_count": 114
+  },
+  {
+    "ticket_id": "2026020601381",
+    "chat_name": "2026020601381【北京银行】v7文档中台在线预览csv格...",
+    "customer": "北京银行",
+    "problem": "那大佬，目前有计划优化这个问题吗",
+    "solution": "目前调整了/config/outline/attachment，表格文件可以正常打开",
+    "has_solution": true,
+    "message_count": 135
+  },
+  {
+    "ticket_id": "2026020600054",
+    "chat_name": "2026020600054【上海农商行】：调用文档中心中的后端多维表接口报错",
+    "customer": "上海农商行",
+    "problem": "大佬，咨询一下，正式发版是哪个版本带上了这些接口，这边有客户是2601版本的 ，但是列出视图，获取视图这些接口还是会返回Command not found",
+    "solution": "你试试私有化最新的2603是否OK",
+    "has_solution": true,
+    "message_count": 114
+  },
+  {
+    "ticket_id": "2026020600479",
+    "chat_name": "2026020600479浦发V6升级V7后，需要重新对接文档中心...",
+    "customer": "",
+    "problem": "安全问题应该解决安全风险，而不是不让用了呀[捂脸]",
+    "solution": "安全问题应该解决安全风险，而不是不让用了呀[捂脸]",
+    "has_solution": true,
+    "message_count": 144
+  },
+  {
+    "ticket_id": "2026020600285",
+    "chat_name": "2026020600285【中信金融】账号同步异常",
+    "customer": "中信金融",
+    "problem": "嗯嗯 测试环境没问题的话就能变到生产了",
+    "solution": "是不是可以按照这个方案变更到生产了？",
+    "has_solution": true,
+    "message_count": 108
+  },
+  {
+    "ticket_id": "2026020601322",
+    "chat_name": "2026020601322【江南造船】【AI智能抽取】【V7云文档...",
+    "customer": "江南造船",
+    "problem": "运维大佬帮忙看下 qingqiu embedding模型客户部署之后 配置404的问题",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 78
+  },
+  {
+    "ticket_id": "2026020600834",
+    "chat_name": "2026020600834【东莞银行】【文档中台】版本升级后异文步...",
+    "customer": "东莞银行",
+    "problem": "非说是routy_key 的问题。 就拿postman去验证，传\"\"是否正常",
+    "solution": "如果项目那边认为是route-key影响的， 可以postman调用下看看",
+    "has_solution": true,
+    "message_count": 93
+  },
+  {
+    "ticket_id": "2026020601817",
+    "chat_name": "2026020601817【广东电网】V7文档中心2505a.20...",
+    "customer": "广东电网",
+    "problem": "有一个异常的情况就是这个管理后台ai使用情况这里统计到的，每天00.00分开始有一个用户就一直使用智能问答，，，这个是导致消息队列积压吗[捂脸][捂脸][捂脸]",
+    "solution": "恢复了，我把这个解析的队列删除之后就好了",
+    "has_solution": true,
+    "message_count": 105
+  },
+  {
+    "ticket_id": "2026020601218",
+    "chat_name": "2026020601218【国航】【文档中台】word在线编辑跑版...",
+    "customer": "国航",
+    "problem": "先看能不能临时解决  后续升级版本‘’",
+    "solution": "临时解决方案 就是手动修改下文件",
+    "has_solution": true,
+    "message_count": 93
+  },
+  {
+    "ticket_id": "2026020600202",
+    "chat_name": "2026020600202【通威股份】【文档中台】",
+    "customer": "通威股份",
+    "problem": "约个下午的远程桌面看吧  肯定是对接问题,save和file/info的报文要检查下",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 27
+  },
+  {
+    "ticket_id": "2026020601183",
+    "chat_name": "2026020601183【南京市信息中心】一网统管分析监测项目文...",
+    "customer": "南京市信息中心",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026020601183\n工单标题: 【南京市信息中心】一网统管分析监测项目文档中台预览失败报错20050\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2019674153978396674\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "这个是处理完了的  之前是没有给远程打回了 再提交一下 我关单",
+    "has_solution": true,
+    "message_count": 9
+  },
+  {
+    "ticket_id": "2026020600064",
+    "chat_name": "2026020600064【国投网盘】wpsai智能问答异常",
+    "customer": "国投网盘",
+    "problem": "博哥，麻烦问下，你这边有时间吗，能跟我们大概说下/data下那些文件都是干什么的吗，大概说下就行，我们去跟客户解释下/data下面这600g目前都是些什么类型的文件，告诉他这些都不能删除",
+    "solution": "而且那93也不够解决问题的",
+    "has_solution": true,
+    "message_count": 123
+  },
+  {
+    "ticket_id": "2026020601361",
+    "chat_name": "2026020601361【九江银行】【文档中心】文档移动团队后部...",
+    "customer": "九江银行",
+    "problem": "把有问题的文件操作了试试",
+    "solution": "那就是了，2508版本已知风险",
+    "has_solution": true,
+    "message_count": 138
+  },
+  {
+    "ticket_id": "2026020600070",
+    "chat_name": "2026020600070【申万宏源】：业务系统反馈，使用格式转换...",
+    "customer": "申万宏源",
+    "problem": "版本太老了，表格内核这边无法从代码层面定位",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 123
+  },
+  {
+    "ticket_id": "2026020601566",
+    "chat_name": "2026020601566【齐鲁制药】【S15】表单提交后，同一个...",
+    "customer": "齐鲁制药",
+    "problem": "表现是 多维表 显示问题",
+    "solution": "手动是可以的，表单提交的不行",
+    "has_solution": true,
+    "message_count": 50
+  },
+  {
+    "ticket_id": "2026020600472",
+    "chat_name": "2026020600472【京东方】2508升级至2601 开放平...",
+    "customer": "京东方",
+    "problem": "没事了，应该是权限问题 开放平台 得wpsadmin 才能看到数据",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 36
+  },
+  {
+    "ticket_id": "2026020601699",
+    "chat_name": "2026020601699【太平金融】【文档中心】指定的团队文件在...",
+    "customer": "太平金融",
+    "problem": "只有这个文件异常吗 其他文件有没有问题",
+    "solution": "是的，这个应该可以下周再看",
+    "has_solution": true,
+    "message_count": 52
+  },
+  {
+    "ticket_id": "2026020600244",
+    "chat_name": "2026020600244【安徽省税务总局】【协作】组织架构中添加...",
+    "customer": "安徽省税务总局",
+    "problem": "这个问题是不是反馈了好多次，添加部门接口这个woa接口报没权限",
+    "solution": "组织架构中添加子部门提示无权限但实际可以创建成功",
+    "has_solution": true,
+    "message_count": 32
+  },
+  {
+    "ticket_id": "2026020601532",
+    "chat_name": "2026020601532【青海油田】AI 使用报错,文档内部问答",
+    "customer": "青海油田",
+    "problem": "刚才有可能是缓存的问题",
+    "solution": "你自己试试吧除了那个AI助手表格的都可以了",
+    "has_solution": true,
+    "message_count": 84
+  },
+  {
+    "ticket_id": "2026020601488",
+    "chat_name": "2026020601488【青海油田】团队问答报错",
+    "customer": "青海油田",
+    "problem": "两位大佬，问题解决了？[得意]",
+    "solution": "看这个是的 可以回复了",
+    "has_solution": true,
+    "message_count": 62
+  },
+  {
+    "ticket_id": "2026020600861",
+    "chat_name": "2026020600861【国寿股份】测试环境内存持续上升导致服务熔断",
+    "customer": "国寿股份",
+    "problem": "这个问题给协调研发看一下",
+    "solution": "不行 已经再其他会上了，估计要晚点",
+    "has_solution": true,
+    "message_count": 34
+  },
+  {
+    "ticket_id": "2026020600350",
+    "chat_name": "2026020600350【太平金融】【文档中心】咨询：表格/演示...",
+    "customer": "太平金融",
+    "problem": "公网目前未发现问题，V7是不是就是私网？之前说是可以开的",
+    "solution": "公网目前未发现问题，V7是不是就是私网？之前说是可以开的",
+    "has_solution": true,
+    "message_count": 84
+  },
+  {
+    "ticket_id": "2026020600690",
+    "chat_name": "2026020600690【中原银行】-【私有化云文档】移动端打开...",
+    "customer": "中原银行",
+    "problem": "现在问题描述下：PC端word不能预览还是怎么？",
+    "solution": "那建议先让运维研发看看呢",
+    "has_solution": true,
+    "message_count": 78
+  },
+  {
+    "ticket_id": "2026020601185",
+    "chat_name": "2026020601185【北京猿力】文档中台打开慢问题",
+    "customer": "北京猿力",
+    "problem": "大佬 客户那边集成后还有这个问题没",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 62
+  },
+  {
+    "ticket_id": "2026020601539",
+    "chat_name": "2026020601539【青海油田】AI 使用报错,表格助手",
+    "customer": "青海油田",
+    "problem": "deepseek模型就行 配置的时候不能选自定义 要配成ds的",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 58
+  },
+  {
+    "ticket_id": "2026020600411",
+    "chat_name": "2026020600411【贵政通】管理员账号权限不足",
+    "customer": "贵政通",
+    "problem": "实际问题根因是啥、解决办法有空可以总结下不  技术支持同学可以写入知识库",
+    "solution": "解决办法应该有总结过",
+    "has_solution": true,
+    "message_count": 72
+  },
+  {
+    "ticket_id": "2026020601139",
+    "chat_name": "2026020601139【中邮人寿】【文档中心】【版本:v7】云...",
+    "customer": "中邮人寿",
+    "problem": "语法问题，有一些sql语法不兼容导致的，不适配",
+    "solution": "之前我咨询 大佬说是可以升的",
+    "has_solution": true,
+    "message_count": 82
+  },
+  {
+    "ticket_id": "2026020600565",
+    "chat_name": "2026020600565【国电投】【文档中台2512】移动端do...",
+    "customer": "国电投",
+    "problem": "这个问题研发已读不回，基本可以确认搞不了",
+    "solution": "这个问题研发已读不回，基本可以确认搞不了",
+    "has_solution": true,
+    "message_count": 20
+  },
+  {
+    "ticket_id": "2026020600715",
+    "chat_name": "2026020600715【中国联通】【文档中台2505】sdk初始换比较慢",
+    "customer": "中国联通",
+    "problem": "这种集成问题 只能客户那边去优化",
+    "solution": "我还是觉得问题不在咱们，他说的点击完的空白还没到咱们，ready的2秒是正常的，初始化完才能调用高级接口，而且ready没完，文档已经出来了",
+    "has_solution": true,
+    "message_count": 62
+  },
+  {
+    "ticket_id": "2026020600207",
+    "chat_name": "2026020600207【广西交科】广交科文档中台从2306版本...",
+    "customer": "广西交科",
+    "problem": "记录一下问题的解决办法，后面升级生产环境会用到",
+    "solution": "嗯嗯，测试环境感觉是有脏数据 我这边清理完后重新弄就好了",
+    "has_solution": true,
+    "message_count": 28
+  },
+  {
+    "ticket_id": "2026020601245",
+    "chat_name": "2026020601245【天津城投】新建文件提示模板库报错",
+    "customer": "天津城投",
+    "problem": "模版库和应用后台都没问题了嘛",
+    "solution": "目前其他项目反馈的多不？预计在哪个版本修复呢？",
+    "has_solution": true,
+    "message_count": 84
+  },
+  {
+    "ticket_id": "2026020601161",
+    "chat_name": "2026020601161佛山市政数局智能公文模式下菜单【公文校对】缺失",
+    "customer": "公文校对",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026020601161\n工单标题: 佛山市政数局智能公文模式下菜单【公文校对】缺失\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2019672827919826946\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "测试环境吧，我下架上架试试看可以不",
+    "has_solution": true,
+    "message_count": 68
+  },
+  {
+    "ticket_id": "2026020600700",
+    "chat_name": "2026020600700【国网远光软件】问题咨询 文档中台部署问题",
+    "customer": "国网远光软件",
+    "problem": "大佬，这个咨询一下实施大佬，之前是可以",
+    "solution": "嗯嗯 帮确认下就行  明确不行的话我同步一下客户就好了",
+    "has_solution": true,
+    "message_count": 82
+  },
+  {
+    "ticket_id": "2026020600442",
+    "chat_name": "2026020600442【华泰证券】CPU突然飙升，接口报错",
+    "customer": "华泰证券",
+    "problem": "这个可以让实施老师和CPU飙升的问题一起看下",
+    "solution": "这个可以让实施老师和CPU飙升的问题一起看下",
+    "has_solution": true,
+    "message_count": 20
+  },
+  {
+    "ticket_id": "2026020600389",
+    "chat_name": "2026020600389中移铁通测试环境导入证书报错",
+    "customer": "",
+    "problem": "运维平台数据库页面执行就报错",
+    "solution": "你直接上去处理一下吧[捂脸]",
+    "has_solution": true,
+    "message_count": 86
+  },
+  {
+    "ticket_id": "2026020600596",
+    "chat_name": "2026020600596广东电网】v7  文档中心2505a.2...",
+    "customer": "",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026020600596\n工单标题: 广东电网】v7  文档中心2505a.20250515版本 移动端H5模式文档是否兼容了权限设置这个按钮以及功能。\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2019622017571717122\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 38
+  },
+  {
+    "ticket_id": "2026020600546",
+    "chat_name": "2026020600546【海螺集团】【文档中心】多维表格自定义角色覆盖管理员权限bug",
+    "customer": "海螺集团",
+    "problem": "那这就应该是同一个问题",
+    "solution": "应该修复？能准确一点吗[捂脸]",
+    "has_solution": true,
+    "message_count": 54
+  },
+  {
+    "ticket_id": "2026020600836",
+    "chat_name": "2026020600836【中石油勘探院】合同系统目前用的模板，能...",
+    "customer": "中石油勘探院",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026020600836\n工单标题: 【中石油勘探院】合同系统目前用的模板，能否在文档中台中实现\n工单详情链接: https://cst-ach.kso.net/workOrderList/workOrderList/info?type=info&id=2019651509421834242\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 16
+  },
+  {
+    "ticket_id": "2026020601030",
+    "chat_name": "2026020601030【中国金茂】云文档分享的连接，在微信打开...",
+    "customer": "中国金茂",
+    "problem": "嗯，我知道，我找实施看下能不能按照微信提供的方式，申诉一下",
+    "solution": "我想着是拉研发，找研发拉运维，给实施提供一个方案，先这样吧，我找实施问一下",
+    "has_solution": true,
+    "message_count": 56
+  },
+  {
+    "ticket_id": "2026020600026",
+    "chat_name": "2026020600026中油国际文档中心V5文件丢失问题排查",
+    "customer": "",
+    "problem": "我再跟用户聊聊，看看能不能找到文件名称吧",
+    "solution": "只能这样笨方法  手动一个一个看了",
+    "has_solution": true,
+    "message_count": 80
+  },
+  {
+    "ticket_id": "2026020600052",
+    "chat_name": "2026020600052【国家管网】【XC2508】ksops告...",
+    "customer": "国家管网",
+    "problem": "什么情况发生这个，因为之前是没有这个问题的。昨天晚上上线了一个业务系统的应用才发现的这个问题",
+    "solution": "为什么会发生，要怎么解决，什么时候解决都有说了",
+    "has_solution": true,
+    "message_count": 88
+  },
+  {
+    "ticket_id": "2026020600319",
+    "chat_name": "2026020600319【华大九天】-v7-新建按钮中没有智能表格",
+    "customer": "华大九天",
+    "problem": "f12 控制台 看打开首页的时候 有没有报错",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 22
+  },
+  {
+    "ticket_id": "2026020800664",
+    "chat_name": "2026020800664【香港警务处】搜索不到某个账号，如“SM...",
+    "customer": "香港警务处",
+    "problem": "2026020800664【香港警务处】搜索不到某个账号，如“SM...",
+    "solution": "页面搜索因该也可以了吧",
+    "has_solution": true,
+    "message_count": 66
+  },
+  {
+    "ticket_id": "2026020800222",
+    "chat_name": "2026020800222无法隐藏右下角图标",
+    "customer": "",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026020800222\n工单标题: 无法隐藏右下角图标\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2020344333777006594\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "那就不知道了 这个方法我本地测试是可以的",
+    "has_solution": true,
+    "message_count": 26
+  },
+  {
+    "ticket_id": "2026020901105",
+    "chat_name": "2026020901105【厦门国际信托】企微上集成的wps文档中...",
+    "customer": "厦门国际信托",
+    "problem": "这个是浏览器的问题  不是中台问题  肯定没有做适配的",
+    "solution": "鸿蒙手机高清预览文字不显示那个  研发回复是这是浏览器自身颜色转换问题，不是webOffice问题。webOffice没有对深色模式做适配，文档深色模式下的效果是浏览器自身根据深色模式做的颜色转换，客户如果需要处理  要走需求适配了",
+    "has_solution": true,
+    "message_count": 38
+  },
+  {
+    "ticket_id": "2026020901334",
+    "chat_name": "2026020901334【兴业银行】WPS客户端新建AI PPT很卡",
+    "customer": "兴业银行",
+    "problem": "好的，那这个看看项目测能不能升级，或者看看网络吧",
+    "solution": "不是3次握手吗？这个1ms完成不了吧[卖萌]",
+    "has_solution": true,
+    "message_count": 88
+  },
+  {
+    "ticket_id": "2026020901826",
+    "chat_name": "2026020901826【国网山东】-WPSAI-AI数据-查询...",
+    "customer": "国网山东",
+    "problem": "大佬这个问题所以3b版本修复了嘛，我这边是招商证券客户也提了这个问题",
+    "solution": "大佬这个问题所以3b版本修复了嘛，我这边是招商证券客户也提了这个问题",
+    "has_solution": true,
+    "message_count": 92
+  },
+  {
+    "ticket_id": "2026020900630",
+    "chat_name": "2026020900630农商行表单慢",
+    "customer": "",
+    "problem": "这个问题已经处理完了，0318已经带出了，是又有反馈么？",
+    "solution": "这个问题已经处理完了，0318已经带出了，是又有反馈么？",
+    "has_solution": true,
+    "message_count": 86
+  },
+  {
+    "ticket_id": "2026020900470",
+    "chat_name": "2026020900470【重庆银行】文档中台应用授权扩容证书申请...",
+    "customer": "重庆银行",
+    "problem": "我并不是这个问题，我现在是连扩容证书都申请不了",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 48
+  },
+  {
+    "ticket_id": "2026020901323",
+    "chat_name": "2026020901323【福建省监狱管理局】协作端打开表单，第一次点击会提示表单不存在",
+    "customer": "福建省监狱管理局",
+    "problem": "大佬，这个日志有分析出是什么问题吗",
+    "solution": "wed端是可以直接打开吗",
+    "has_solution": true,
+    "message_count": 76
+  },
+  {
+    "ticket_id": "2026020901271",
+    "chat_name": "2026020901271【中国铁塔】高清预览图片使用token后无法预览",
+    "customer": "中国铁塔",
+    "problem": "这边看客户那边能不能去掉非四大组件（w/s/p/f）的文件类型的token鉴权 或者采用其他方式",
+    "solution": "word Excel的都可以",
+    "has_solution": true,
+    "message_count": 80
+  },
+  {
+    "ticket_id": "2026020900552",
+    "chat_name": "2026020900552pdf文档不同缩放比例下，部分内容被遮挡了",
+    "customer": "",
+    "problem": "用户最近也没在反馈这个问题了[笑哭]",
+    "solution": "这个生产还在复现，poc和dev貌似是修复了[emm]",
+    "has_solution": true,
+    "message_count": 58
+  },
+  {
+    "ticket_id": "2026020901329",
+    "chat_name": "2026020901329【中泰证券】【文档中台】-word文件框框符号给的仿宋字体，上传中台编辑打",
+    "customer": "中泰证券",
+    "problem": "大佬  我看安排的研发的还在休假中  这个问题  麻烦再帮忙拉一下人员看看  方框给仿宋字体后 中台打开字体成winding2字体  内部能复现",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 22
+  },
+  {
+    "ticket_id": "2026020901393",
+    "chat_name": "2026020901393绿发生产环境从2509升级到2512版本...",
+    "customer": "",
+    "problem": "这个问题什么时候可以根治啊",
+    "solution": "这个问题什么时候可以根治啊",
+    "has_solution": true,
+    "message_count": 28
+  },
+  {
+    "ticket_id": "2026020900940",
+    "chat_name": "2026020900940【国投证券】【文档中心】国投证券二次开发...",
+    "customer": "国投证券",
+    "problem": "对，另外的问题是需要何老师提供agentId",
+    "solution": "感谢大佬，问题解决了，是vconsole版本的问题",
+    "has_solution": true,
+    "message_count": 82
+  },
+  {
+    "ticket_id": "2026020901887",
+    "chat_name": "2026020901887【国铁集团】文档中台V7保存问题处理",
+    "customer": "国铁集团",
+    "problem": "当时反馈的问题是保存没有生效",
+    "solution": "还有最直观的方法 保存后再次打开文件时  看看file/info接口返回的download_id  根据这个下载地址 下载文件看看里面有没有内容",
+    "has_solution": true,
+    "message_count": 50
+  },
+  {
+    "ticket_id": "2026020900437",
+    "chat_name": "2026020900437【南航】文档中台在线编辑内容，下载到本地...",
+    "customer": "南航",
+    "problem": "这是个webtet老问题，很多年了",
+    "solution": "修复代码已经入主干了",
+    "has_solution": true,
+    "message_count": 58
+  },
+  {
+    "ticket_id": "2026020900194",
+    "chat_name": "2026020900194【武汉市数据局】武汉数据局部门改名失败排查",
+    "customer": "武汉市数据局",
+    "problem": "大佬按这个说法，我就算绑定成同步部门后要是手动在后台改了名称是不是也是毁发生这个问题，就是名称变不成和数据源一直的",
+    "solution": "可以先改一个看看效果",
+    "has_solution": true,
+    "message_count": 24
+  },
+  {
+    "ticket_id": "2026020900569",
+    "chat_name": "2026020900569【浪潮企业云】账号同步二开插件页面空白问题处理",
+    "customer": "浪潮企业云",
+    "problem": "问题，有跟进么，需要再提个单，处理下么",
+    "solution": "问题，有跟进么，需要再提个单，处理下么",
+    "has_solution": true,
+    "message_count": 66
+  },
+  {
+    "ticket_id": "2026020900590",
+    "chat_name": "2026020900590【中船】文档中心管理后台组织架构无法通过账号搜索",
+    "customer": "中船",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026020900590\n工单标题: 【中船】文档中心管理后台组织架构无法通过账号搜索\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2020707563066126337\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "名字可以搜，账号不行",
+    "has_solution": true,
+    "message_count": 38
+  },
+  {
+    "ticket_id": "2026020900787",
+    "chat_name": "2026020900787【中船】文档中心在线文字有序编号21后会...",
+    "customer": "中船",
+    "problem": "您这边可以重新提一个需求，去咨询一下看能不能做这样的提示~",
+    "solution": "您这边可以重新提一个需求，去咨询一下看能不能做这样的提示~",
+    "has_solution": true,
+    "message_count": 34
+  },
+  {
+    "ticket_id": "2026020900254",
+    "chat_name": "2026020900254【京办】【中台】【v7.2411】调用回调接口次数过多",
+    "customer": "京办",
+    "problem": "ok，就回归下问题场景以及看下预览非预览下的block加载",
+    "solution": "目前看到大多数后台配置默认关闭了，我重新对比原来的环境重新检查一遍，再试试",
+    "has_solution": true,
+    "message_count": 82
+  },
+  {
+    "ticket_id": "2026020900538",
+    "chat_name": "2026020900538【4399】多维表格的相关的接口，有些接...",
+    "customer": "4399",
+    "problem": "2026020900538【4399】多维表格的相关的接口，有些接...",
+    "solution": "这里不是也可以切应用么",
+    "has_solution": true,
+    "message_count": 42
+  },
+  {
+    "ticket_id": "2026020901885",
+    "chat_name": "2026020901885【大地保险】文档中心ocanbase数据库适配问题",
+    "customer": "大地保险",
+    "problem": "2026020901885【大地保险】文档中心ocanbase数据库适配问题",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 84
+  },
+  {
+    "ticket_id": "2026020901361",
+    "chat_name": "2026020901361【齐鲁制药】【S15】使用“立即开会”功能，会议召开30分钟后断开",
+    "customer": "齐鲁制药",
+    "problem": "断开的时候有报错吗，还是直接就结束了，",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 13
+  },
+  {
+    "ticket_id": "2026020900864",
+    "chat_name": "2026020900864【东莞银行】【文档中台】word转pdf后跑版",
+    "customer": "东莞银行",
+    "problem": "[撇嘴]不能改文档或者通过插入这个复选框的代码的话我这里暂时没啥思路了",
+    "solution": "大概率不行,这个可能是旧版本字体回落的匹配逻辑有缺陷,仿宋_GB2312找不到 u+2611(☑)这个字符,回落字体的时候又受到前面的字回落记录的影响导致最终选择的字体不对,可以尝试安装几个带这个符号的字体试一下",
+    "has_solution": true,
+    "message_count": 35
+  },
+  {
+    "ticket_id": "2026020901478",
+    "chat_name": "2026020901478【哈行】私有化协作V7，网页能登录，客户...",
+    "customer": "哈行",
+    "problem": "场景一、事前网络不通的情况：\n1、安装客户端\n2、打开WPS协作软件\n3、调通网络\n4、登录失败\n应该调通网络后，再打开协作软件进行登录\n\n场景二、事前网络通的情况：\n1、安装客户端，\n2、打开WPS协作软件，\n3、登录成功\n\n\n\n我去验证一下。把台式机的IP换成策略以外的，模拟场景一",
+    "solution": "客户这边有问题的设备，协作客户端卸载重装可以正常吗？",
+    "has_solution": true,
+    "message_count": 43
+  },
+  {
+    "ticket_id": "2026020901922",
+    "chat_name": "2026020901922【九江银行】【文档中心】woa-logi...",
+    "customer": "九江银行",
+    "problem": "这个是之前排查问题时截图的，已经没有了[捂脸]",
+    "solution": "这个是之前排查问题时截图的，已经没有了[捂脸]",
+    "has_solution": true,
+    "message_count": 23
+  },
+  {
+    "ticket_id": "2026020900532",
+    "chat_name": "2026020900532中山市中台校对功能异常",
+    "customer": "",
+    "problem": "然后  根据这个接口查日志  encs-pri-open-gateway  报错这个",
+    "solution": "这个可以让客户那边配合查一下  他们这个时间有收到回调吗  有记录响应的内容吗",
+    "has_solution": true,
+    "message_count": 32
+  },
+  {
+    "ticket_id": "2026020900660",
+    "chat_name": "2026020900660多维表打开报错提示 打开文件时遇到错误。",
+    "customer": "",
+    "problem": "1、复现了再跟进，目前缺乏足够的信息定位问题。先不讨论这种假设了。\n2、私有化部署的客户，切新架构，把这个事情提上议程。京东这边之前几个统计表的崩溃问题，也用新架构去解。",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 45
+  },
+  {
+    "ticket_id": "2026020900372",
+    "chat_name": "2026020900372昆仑芯-v7文档中心-大文件下载报错",
+    "customer": "",
+    "problem": "大佬，的空帮忙看看这个问题哈",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 33
+  },
+  {
+    "ticket_id": "2026020901907",
+    "chat_name": "2026020901907【工行】【V7】水印排序里IP地址在排序...",
+    "customer": "工行",
+    "problem": "刚看的第二个问题在这个群沟通，0213包会带",
+    "solution": "关注下，水印有个问题修复了，但是还没发包，给项目组的2.5已经给了吧",
+    "has_solution": true,
+    "message_count": 19
+  },
+  {
+    "ticket_id": "2026020901926",
+    "chat_name": "2026020901926【中冶京诚】【文档中心V7】登录页面定制...",
+    "customer": "中冶京诚",
+    "problem": "嗯嗯这里已经发现问题了。",
+    "solution": "嗯嗯这里已经发现问题了。",
+    "has_solution": true,
+    "message_count": 32
+  },
+  {
+    "ticket_id": "2026020900904",
+    "chat_name": "2026020900904【私有云】【X86】【V7.0.2504...",
+    "customer": "私有云",
+    "problem": "大佬，得空帮忙看看这个问题，内部环境可复现",
+    "solution": "这个就已经不是A-Z了啊。。。[捂脸]",
+    "has_solution": true,
+    "message_count": 28
+  },
+  {
+    "ticket_id": "2026020900540",
+    "chat_name": "2026020900540武威市大数据中心：管理后台-审批管理-知...",
+    "customer": "",
+    "problem": "#2026021001180 智能问答-多发问答失败，报“网络开小差了，请稍后重试”错误 \nhttps://cst-ach.kso.net/workOrderList/workOrderList/info?type=info&id=2021134968384229377",
+    "solution": "那有问题了 你们部署安装这些搞好了要是发布才行",
+    "has_solution": true,
+    "message_count": 11
+  },
+  {
+    "ticket_id": "2026020901482",
+    "chat_name": "2026020901482【海螺集团】【文档中心】预装字体版权咨询",
+    "customer": "海螺集团",
+    "problem": "#2026020901482 【海螺集团】【文档中心】预装字体版权咨询 \nhttps://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2020788254755627010",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 13
+  },
+  {
+    "ticket_id": "2026020901700",
+    "chat_name": "2026020901700【京东】生产告警ai-server服务出...",
+    "customer": "京东",
+    "problem": "业务监控正常是需要的、不然是不是真没有用了也不知道服务，有遗留问题大佬你们内部排期正常优化就行",
+    "solution": "不建议对ai-server的error日志加监控，ai-server的日志不是很规范，历史遗留问题，error日志挺多的，但不影响功能",
+    "has_solution": true,
+    "message_count": 15
+  },
+  {
+    "ticket_id": "2026020901463",
+    "chat_name": "2026020901463【哈行】私有化AI，生成的内容有误，联想...",
+    "customer": "哈行",
+    "problem": "客户给了这个，我们能不能调整参数？",
+    "solution": "那建议用户模型部署时，将思考过程放到独立字段reasoning_content里",
+    "has_solution": true,
+    "message_count": 37
+  },
+  {
+    "ticket_id": "2026020900360",
+    "chat_name": "2026020900360【紫金投资】新建文件夹失败",
+    "customer": "紫金投资",
+    "problem": "大佬，这个问题在群里圈我下吧",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 4
+  },
+  {
+    "ticket_id": "2026020900999",
+    "chat_name": "2026020900999【合肥市公安局】流程图授权导入失败",
+    "customer": "合肥市公安局",
+    "problem": "这项目咋连个报错截图都没有[捂脸]",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 14
+  },
+  {
+    "ticket_id": "2026020901418",
+    "chat_name": "2026020901418中韩石化V6.1文档中心授权导入提示机器...",
+    "customer": "",
+    "problem": "手动输入密码，能进去，有五台免密失败了",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 32
+  },
+  {
+    "ticket_id": "2026020901576",
+    "chat_name": "2026020901576 【苏商银行】客户对接文档中台报错 in...",
+    "customer": "苏商银行",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026020901576\n工单标题:  【苏商银行】客户对接文档中台报错 invalid format of date, 需要技术支持同事指导下\n工单详情链接: https://cst-ach.kso.net/workOrderList/workOrderList/info?type=info&id=2020792968914247681\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 3
+  },
+  {
+    "ticket_id": "2026020900618",
+    "chat_name": "2026020900618业务系统预览ofd文件跑版，中台demo也复现",
+    "customer": "",
+    "problem": "那就先暂定是和书生的兼容性问题吧",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 25
+  },
+  {
+    "ticket_id": "2026020901795",
+    "chat_name": "2026020901795-杭互中台打开文档字体重叠",
+    "customer": "",
+    "problem": "可以提任务书找一线帮你看问题,最长时间3个月",
+    "solution": "可以提任务书找一线帮你看问题,最长时间3个月",
+    "has_solution": true,
+    "message_count": 26
+  },
+  {
+    "ticket_id": "2026020901060",
+    "chat_name": "2026020901060【茂名石化】活跃数据里 用户部门信息丢失",
+    "customer": "茂名石化",
+    "problem": "2026020901060【茂名石化】活跃数据里 用户部门信息丢失",
+    "solution": "有了但是都有一层已删除呀",
+    "has_solution": true,
+    "message_count": 42
+  },
+  {
+    "ticket_id": "2026020901715",
+    "chat_name": "2026020901715【中信银行】V6升级V7后权限比对，发现存在差异",
+    "customer": "中信银行",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026020901715\n工单标题: 【中信银行】V6升级V7后权限比对，发现存在差异\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2020799070859010050\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 3
+  },
+  {
+    "ticket_id": "2026020901702",
+    "chat_name": "2026020901702【宝武】测试环境管理后台显示云文档使用8...",
+    "customer": "宝武",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026020901702\n工单标题: 【宝武】测试环境管理后台显示云文档使用82TB，清理掉历史版本还占用53TB，与实际情况不符\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2020798342425845761\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 1
+  },
+  {
+    "ticket_id": "2026020900223",
+    "chat_name": "2026020900223【海南省大数据（新境界）】移动端无法粘贴文字内容",
+    "customer": "海南省大数据（新境界）",
+    "problem": "移动端复制粘贴失效，无法粘贴文字内容，微信复制文字，无法粘贴到移动端编辑文档里面，提示“请复制内容”，内部253环境复现",
+    "solution": "我试了好多个环境，只有公网可以",
+    "has_solution": true,
+    "message_count": 10
+  },
+  {
+    "ticket_id": "2026020900794",
+    "chat_name": "2026020900794【上海农商行】：用户需要通过js去实现新...",
+    "customer": "上海农商行",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026020900794\n工单标题: 【上海农商行】：用户需要通过js去实现新建sheet表格，并且实现插入行记录，还需要对行记录做父子绑定，目前服务端可以做到，js目前没有找到父子绑定api\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2020738565226393601\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "大佬，这个帮忙看看，用js是否可以做？",
+    "has_solution": true,
+    "message_count": 6
+  },
+  {
+    "ticket_id": "2026020901300",
+    "chat_name": "2026020901300【浙江省人民政府联络办公室】",
+    "customer": "浙江省人民政府联络办公室",
+    "problem": "这个找下运维，网络联通性问题",
+    "solution": "可以了，把刚刚那两个健康的模型重新删掉，再添加一下就行了",
+    "has_solution": true,
+    "message_count": 31
+  },
+  {
+    "ticket_id": "2026020900676",
+    "chat_name": "2026020900676【齐鲁制药】OA推送Qiwork待办失败,报401",
+    "customer": "齐鲁制药",
+    "problem": "那目前就让用户重推一下推送失败的数据就可以了吧",
+    "solution": "那目前就让用户重推一下推送失败的数据就可以了吧",
+    "has_solution": true,
+    "message_count": 30
+  },
+  {
+    "ticket_id": "2026020901659",
+    "chat_name": "2026020901659【最高检】【文档中台】通过接口对接实现协作记录",
+    "customer": "最高检",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026020901659\n工单标题: 【最高检】【文档中台】通过接口对接实现协作记录\n工单详情链接: https://cst-ach.kso.net/workOrderList/workOrderList/info?type=info&id=2020796497850638337\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 1
+  },
+  {
+    "ticket_id": "2026021001040",
+    "chat_name": "2026021001040WK客户—多维表使用问题",
+    "customer": "",
+    "problem": "之前的群我结单了。 有新问题重新提单吧",
+    "solution": "之前解决的问题 为什么又驳回了。",
+    "has_solution": true,
+    "message_count": 33
+  },
+  {
+    "ticket_id": "2026021001229",
+    "chat_name": "2026021001229【核工业集团】【文档中台v7】word文...",
+    "customer": "核工业集团",
+    "problem": "机器现在是开机状态，你们看看能不能进",
+    "solution": "环境好了可以做最终验证了",
+    "has_solution": true,
+    "message_count": 41
+  },
+  {
+    "ticket_id": "2026021000098",
+    "chat_name": "2026021000098【招商证券】【文档中心v7】云文档后台A...",
+    "customer": "招商证券",
+    "problem": "大佬这个问题把我拉进群把，有排期解决了嘛",
+    "solution": "大佬这个问题把我拉进群把，有排期解决了嘛",
+    "has_solution": true,
+    "message_count": 19
+  },
+  {
+    "ticket_id": "2026021000363",
+    "chat_name": "2026021000363【建行】系统后台、管理后台登录页渗透测试...",
+    "customer": "建行",
+    "problem": "徐老师，这个问题预计在什么版本里发布解决",
+    "solution": "还没排版本，这个现有的改动方案影响面不可控，需要评估是否有新的方案",
+    "has_solution": true,
+    "message_count": 41
+  },
+  {
+    "ticket_id": "2026021001183",
+    "chat_name": "2026021001183【香港政府DPO】在演示文稿中AI PP...",
+    "customer": "香港政府DPO",
+    "problem": "Query\n  ↓\nLLM理解问题\n  ↓\n动态切分文档chunk size\n  ↓\n再做embedding",
+    "solution": "他们默认16k,其实也可以扩，就是要加资源",
+    "has_solution": true,
+    "message_count": 36
+  },
+  {
+    "ticket_id": "2026021001016",
+    "chat_name": "2026021001016【国家管网】【XC2510】ksops告...",
+    "customer": "国家管网",
+    "problem": "这个错误应该不影响功能",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 9
+  },
+  {
+    "ticket_id": "2026021001097",
+    "chat_name": "2026021001097【浙江交投】【V7中台】文件在移动端打开跑版",
+    "customer": "浙江交投",
+    "problem": "改比较好改，但是不能确定是否原本就设计如此",
+    "solution": "有排期了可以及时告知下",
+    "has_solution": true,
+    "message_count": 42
+  },
+  {
+    "ticket_id": "2026021001162",
+    "chat_name": "2026021001162【浙江移动】【文档中心增强版】pdf转图片跑版",
+    "customer": "浙江移动",
+    "problem": "应该不需要了，问题我们关单就行~",
+    "solution": "这个问题我们跟用户沟通，做大版本升级了，不需要临时方案了，感谢大佬们支持[抱拳][抱拳]",
+    "has_solution": true,
+    "message_count": 37
+  },
+  {
+    "ticket_id": "2026021000153",
+    "chat_name": "2026021000153莆田文档中台文件预览缓慢",
+    "customer": "",
+    "problem": "有正常的就不是回调有问题",
+    "solution": "他们如果有文件可以正常预览，是不是说明他们回调地址配置没有问题哈？",
+    "has_solution": true,
+    "message_count": 35
+  },
+  {
+    "ticket_id": "2026021001466",
+    "chat_name": "2026021001466【哈行】私有化AI，知识库内，开启智能问...",
+    "customer": "哈行",
+    "problem": "曹哥，请教下，咱们能直接给客户部署deepseek模型吗。客户那个qwen3 一直有个思考过程的问题，想让我们另外部署个deepseekV3 进行蒸馏，这样可行吗。\n（咱们有一个AI表格总结功能，貌似只支持deepseek，如果可以的话 应该还能顺便解决这个问题）",
+    "solution": "大佬们，帮忙评估下，可以的话 我就找客户申请了",
+    "has_solution": true,
+    "message_count": 43
+  },
+  {
+    "ticket_id": "2026021000372",
+    "chat_name": "2026021000372【比亚迪】应用文档单点认证跳转逻辑问题",
+    "customer": "比亚迪",
+    "problem": "已知问题来着，1.升级2601及以后版本或者热修  2. 临时方式替换js文件修复",
+    "solution": "已知问题来着，1.升级2601及以后版本或者热修  2. 临时方式替换js文件修复",
+    "has_solution": true,
+    "message_count": 3
+  },
+  {
+    "ticket_id": "2026021001385",
+    "chat_name": "2026021001385【易方达】客户反馈文档中台升级后谷歌浏览...",
+    "customer": "易方达",
+    "problem": "配置问题，出现问题的环境中  window.__CONFIG__.wps.isAdaptWebView的配置为true，连页模式下页面宽度会根据视口自适应。将配置window.__CONFIG__.wps.isAdaptWebView改为false，即可恢复",
+    "solution": "这个工单今天下午刚到研发那边处理，还需要时间排查，我和研发说下，尽快处理",
+    "has_solution": true,
+    "message_count": 31
+  },
+  {
+    "ticket_id": "2026021001421",
+    "chat_name": "2026021001421【纳思达】【文档中台】文字预览跑版",
+    "customer": "纳思达",
+    "problem": "大佬,年前页码数量不一致的bug帮忙看看",
+    "solution": "编辑和普通预览效果一样，都有问题，只有高清可以",
+    "has_solution": true,
+    "message_count": 30
+  },
+  {
+    "ticket_id": "2026021001022",
+    "chat_name": "2026021001022【京东】生产指定表格打开转圈",
+    "customer": "京东",
+    "problem": "明天拿一下协作记录吧，我看能不能复现",
+    "solution": "看这个已经回放成功的样张吧，T列才有数据",
+    "has_solution": true,
+    "message_count": 37
+  },
+  {
+    "ticket_id": "2026021000242",
+    "chat_name": "2026021000242【京办】文档中台部署切换后，监测到接口存在异常访问情况",
+    "customer": "京办",
+    "problem": "#2316953 【政企反馈】【京办项目】文档中台部署切换后，监测到接口存在异常访问异常\nhttps://ones.dig.kso.net/project/#/team/MuZLKcYe/task/RL3ce5oBbir2FLMR",
+    "solution": "这个就是热修二进制，热修服务为weboffice-cloudprovider，如果要先修这个，就按照热修方案文档处理就好",
+    "has_solution": true,
+    "message_count": 44
+  },
+  {
+    "ticket_id": "2026021000080",
+    "chat_name": "2026021000080【香港警务处】【文档中台】excel本地编辑文件未显示最新文件且光标无法移",
+    "customer": "香港警务处",
+    "problem": "这个问题目前来看解决了，项目上给客户环境从2510升级到2511就没复现了。\n感谢各位支持[玫瑰]新年快乐~",
+    "solution": "这个问题目前来看解决了，项目上给客户环境从2510升级到2511就没复现了。\n感谢各位支持[玫瑰]新年快乐~",
+    "has_solution": true,
+    "message_count": 43
+  },
+  {
+    "ticket_id": "2026021001067",
+    "chat_name": "2026021001067【齐鲁制药】【S15】管理后台，开屏配置后未生效",
+    "customer": "齐鲁制药",
+    "problem": "2026021001067【齐鲁制药】【S15】管理后台，开屏配置后未生效",
+    "solution": "那可以先新建一个开屏配置，启动一下移动端，之后再看看有没有这个key，如果还是没有的话应该就不需要删除key了",
+    "has_solution": true,
+    "message_count": 38
+  },
+  {
+    "ticket_id": "2026021000761",
+    "chat_name": "2026021000761【V3】【特供版】预览服务和后端服务端节...",
+    "customer": "V3",
+    "problem": "直连是没问题的是吧？",
+    "solution": "直接部署机telnet可以不",
+    "has_solution": true,
+    "message_count": 40
+  },
+  {
+    "ticket_id": "2026021001259",
+    "chat_name": "2026021001259【光大永明人寿】【文档中心】管理后台没有...",
+    "customer": "光大永明人寿",
+    "problem": "2501a好像是已经修了新年自动建表的问题了",
+    "solution": "链接前面域名换成v7.kso.net试试",
+    "has_solution": true,
+    "message_count": 38
+  },
+  {
+    "ticket_id": "2026021001202",
+    "chat_name": "2026021001202【浙江交投】咨询word组件功能规划",
+    "customer": "浙江交投",
+    "problem": "大佬 目前针对这个问题研发大佬给出的建议是：目前提的这个单子内容比较广泛，没太大的意义  因为表格的优化内部有一个列表计划，但随时会拥抱变化，没有较大的参与价值。\n如果客户对某些功能有想要改进的地方 可以具体到某一个功能点 具体的需求点可以提单",
+    "solution": "大佬 目前针对这个问题研发大佬给出的建议是：目前提的这个单子内容比较广泛，没太大的意义  因为表格的优化内部有一个列表计划，但随时会拥抱变化，没有较大的参与价值。\n如果客户对某些功能有想要改进的地方 可以具体到某一个功能点 具体的需求点可以提单",
+    "has_solution": true,
+    "message_count": 26
+  },
+  {
+    "ticket_id": "2026021000375",
+    "chat_name": "2026021000375-江苏jyj交流群",
+    "customer": "",
+    "problem": "2026021000375-江苏jyj交流群",
+    "solution": "通过远程不熟的服务器可以直接看密码吗",
+    "has_solution": true,
+    "message_count": 39
+  },
+  {
+    "ticket_id": "2026021001219",
+    "chat_name": "2026021001219【太平金融】调用前端接口报错Deprecated",
+    "customer": "太平金融",
+    "problem": "大佬 辛苦看看这个 如何拿数据#2026021001219 【太平金融】【文档中台】调用前端接口，doc文档获取全文所有修订，显示该接口即将废弃，用户担心上生产之后，无法使用，需要确认一下 \nhttps://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2021136987077578754",
+    "solution": "大佬 目前研发排查问题给出的结论是：这个接口后面的报错改成warn了  客户要是怕后面更新导致这个接口失效可以 换成Revisions.Item \nconst count = ActiveDocument.Revisions.Count;\n\nfor (let i = 1; i <= count; i++) {\n  const revision = await ActiveDocument.Revisions.Item({Index: i});\n  console.log(revision);\n}",
+    "has_solution": true,
+    "message_count": 27
+  },
+  {
+    "ticket_id": "2026021000273",
+    "chat_name": "2026021000273【广东电网】新建思维导图提示授权已过期",
+    "customer": "广东电网",
+    "problem": "大佬，帮忙看下这个问题[递茶]",
+    "solution": "重新申请授权，更新可以了",
+    "has_solution": true,
+    "message_count": 10
+  },
+  {
+    "ticket_id": "2026021000899",
+    "chat_name": "2026021000899小米weboffice数据库延时大于2秒",
+    "customer": "",
+    "problem": "大佬 这个问题#2026021000899 小米weboffice数据库延时大于2秒 \nhttps://cst-ach.kso.net/workOrderList/workOrderList/info?type=info&id=2021116980285247489 \n是要找运维的看看吗",
+    "solution": "大佬 研发那边 的意思是慢查询不是单一业务的事情，建议先分析下数据库所在机器上都有哪些业务，对应时间点都有哪些慢查询SQL 目前研发只看排查文档看不来什么信息",
+    "has_solution": true,
+    "message_count": 19
+  },
+  {
+    "ticket_id": "2026021001481",
+    "chat_name": "2026021001481【哈行】私有化AI，AI排版，报错“服务...",
+    "customer": "哈行",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026021001481\n工单标题: 【哈行】私有化AI，AI排版，报错“服务异常，请稍后再试”\n工单详情链接: https://cst-ach.kso.net/workOrderList/workOrderList/info?type=info&id=2021153387041099777\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 9
+  },
+  {
+    "ticket_id": "2026021001653",
+    "chat_name": "2026021001653【文档中台】乌审旗大数据中心套红后页码丢失",
+    "customer": "文档中台",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026021001653\n工单标题: 【文档中台】乌审旗大数据中心套红后页码丢失\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2021163757814255617\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 6
+  },
+  {
+    "ticket_id": "2026021001416",
+    "chat_name": "2026021001416【公安一所】【文档中心V7】是否支持手动...",
+    "customer": "公安一所",
+    "problem": "【背景】\n全国警信APP公安一所开发针对全国干警的IM软件，警信工作台集成文档中心V7，一所有研发能力，前期自行开发账号同步和单点登录，账号同步模式是单个账号同步，所以没有同步组织结构，由于有很多重名用户，导致用户在分享或添加权限时无法通过组织架构定位到目标用户，其次，用户在设置文档权限时无法根据组织架构设置，只能通过添加单个账号设置。\n无法全量+增量同步干警信息的原因：①全国干警+辅警共计约220w信息，且220w用户并不是全部使用文档中心，故采用谁使用同步谁的方式同步账号②安全问题，一所将全量220w干警信息同步到文档中心后需要承担安全责任风险\n\n经过和用户沟通为了解决重名导致无法定位用户问题，并将账号同步安全责任风险下放，一所希望可以由各省/市单位自行手动导入用户信息，一所警信研发统一对接单点登录\n\n【问题】\n文档中心产品是否支持手动导入账号+单点登录的方式进行账号对接",
+    "solution": "【背景】\n全国警信APP公安一所开发针对全国干警的IM软件，警信工作台集成文档中心V7，一所有研发能力，前期自行开发账号同步和单点登录，账号同步模式是单个账号同步，所以没有同步组织结构，由于有很多重名用户，导致用户在分享或添加权限时无法通过组织架构定位到目标用户，其次，用户在设置文档权限时无法根据组织架构设置，只能通过添加单个账号设置。\n无法全量+增量同步干警信息的原因：①全国干警+辅警共计约220w信息，且220w用户并不是全部使用文档中心，故采用谁使用同步谁的方式同步账号②安全问题，一所将全量220w干警信息同步到文档中心后需要承担安全责任风险\n\n经过和用户沟通为了解决重名导致无法定位用户问题，并将账号同步安全责任风险下放，一所希望可以由各省/市单位自行手动导入用户信息，一所警信研发统一对接单点登录\n\n【问题】\n文档中心产品是否支持手动导入账号+单点登录的方式进行账号对接",
+    "has_solution": true,
+    "message_count": 4
+  },
+  {
+    "ticket_id": "2026021001032",
+    "chat_name": "2026021001032【海关总署】【中心】【v7.2506】客...",
+    "customer": "海关总署",
+    "problem": "看着配置没问题，报错请求的curl贴出来看一下呢，浏览器f12，右键请求copy as curl(bash)",
+    "solution": "也可以通过http://mics-gateway/ksops/ 访问",
+    "has_solution": true,
+    "message_count": 36
+  },
+  {
+    "ticket_id": "2026021000813",
+    "chat_name": "2026021000813浙商证券-托管系统对接中台，预览显示鉴权失败",
+    "customer": "",
+    "problem": "需要用户排查下token获取的问题",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 15
+  },
+  {
+    "ticket_id": "2026021000722",
+    "chat_name": "2026021000722【齐鲁制药】【S15】表单，申请修改答卷...",
+    "customer": "齐鲁制药",
+    "problem": "2026021000722【齐鲁制药】【S15】表单，申请修改答卷...",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 2
+  },
+  {
+    "ticket_id": "2026021001111",
+    "chat_name": "2026021001111【四川发展】【文档中台】 在线编辑wor...",
+    "customer": "四川发展",
+    "problem": "大佬这个问题麻烦看看",
+    "solution": "可以 这等于压缩图片了[捂脸]",
+    "has_solution": true,
+    "message_count": 39
+  },
+  {
+    "ticket_id": "2026021000310",
+    "chat_name": "2026021000310【保利】【中台】【v7.2509】doc...",
+    "customer": "保利",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026021000310\n工单标题: 【保利】【中台】【v7.2509】docx文档编辑模式和本地端显示不一致，最下方的一行上移\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2021053648341667842\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 10
+  },
+  {
+    "ticket_id": "2026021001095",
+    "chat_name": "2026021001095比特-个别excel文件使用wps客户端...",
+    "customer": "",
+    "problem": "端云问题得用端云日志",
+    "solution": "我搞一个试试，多谢大佬",
+    "has_solution": true,
+    "message_count": 44
+  },
+  {
+    "ticket_id": "2026021000917",
+    "chat_name": "2026021000917【浪潮通用】文档中心+修改系统管理后台账密",
+    "customer": "浪潮通用",
+    "problem": "客户现在登陆的报错页面可以看看不",
+    "solution": "你用wpsadmin试试",
+    "has_solution": true,
+    "message_count": 40
+  },
+  {
+    "ticket_id": "2026021000103",
+    "chat_name": "2026021000103【青岛司法局文档中台项目】存在漏洞文档中台未授权访问",
+    "customer": "青岛司法局文档中台项目",
+    "problem": "2026021000103【青岛司法局文档中台项目】存在漏洞文档中台未授权访问",
+    "solution": "石林，司法局的这个需要按照这个方案来加固",
+    "has_solution": true,
+    "message_count": 9
+  },
+  {
+    "ticket_id": "2026021000836",
+    "chat_name": "2026021000836【中国商飞】【文档中台】监控告警webo...",
+    "customer": "中国商飞",
+    "problem": "但wps默认触发回调客户相关接口的时候就会报错",
+    "solution": "可以的 获取文件版本信息",
+    "has_solution": true,
+    "message_count": 25
+  },
+  {
+    "ticket_id": "2026021000336",
+    "chat_name": "2026021000336【航空工业集团】",
+    "customer": "航空工业集团",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026021000336\n工单标题: 【航空工业集团】\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2021056149686161409\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "客户有两套生成环境，一套目前是2405版本，一套已经升级到了2510版本。",
+    "has_solution": true,
+    "message_count": 15
+  },
+  {
+    "ticket_id": "2026021000341",
+    "chat_name": "2026021000341【上交所】文件名：600603_2025...",
+    "customer": "上交所",
+    "problem": "就是我们之前给他们承诺了30个bug的那个环境",
+    "solution": "我本地看了下，开了排版兼容15的开关后，效果已经和MSO一样了",
+    "has_solution": true,
+    "message_count": 23
+  },
+  {
+    "ticket_id": "2026021000354",
+    "chat_name": "2026021000354【奇安信】-v7-咨询多维表怎么才能让管...",
+    "customer": "奇安信",
+    "problem": "咨询多维表格是否可以做到以下两点\n1、企业所有人都可以填写表格视图的记录\n2、记录仅填写人和管理员可查看修改，其他人禁止查看\n第2点设置了指定人可编辑权限，但是会出现第一个问题",
+    "solution": "咨询多维表格是否可以做到以下两点\n1、企业所有人都可以填写表格视图的记录\n2、记录仅填写人和管理员可查看修改，其他人禁止查看\n第2点设置了指定人可编辑权限，但是会出现第一个问题",
+    "has_solution": true,
+    "message_count": 13
+  },
+  {
+    "ticket_id": "2026021000166",
+    "chat_name": "2026021000166【青岛市大数据局】文档中台漏洞问题",
+    "customer": "青岛市大数据局",
+    "problem": "2026021000166【青岛市大数据局】文档中台漏洞问题",
+    "solution": "看看是不是需要对外，如果不需要可以通过ipset屏蔽了",
+    "has_solution": true,
+    "message_count": 5
+  },
+  {
+    "ticket_id": "2026021100222",
+    "chat_name": "2026021100222【渤海钻探第三钻井公司】协作接收不到多维...",
+    "customer": "渤海钻探第三钻井公司",
+    "problem": "大佬，这个看着是客户端的问题，能看下这项目的客户端技术支持是哪位吗",
+    "solution": "目前有临时解决方案已经告知客户了，这个彻底的优化方案 目前组内也还在评估中，实际立项还没做下来，具体完成时间可能还不好说。现在团队内也正常探索可以优先处理退登问题的方案，如果顺利的话 应该能在5月份版本完成开发",
+    "has_solution": true,
+    "message_count": 38
+  },
+  {
+    "ticket_id": "2026021101216",
+    "chat_name": "2026021101216【完美世界】团队人员勾选问题",
+    "customer": "完美世界",
+    "problem": "嗯，这个表现目前是已知表现，未加载出来的成员，在添加成员选择器上不会被勾选。鉴于重复成员勾选后也会有toast提示，不会存在数据问题，所以看能否和客户解释一下。后面我们再和研发同学一起看下能否优化。可能暂时就是这个表现。",
+    "solution": "嗯，这个表现目前是已知表现，未加载出来的成员，在添加成员选择器上不会被勾选。鉴于重复成员勾选后也会有toast提示，不会存在数据问题，所以看能否和客户解释一下。后面我们再和研发同学一起看下能否优化。可能暂时就是这个表现。",
+    "has_solution": true,
+    "message_count": 28
+  },
+  {
+    "ticket_id": "2026021100182",
+    "chat_name": "2026021100182【私有云】【X86】【V7.0.2511...",
+    "customer": "私有云",
+    "problem": "能不能让po去兼容这个格式呢",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 8
+  },
+  {
+    "ticket_id": "2026021101484",
+    "chat_name": "2026021101484【北京银行】v7文档中台后台管理系统新建...",
+    "customer": "北京银行",
+    "problem": "大佬 这个问题目前是你在看吗",
+    "solution": "大佬，这个已经找研发了，这个需要找你把之前的单子上升给指定研发么？",
+    "has_solution": true,
+    "message_count": 31
+  },
+  {
+    "ticket_id": "2026021100322",
+    "chat_name": "2026021100322上海壁仞科技股份有限公司",
+    "customer": "",
+    "problem": "大佬  啥时方便看下这个问题呢",
+    "solution": "大佬 啥时候可以提供远程",
+    "has_solution": true,
+    "message_count": 45
+  },
+  {
+    "ticket_id": "2026021101201",
+    "chat_name": "2026021101201华为-EDM-2506b-ppt在线预览...",
+    "customer": "",
+    "problem": "好的大佬，有制作步骤吧 大佬这种制作没有复现出来这个问题",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 30
+  },
+  {
+    "ticket_id": "2026021101570",
+    "chat_name": "2026021101570【国投网盘】监控告警节点tmpfs类型挂...",
+    "customer": "国投网盘",
+    "problem": "这个我们已经提了，实施那边已经排查出来是日志占用的，但是这个告警还是一直在，我们想看能不能把这个提醒规则调高一些，但是不知道这个调高会不会有什么影响，这个实施那边也确定不了，所以想让咱们产品这边帮忙确认下",
+    "solution": "实施处理不了上升运维",
+    "has_solution": true,
+    "message_count": 6
+  },
+  {
+    "ticket_id": "2026021101693",
+    "chat_name": "2026021101693华为-场景AI-word文档解析，文件大...",
+    "customer": "",
+    "problem": "这个日志没有可以定位的错误信息  只有一些疑似网络连接导致的慢请求的信息 \n再加上这个内部复现不了  所以只能在客户环境复现排查",
+    "solution": "这个日志没有可以定位的错误信息  只有一些疑似网络连接导致的慢请求的信息 \n再加上这个内部复现不了  所以只能在客户环境复现排查",
+    "has_solution": true,
+    "message_count": 15
+  },
+  {
+    "ticket_id": "2026021100932",
+    "chat_name": "2026021100932【广东电网文档中台】二开平台跨域白名单添加报错",
+    "customer": "广东电网文档中台",
+    "problem": "问题可以先看，我意思是年前如果没定位到问题根因，咱们内部可以商量下先给个说的过去的理由让客户那边有个交代，毕竟要放假了，免得节前一直薅着我们排查解决",
+    "solution": "不着急，周五下班前再答复都行，先跟你们提前对齐下颗粒度，这个看有没条件可以配合排查",
+    "has_solution": true,
+    "message_count": 43
+  },
+  {
+    "ticket_id": "2026021100307",
+    "chat_name": "2026021100307kso.dbsheet.readwrit...",
+    "customer": "",
+    "problem": "kso.dbsheet.readwrite暂不支持用户授权功能，接口文档存在错误描述。",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 10
+  },
+  {
+    "ticket_id": "2026021101151",
+    "chat_name": "2026021101151汉智办工作台技术支持",
+    "customer": "",
+    "problem": "大佬，是这个操作流程的问题吗",
+    "solution": "他们貌似自己解决了，我再问问",
+    "has_solution": true,
+    "message_count": 11
+  },
+  {
+    "ticket_id": "2026021101547",
+    "chat_name": "2026021101547【中煤总局】【中台2510】word中公...",
+    "customer": "中煤总局",
+    "problem": "先看看客户侧的反馈，如果年前不反馈，就先这样，我担心改动了再出问题",
+    "solution": "加班已是常态[emm]",
+    "has_solution": true,
+    "message_count": 26
+  },
+  {
+    "ticket_id": "2026021100939",
+    "chat_name": "2026021100939K8所—模型配置及AI功能不可用问题",
+    "customer": "",
+    "problem": "这个报错看着是  命令写错了 少了 单引号 看下面的正常  就用下面的命令去容器内curl  验证一下",
+    "solution": "我这有24小时的处理时限[递茶]",
+    "has_solution": true,
+    "message_count": 28
+  },
+  {
+    "ticket_id": "2026021101302",
+    "chat_name": "2026021101302【中车集团】【中台2512】表格文档预览...",
+    "customer": "中车集团",
+    "problem": "我看cloudprovider是user/info有报错",
+    "solution": "大佬 研发那边给出的结论是：中台错误码24002，客户那边回调给的报错，应该是传入为 空字符串 没适配好  需要回调去适配  辛苦大佬 看看结论 能不能解决客户的问题",
+    "has_solution": true,
+    "message_count": 42
+  },
+  {
+    "ticket_id": "2026021101319",
+    "chat_name": "2026021101319【中船黄埔文冲】【AI Docs】知识库...",
+    "customer": "中船黄埔文冲",
+    "problem": "大佬 这个能远程看下吗， 看看console, network有没有啥报错",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 6
+  },
+  {
+    "ticket_id": "2026021101097",
+    "chat_name": "2026021101097【纳思达】【文档中台V7】在线预览文字内...",
+    "customer": "纳思达",
+    "problem": "普通预览和编辑模式异常，高清预览正常",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 8
+  },
+  {
+    "ticket_id": "2026021100409",
+    "chat_name": "2026021100409【苏交控】客户反馈缓存预览WORD在手机...",
+    "customer": "苏交控",
+    "problem": "这样的显示肯定是有问题的，如果我们不能通过配置调整来解决，我觉得研发🉐看看能修复",
+    "solution": "这样的显示肯定是有问题的，如果我们不能通过配置调整来解决，我觉得研发🉐看看能修复",
+    "has_solution": true,
+    "message_count": 39
+  },
+  {
+    "ticket_id": "2026021101479",
+    "chat_name": "2026021101479天津银行文档中心 多维表、智能文档打不开",
+    "customer": "",
+    "problem": "可以看下f12 和控制台是什么报错",
+    "solution": "需要实施大佬帮忙处理下",
+    "has_solution": true,
+    "message_count": 15
+  },
+  {
+    "ticket_id": "2026021101277",
+    "chat_name": "2026021101277【保利集团】【私有化】【通讯录】部分同步...",
+    "customer": "保利集团",
+    "problem": "那是不是之前的数据有问题啊",
+    "solution": "但是没开的时候还是有的用户 可以出现那个删除的按钮",
+    "has_solution": true,
+    "message_count": 21
+  },
+  {
+    "ticket_id": "2026021101156",
+    "chat_name": "2026021101156【江苏省发改委】云文档打开带密码表格文件...",
+    "customer": "江苏省发改委",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026021101156\n工单标题: 【江苏省发改委】云文档打开带密码表格文件后，导出为pdf导出失败，使用效率界面导出为pdf文件导出成功\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2021501836891336705\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "项目上可以提个需求单，这个单子我就过了",
+    "has_solution": true,
+    "message_count": 8
+  },
+  {
+    "ticket_id": "2026021101175",
+    "chat_name": "2026021101175【江苏省交通厅】文档中台服务器资源占用过载",
+    "customer": "江苏省交通厅",
+    "problem": "调用格式处理的接口太频繁了也会报这个错误",
+    "solution": "调用格式处理的接口太频繁了也会报这个错误",
+    "has_solution": true,
+    "message_count": 5
+  },
+  {
+    "ticket_id": "2026021101115",
+    "chat_name": "2026021101115【香港警务处】私有化授权导入报错",
+    "customer": "香港警务处",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026021101115\n工单标题: 【香港警务处】私有化授权导入报错\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2021498724508053505\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 11
+  },
+  {
+    "ticket_id": "2026021101119",
+    "chat_name": "2026021101119【应急管理部】文档中台保存接口",
+    "customer": "应急管理部",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026021101119\n工单标题: 【应急管理部】文档中台保存接口\n工单详情链接: https://cst-ach.kso.net/workOrderList/workOrderList/info?type=info&id=2021499030830657538\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "收到～我发给他们试试～多谢大佬",
+    "has_solution": true,
+    "message_count": 9
+  },
+  {
+    "ticket_id": "2026021100820",
+    "chat_name": "2026021100820【江苏省发改委】云文档打开excel表格...",
+    "customer": "江苏省发改委",
+    "problem": "2026021101156 这个问题的单子",
+    "solution": "使用这个地址可以复现不？",
+    "has_solution": true,
+    "message_count": 37
+  },
+  {
+    "ticket_id": "2026021100570",
+    "chat_name": "2026021100570【金科物业】文档中台阶段性支持",
+    "customer": "金科物业",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026021100570\n工单标题: 【金科物业】文档中台阶段性支持\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2021432858701541377\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 7
+  },
+  {
+    "ticket_id": "2026021100251",
+    "chat_name": "2026021100251瑞丰银行-多维表格自动化流程发送到企微报错",
+    "customer": "",
+    "problem": "客户问题你上午看过了，是什么结论呢？我也不清楚到底是什么问题啊。。。cc",
+    "solution": "史老师，现在这个问题要怎么排查解决呀",
+    "has_solution": true,
+    "message_count": 43
+  },
+  {
+    "ticket_id": "2026021100605",
+    "chat_name": "2026021100605【平安科技】【文档中心2510】管理后台...",
+    "customer": "平安科技",
+    "problem": "大佬 咨询下employeeType是否能作为自定义属性进行同步，麻烦抽空帮忙看看[递茶]",
+    "solution": "是的  想选择性同步可以加筛选条件 例如 (&(objectCategory=person)(objectClass=user)(!(employee=???)))",
+    "has_solution": true,
+    "message_count": 19
+  },
+  {
+    "ticket_id": "2026021100764",
+    "chat_name": "2026021100764【苏州银行】",
+    "customer": "苏州银行",
+    "problem": "轻审批里只有找到5b之前版本的申请入口，但授权申请后给到客户还是有问题",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 15
+  },
+  {
+    "ticket_id": "2026021100168",
+    "chat_name": "2026021100168华为-onebox-230608-单个表...",
+    "customer": "",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026021100168\n工单标题: 华为-onebox-230608-单个表格文件部分人会显示隐藏行，部分人不会显示隐藏行，偶现\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2021400614658191361\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "可以往这个方向排查看看",
+    "has_solution": true,
+    "message_count": 25
+  },
+  {
+    "ticket_id": "2026021100653",
+    "chat_name": "2026021100653【深圳市龙岗区政数局】【多维表】生产环境...",
+    "customer": "深圳市龙岗区政数局",
+    "problem": "我们先调慢，看服务能不能恢复呗",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 39
+  },
+  {
+    "ticket_id": "2026021100144",
+    "chat_name": "2026021100144【江西银行】【开放平台】咨询开放平台“消...",
+    "customer": "江西银行",
+    "problem": "稍等，先处理个其他问题",
+    "solution": "审计里面的接口，是不是可以获取到所有用的会话聊天记录了？",
+    "has_solution": true,
+    "message_count": 12
+  },
+  {
+    "ticket_id": "2026021100258",
+    "chat_name": "2026021100258【国元农保】【文档中台】部分文档在线编辑...",
+    "customer": "国元农保",
+    "problem": "客户那边能升级吗，从现象看是版本问题",
+    "solution": "可以看下其他预览模式，如果都正常，那应该就是版本问题",
+    "has_solution": true,
+    "message_count": 22
+  },
+  {
+    "ticket_id": "2026021100757",
+    "chat_name": "2026021100757【澳门法务】【文档中台V7】【技术咨询单...",
+    "customer": "澳门法务",
+    "problem": "流量情况能不能看到比如某个业务系统调用中台的",
+    "solution": "可以在后台管理里面看",
+    "has_solution": true,
+    "message_count": 19
+  },
+  {
+    "ticket_id": "2026021100320",
+    "chat_name": "2026021100320-金山协作-智能文档点击插入菜单无操作情况下菜单丢失",
+    "customer": "",
+    "problem": "文档能有啥问题 这种纯前端操作",
+    "solution": "这个是偶发性的 这会客户侧已经恢复正常了",
+    "has_solution": true,
+    "message_count": 28
+  },
+  {
+    "ticket_id": "2026021100476",
+    "chat_name": "2026021100476【国网四川调度】【WPS协作】用户通过云...",
+    "customer": "国网四川调度",
+    "problem": "问题已解决，就是域名问题",
+    "solution": "问题已解决，就是域名问题",
+    "has_solution": true,
+    "message_count": 33
+  },
+  {
+    "ticket_id": "2026021100542",
+    "chat_name": "2026021100542【吉林银行】文档中台v7，预览失败，报错...",
+    "customer": "吉林银行",
+    "problem": "不一定是这个结构有问题，也有可能是被拦截了啥的， 返回了其他信息导致的。 要curl下试试",
+    "solution": "下午给个方法，让客户去试试",
+    "has_solution": true,
+    "message_count": 4
+  },
+  {
+    "ticket_id": "2026021100207",
+    "chat_name": "2026021100207【中邮人寿】【文档中心】【AI】AI帮我...",
+    "customer": "中邮人寿",
+    "problem": "#2026021100207 【中邮人寿】【文档中心】【AI】AI帮我写、帮我改服务异常 \nhttps://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2021403701347168258  鑫哥 已上升",
+    "solution": "#2026021100207 【中邮人寿】【文档中心】【AI】AI帮我写、帮我改服务异常 \nhttps://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2021403701347168258  鑫哥 已上升",
+    "has_solution": true,
+    "message_count": 28
+  },
+  {
+    "ticket_id": "2026021100323",
+    "chat_name": "2026021100323【海尔智家】个别用户没有AI功能按钮",
+    "customer": "海尔智家",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026021100323\n工单标题: 【海尔智家】个别用户没有AI功能按钮\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2021413054863192066\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 31
+  },
+  {
+    "ticket_id": "2026021100129",
+    "chat_name": "2026021100129【东莞银行】【文档中心】用户开启otp认...",
+    "customer": "东莞银行",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026021100129\n工单标题: 【东莞银行】【文档中心】用户开启otp认证，管理后台组织架构没有重置otp按钮\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2021396976737005570\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "好的谢谢大佬，  目前我看客户还是知道otp可以登陆的吧，后续3月会上这个可行吗",
+    "has_solution": true,
+    "message_count": 11
+  },
+  {
+    "ticket_id": "2026021100076",
+    "chat_name": "2026021100076【兴业银行】【文档中心V7】需确认min...",
+    "customer": "兴业银行",
+    "problem": "没问题，我们都是独立维护独立修复的",
+    "solution": "没问题，我们都是独立维护独立修复的",
+    "has_solution": true,
+    "message_count": 22
+  },
+  {
+    "ticket_id": "2026021200118",
+    "chat_name": "2026021200118【中邮人寿】【文档中心】【ai】智能问答...",
+    "customer": "中邮人寿",
+    "problem": "bugfix_dc_xc_arm_x86_v7.0.2601.20260306版本已发布 \n  现在发的是X86的吧",
+    "solution": "bugfix_dc_xc_arm_x86_v7.0.2601.20260306版本已发布 \n  现在发的是X86的吧",
+    "has_solution": true,
+    "message_count": 38
+  },
+  {
+    "ticket_id": "2026021200464",
+    "chat_name": "2026021200464【poms排查单】【致同会计师事务所（特...",
+    "customer": "poms排查单",
+    "problem": "是排查单，变更单不能上升",
+    "solution": "浩哥，致同的V6演练环境好了，如果要测试，可以用了",
+    "has_solution": true,
+    "message_count": 43
+  },
+  {
+    "ticket_id": "2026021200627",
+    "chat_name": "2026021200627【京办】【中台】【v7.2511】客户制...",
+    "customer": "京办",
+    "problem": "属于新改坏的，原来就是好的，因为加了错误的逻辑的，现在把那个逻辑回退了",
+    "solution": "大佬，目前现场发现升级后热修复以后，黑马校对插件的入口不显示了，报这个错，麻烦帮忙看一下",
+    "has_solution": true,
+    "message_count": 34
+  },
+  {
+    "ticket_id": "2026021200535",
+    "chat_name": "2026021200535北京市科委-中台技术支持",
+    "customer": "",
+    "problem": "vconsole应该不用了， 对客户有影响。 demo有时间还是可以开下， 后续也可以验证问题",
+    "solution": "vconsole应该不用了， 对客户有影响。 demo有时间还是可以开下， 后续也可以验证问题",
+    "has_solution": true,
+    "message_count": 43
+  },
+  {
+    "ticket_id": "2026021200632",
+    "chat_name": "2026021200632【杭州海康威视数字技术股份有限公司】【W...",
+    "customer": "杭州海康威视数字技术股份有限公司",
+    "problem": "大佬 目前问题研发这边已经正在修了，预计4月或5月版本带出",
+    "solution": "大佬 目前问题研发这边已经正在修了，预计4月或5月版本带出",
+    "has_solution": true,
+    "message_count": 11
+  },
+  {
+    "ticket_id": "2026021200001",
+    "chat_name": "2026021200001【poms排查单】【中国科学院计算机网络...",
+    "customer": "poms排查单",
+    "problem": "是的 ，项目反馈问题解决了",
+    "solution": "是的 ，项目反馈问题解决了",
+    "has_solution": true,
+    "message_count": 22
+  },
+  {
+    "ticket_id": "2026021200037",
+    "chat_name": "2026021200037【国航】多维表自动化流程中对联系人字段进...",
+    "customer": "国航",
+    "problem": "多维表的联系人字段，正常情况下手动从通讯录中选择的话，会发通知到客户专用的一个通讯软件中，云文档本身也会有通知。\n当前客户反馈多维表的联系人字段存在以下问题：\n1、通过自动化流程的无论哪种形式（定时触发、手动触发），对记录中的联系人字段无论是新增还是修改，都不会触发通知。\n2、当文件创建者在多维表的联系人字段中选择自己，不会进行通知。",
+    "solution": "啊可以，要看啥，直接拉woa的会议可以吗",
+    "has_solution": true,
+    "message_count": 12
+  },
+  {
+    "ticket_id": "2026021200272",
+    "chat_name": "2026021200272【泰康保险】【WPS协作v7】【客户反馈...",
+    "customer": "泰康保险",
+    "problem": "嗯嗯 这个也不算问题",
+    "solution": "京洋这个问题是已经解决了吧",
+    "has_solution": true,
+    "message_count": 38
+  },
+  {
+    "ticket_id": "2026021200452",
+    "chat_name": "2026021200452【重庆市永川信息中心】文档中台集成预览无法打开文件",
+    "customer": "重庆市永川信息中心",
+    "problem": "大佬 这个还有问题吗",
+    "solution": "先把这个sdk发他们试试",
+    "has_solution": true,
+    "message_count": 27
+  },
+  {
+    "ticket_id": "2026021200647",
+    "chat_name": "2026021200647昨天下午16点多接口请求量显著增加",
+    "customer": "",
+    "problem": "不过这个问题本质上不是在运维那边，还是得接口涉及的业务方分析",
+    "solution": "看着是这个表，谢谢大佬，  测试环境试试看呗",
+    "has_solution": true,
+    "message_count": 31
+  },
+  {
+    "ticket_id": "2026021200771",
+    "chat_name": "2026021200771【湖北省人民政府办公厅】文档中台对接问题咨询",
+    "customer": "湖北省人民政府办公厅",
+    "problem": "我说的是ach这个功能啊，不是说你反馈的问题啊",
+    "solution": "可以试试，这个我也不太清楚",
+    "has_solution": true,
+    "message_count": 31
+  },
+  {
+    "ticket_id": "2026021200715",
+    "chat_name": "2026021200715【上交所】在2026年2月11日上午9点...",
+    "customer": "上交所",
+    "problem": "我再改下没问题就给客户了",
+    "solution": "可以写到结论建议里面，客户领导评估测试没问题就行哈",
+    "has_solution": true,
+    "message_count": 40
+  },
+  {
+    "ticket_id": "2026021200818",
+    "chat_name": "2026021200818【701】【V7云文档】【内网】部分文件...",
+    "customer": "701",
+    "problem": "不能远程的 理论上都不能拍照的",
+    "solution": "文件你可以随时打开保存复现吗",
+    "has_solution": true,
+    "message_count": 40
+  },
+  {
+    "ticket_id": "2026021200940",
+    "chat_name": "2026021200940文档中台保存接口异常",
+    "customer": "",
+    "problem": "这个错误码 是 业务对接模块返回异常json",
+    "solution": "模拟移动端可以打开呀",
+    "has_solution": true,
+    "message_count": 43
+  },
+  {
+    "ticket_id": "2026021200763",
+    "chat_name": "2026021200763【上科大】文档中台中危漏洞处理需确认按照...",
+    "customer": "上科大",
+    "problem": "可以跟客户讲，我们的包体限制大小以及超时时间等等参数都是经过计算符合我们当前业务运行要求的。修改的话可能会导致出现业务异常。",
+    "solution": "可以跟客户讲，我们的包体限制大小以及超时时间等等参数都是经过计算符合我们当前业务运行要求的。修改的话可能会导致出现业务异常。",
+    "has_solution": true,
+    "message_count": 24
+  },
+  {
+    "ticket_id": "2026021200972",
+    "chat_name": "2026021200972【重庆市数字化城运中心】文档中心应用调用问题",
+    "customer": "重庆市数字化城运中心",
+    "problem": "其他单位集成同一套环境没有出现这个问题",
+    "solution": "token已经带上了",
+    "has_solution": true,
+    "message_count": 32
+  },
+  {
+    "ticket_id": "2026021201057",
+    "chat_name": "2026021201057【华大九天】-v7-导入授权文件报错",
+    "customer": "华大九天",
+    "problem": "这个报错只会是证书不对",
+    "solution": "这个不知道，没试过， 我们没有申请证书的权限 没搞过，你就搞成一样申请试试了",
+    "has_solution": true,
+    "message_count": 21
+  },
+  {
+    "ticket_id": "2026021200914",
+    "chat_name": "2026021200914【农行】熔断时前端页面提醒",
+    "customer": "农行",
+    "problem": "就是说告诉他们错误码含义,他们根据F12报错的接口去拿响应错误码",
+    "solution": "可以把中台服务的告警接入他们的企微/钉钉/飞书群里,服务有问题会告警通知的",
+    "has_solution": true,
+    "message_count": 8
+  },
+  {
+    "ticket_id": "2026021200960",
+    "chat_name": "2026021200960【徽商银行】【v7云文档】长文档后面的部...",
+    "customer": "徽商银行",
+    "problem": "用户业务老师目前反馈只有这个文件有问题，有的用户打开正常的，有的就显示不全",
+    "solution": "先试试，看样子跑版了",
+    "has_solution": true,
+    "message_count": 12
+  },
+  {
+    "ticket_id": "2026021200598",
+    "chat_name": "2026021200598浙商证券-文档中台对接word预览显示获...",
+    "customer": "",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026021200598\n工单标题: 浙商证券-文档中台对接word预览显示获取下一页失败\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2021823785004507137\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 19
+  },
+  {
+    "ticket_id": "2026021201129",
+    "chat_name": "2026021201129【人民卫生出版社】【中台】【v7.202...",
+    "customer": "人民卫生出版社",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026021201129\n工单标题: 【人民卫生出版社】【中台】【v7.2025.10】客户的文档原本有13页，用中台在线编辑打开以后只显示三页，内容有丢失，demo不复现此问题。\n工单详情链接: https://cst-ach.kso.net/workOrderList/workOrderList/info?type=info&id=2021879803054989313\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 21
+  },
+  {
+    "ticket_id": "2026021200783",
+    "chat_name": "2026021200783【紫金投资】询问云文档接口信息",
+    "customer": "紫金投资",
+    "problem": "大佬，这个漏洞问题帮忙看下吧",
+    "solution": "好的，感谢大佬，这文档里面三个都可以这样回复用户？",
+    "has_solution": true,
+    "message_count": 10
+  },
+  {
+    "ticket_id": "2026021200671",
+    "chat_name": "2026021200671【国能电子商务】内容控件id能否自定义",
+    "customer": "国能电子商务",
+    "problem": "如果客户还有问题可以拉您直接沟通吗",
+    "solution": "如果客户还有问题可以拉您直接沟通吗",
+    "has_solution": true,
+    "message_count": 17
+  },
+  {
+    "ticket_id": "2026021200681",
+    "chat_name": "2026021200681【齐鲁制药】获取应用access_token时client_secret",
+    "customer": "齐鲁制药",
+    "problem": "https用加密会报错，只能用明文？",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 29
+  },
+  {
+    "ticket_id": "2026021200645",
+    "chat_name": "2026021200645【京办】【中台】【v7.2511】Tim...",
+    "customer": "京办",
+    "problem": "这个问题主要是对端云协同有影响，没办法要求每个用户使用标准字体加样式的方式实现文档排版，提需求吧",
+    "solution": "但是样式可以通用， 不影响",
+    "has_solution": true,
+    "message_count": 24
+  },
+  {
+    "ticket_id": "2026021200407",
+    "chat_name": "2026021200407【绿发】【团队文档】部分文件在修改分享权...",
+    "customer": "绿发",
+    "problem": "那看看了，已知问题 需要哪种方案",
+    "solution": "那看看了，已知问题 需要哪种方案",
+    "has_solution": true,
+    "message_count": 24
+  },
+  {
+    "ticket_id": "2026021200392",
+    "chat_name": "2026021200392【海螺集团】用户反馈在线编辑插入评论后，...",
+    "customer": "海螺集团",
+    "problem": "大佬，这个帮忙看下，是版本bug还是有配置可以改？",
+    "solution": "大佬，这个帮忙看下，是版本bug还是有配置可以改？",
+    "has_solution": true,
+    "message_count": 9
+  },
+  {
+    "ticket_id": "2026021200029",
+    "chat_name": "2026021200029【赛力斯】【文档中心】管理后台配置AI“...",
+    "customer": "赛力斯",
+    "problem": "没问题了，aidocs没发布",
+    "solution": "问题比较简单，就是AI docs 似乎没有调通。服务已经部署上去了。",
+    "has_solution": true,
+    "message_count": 12
+  },
+  {
+    "ticket_id": "2026021200129",
+    "chat_name": "2026021200129【中邮人寿】【文档中心】【AI】上传文档...",
+    "customer": "中邮人寿",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026021200129\n工单标题: 【中邮人寿】【文档中心】【AI】上传文档生成PPT，点击“立即生成”后显示服务异常\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2021762516452974593\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "部署完应该就没好使，模型应该是正常的，别的功能可以用",
+    "has_solution": true,
+    "message_count": 14
+  },
+  {
+    "ticket_id": "2026021200269",
+    "chat_name": "2026021200269【四川农信】【文档中台】 demo预览报...",
+    "customer": "四川农信",
+    "problem": "大佬帮忙看看这个问题 demo预览报错20026",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 5
+  },
+  {
+    "ticket_id": "2026021200032",
+    "chat_name": "2026021200032【国网福建】-云文档v7-表单设置中引用...",
+    "customer": "国网福建",
+    "problem": "点开报错看看具体的路径呢",
+    "solution": "f12的报错可以帮忙抓下不",
+    "has_solution": true,
+    "message_count": 17
+  },
+  {
+    "ticket_id": "2026021200107",
+    "chat_name": "2026021200107【人保财险】【文档中台】授权导入提示部署...",
+    "customer": "人保财险",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026021200107\n工单标题: 【人保财险】【文档中台】授权导入提示部署环境CPU核心梳理超出可授权的CPU核心数上限\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2021760977114046466\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 11
+  },
+  {
+    "ticket_id": "2026021300105",
+    "chat_name": "2026021300105/v7/coop/dbsheet/{fi...",
+    "customer": "",
+    "problem": "大佬，客户的问题，麻烦帮忙关注下，感谢~",
+    "solution": "暂不支持的意思，可以走需求提下 我那个群@大佬你下",
+    "has_solution": true,
+    "message_count": 14
+  },
+  {
+    "ticket_id": "2026021300223",
+    "chat_name": "2026021300223Mac电脑多维表数据复制粘贴到本地Exc...",
+    "customer": "",
+    "problem": "京东生产环境也是旧的复制粘贴，但是不复现客户的问题",
+    "solution": "用户更新 MsOffice版本 可以正常复制粘贴了。",
+    "has_solution": true,
+    "message_count": 41
+  },
+  {
+    "ticket_id": "2026021300109",
+    "chat_name": "2026021300109【城商行联盟】文档中心云文档对于存储的影响",
+    "customer": "城商行联盟",
+    "problem": "好的，那等升级完了，再看下这个问题，是否再次解决",
+    "solution": "好的，那等升级完了，再看下这个问题，是否再次解决",
+    "has_solution": true,
+    "message_count": 45
+  },
+  {
+    "ticket_id": "2026021300591",
+    "chat_name": "2026021300591【国投证券】【ProcessOn】【云文...",
+    "customer": "国投证券",
+    "problem": "大佬 这个问题后面正常了吗",
+    "solution": "可以群里问下，最近有好几个这个授权问题了 [笑哭]我不在那个po群里",
+    "has_solution": true,
+    "message_count": 20
+  },
+  {
+    "ticket_id": "2026021300296",
+    "chat_name": "2026021300296-文档中心V7-文档上传失败无法删除记录问题",
+    "customer": "",
+    "problem": "这个是协作内嵌的云文档页面，也不会记录，因为这里在前端校验就失败了",
+    "solution": "浏览器可以通过刷新解决 客户那边是客户端做的上传",
+    "has_solution": true,
+    "message_count": 33
+  },
+  {
+    "ticket_id": "2026021300620",
+    "chat_name": "2026021300620【兴业银行】一线问题登记",
+    "customer": "兴业银行",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026021300620\n工单标题: 【兴业银行】一线问题登记\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2022207907824738305\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 18
+  },
+  {
+    "ticket_id": "2026021300640",
+    "chat_name": "2026021300640【国投证券】【云文档V7】【2509】多...",
+    "customer": "国投证券",
+    "problem": "大佬，辛苦看一下这个问题。",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 18
+  },
+  {
+    "ticket_id": "2026021300549",
+    "chat_name": "2026021300549【poms排查单】【交通银行股份有限公司...",
+    "customer": "poms排查单",
+    "problem": "王老师 那再观察几天把   有问题我们就重启pushgateway",
+    "solution": "临时重启pushgateway解决",
+    "has_solution": true,
+    "message_count": 19
+  },
+  {
+    "ticket_id": "2026021300049",
+    "chat_name": "2026021300049【安徽省公安厅】文档中心V7+WEB环境...",
+    "customer": "安徽省公安厅",
+    "problem": "梳理的现象情况：1、单独复制粘贴文字没有问题；2、单独复制粘贴图片也没有问题；3、文字和图片一起复制提示图片复制失败；\n原因分析：单独复制图片的话，浏览器取到剪贴板的图片二进制数据。图文一起的话，浏览器剪切板读到的数据是一个“html”数据里包含了一个图片的本地路径。浏览器没有读本地文件的能力，所以粘贴不出来。\n建议：文字和图片分开粘贴。",
+    "solution": "梳理的现象情况：1、单独复制粘贴文字没有问题；2、单独复制粘贴图片也没有问题；3、文字和图片一起复制提示图片复制失败；\n原因分析：单独复制图片的话，浏览器取到剪贴板的图片二进制数据。图文一起的话，浏览器剪切板读到的数据是一个“html”数据里包含了一个图片的本地路径。浏览器没有读本地文件的能力，所以粘贴不出来。\n建议：文字和图片分开粘贴。",
+    "has_solution": true,
+    "message_count": 40
+  },
+  {
+    "ticket_id": "2026021300120",
+    "chat_name": "2026021300120【信通院】【x86-64】【etcd未授...",
+    "customer": "信通院",
+    "problem": "2026021300120【信通院】【x86-64】【etcd未授...",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 3
+  },
+  {
+    "ticket_id": "2026022401661",
+    "chat_name": "2026022401661【苏商银行】多维表录音字段，查找引用后点击下载报错",
+    "customer": "苏商银行",
+    "problem": "应该在，是这个问题吗，要咨询下产品或者提需求单吧",
+    "solution": "已知问题，后面会考虑美化这里的效果[递茶]",
+    "has_solution": true,
+    "message_count": 38
+  },
+  {
+    "ticket_id": "2026022400143",
+    "chat_name": "2026022400143【上交所】：文件名：603030_202...",
+    "customer": "上交所",
+    "problem": "看着都是属于一类问题",
+    "solution": "年前反馈了几个文件，高锐大佬说修复了表格排版问题，目前demo复现[笑哭]",
+    "has_solution": true,
+    "message_count": 10
+  },
+  {
+    "ticket_id": "2026022400150",
+    "chat_name": "2026022400150【上交所】：文件名：603077_202...",
+    "customer": "上交所",
+    "problem": "【问题现象】：文件名：603077_20250820_D8AU.docx P49表格文字显示不全，与问题5一致\n部署版本：bugfix2601\n文档链接：【金山文档 | WPS云文档】 603077_20250820_D8AU\nhttps://365.kdocs.cn/folder/crCkON3ObvIR",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 4
+  },
+  {
+    "ticket_id": "2026022400158",
+    "chat_name": "2026022400158【上交所】文件名：600872_2025...",
+    "customer": "上交所",
+    "problem": "2026022400158【上交所】文件名：600872_2025...",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 8
+  },
+  {
+    "ticket_id": "2026022400167",
+    "chat_name": "2026022400167【上交所】：文件名：688287_202...",
+    "customer": "上交所",
+    "problem": "他们字体也外发不了，我们又不能提供字体，之前提供过字体，他们又不让导入[裂了]",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 9
+  },
+  {
+    "ticket_id": "2026022400173",
+    "chat_name": "2026022400173【上交所】：文件名：688710_202...",
+    "customer": "上交所",
+    "problem": "目前测试都是2601的，是打了bugfix的",
+    "solution": "暂时还没有，这个要改的话，可能要和之前一样，在专项去统一解决。这些问题在主干改影响面太大了，容易新改坏",
+    "has_solution": true,
+    "message_count": 14
+  },
+  {
+    "ticket_id": "2026022400787",
+    "chat_name": "2026022400787【大疆】【v7.2405a】PPT评论年...",
+    "customer": "大疆",
+    "problem": "还有问题吗？没有问题这个单子就关闭了",
+    "solution": "大佬，单子可以关闭了",
+    "has_solution": true,
+    "message_count": 43
+  },
+  {
+    "ticket_id": "2026022401325",
+    "chat_name": "2026022401325【完美世界】存储服务QPS请求成功率近期...",
+    "customer": "完美世界",
+    "problem": "大佬，帮忙看下这个问题",
+    "solution": "可以拉minio值班同学一起看看，看报错信息是token之类的验证有问题",
+    "has_solution": true,
+    "message_count": 32
+  },
+  {
+    "ticket_id": "2026022401590",
+    "chat_name": "2026022401590【611所】【文档中心V7】云文档的批注...",
+    "customer": "611所",
+    "problem": "这里这个问题的工单只解决AB环境同一个人的评论姓名头像显示不一样的情况",
+    "solution": "也可以看看是不是在导出的时候把评论清洗一遍",
+    "has_solution": true,
+    "message_count": 45
+  },
+  {
+    "ticket_id": "2026022400821",
+    "chat_name": "2026022400821【611所】【文档中心V7】从老文档中心...",
+    "customer": "611所",
+    "problem": "我们也遇到这个问题了",
+    "solution": "应该是4月份的版本解决",
+    "has_solution": true,
+    "message_count": 46
+  },
+  {
+    "ticket_id": "2026022400929",
+    "chat_name": "2026022400929标品 AI 支持 MySQL5.7评估",
+    "customer": "",
+    "problem": "同步下信息，昨天下午和华为那边开例会，他们内部 MySQL8 评审因为安全的问题评审不通过，还是需要我们这边适配 MySQL5.7",
+    "solution": "这几次得所有表可以帮忙汇总一下不，看着可以了",
+    "has_solution": true,
+    "message_count": 36
+  },
+  {
+    "ticket_id": "2026022400931",
+    "chat_name": "2026022400931比特大陆-团队添加了指定成员，但是成员查不到团队",
+    "customer": "",
+    "problem": "老板，昨天那个单子到验证了，你们直接结束就行，有另一个单子在跟这个问题",
+    "solution": "有截图吗 我可以拉你进群找人问问看。",
+    "has_solution": true,
+    "message_count": 40
+  },
+  {
+    "ticket_id": "2026022401191",
+    "chat_name": "2026022401191【五矿赛迪】【文档中台V7】磁盘使用率过高",
+    "customer": "五矿赛迪",
+    "problem": "https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=list&id=2026210356768088065\n   @大佬们，这个问题的工单还需要我们跟进吗？如果暂时不需要了的话我这边备注下先转过去了，不然要超时了",
+    "solution": "好的，单子应该已经流转到吴兆国大佬那边了哈",
+    "has_solution": true,
+    "message_count": 37
+  },
+  {
+    "ticket_id": "2026022401275",
+    "chat_name": "2026022401275【昆仑数智】【文档中台v7】【客户反馈文...",
+    "customer": "昆仑数智",
+    "problem": "麻烦抽空看一下这个问题",
+    "solution": "ACH工单沟通群创建成功\n工单编号: 2026022401275\n工单标题: 【昆仑数智】【文档中台v7】【客户反馈文档中台格式处理格式转换docx转pdf跑版】\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2026215763314024449\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "has_solution": true,
+    "message_count": 8
+  },
+  {
+    "ticket_id": "2026022401265",
+    "chat_name": "2026022401265【新华三】开放平台文档中心API使用报错...",
+    "customer": "新华三",
+    "problem": "客户参考：https://www.ai365-poc.cn/developer/document/app/wps365/server/address-book/corp/get-corp.html\n配置Postman，拿到token和签名后，post 配置域名+/openapi+/v7/companies/current\n返回报错“code：401000001”\nmsg：sign check fail: authorization mismatch",
+    "solution": "就是js的代码  客户应该是可以看懂的",
+    "has_solution": true,
+    "message_count": 15
+  },
+  {
+    "ticket_id": "2026022401213",
+    "chat_name": "2026022401213用友 压缩包预览打印问题",
+    "customer": "",
+    "problem": "他那还是有问题 啥时候方便远程看下",
+    "solution": "也就是说只要是预览界面就可以支持打印 跟是不是压缩包没关系是吧",
+    "has_solution": true,
+    "message_count": 27
+  },
+  {
+    "ticket_id": "2026022401499",
+    "chat_name": "2026022401499[招商局]pdf文件打开部分文档前几页正...",
+    "customer": "",
+    "problem": "他们这个问题应该是没挂之前也会有，得排查下",
+    "solution": "可以加上这个配置项看看",
+    "has_solution": true,
+    "message_count": 39
+  },
+  {
+    "ticket_id": "2026022400076",
+    "chat_name": "2026022400076【桂林银行】【V7文档中心】文档内@人时...",
+    "customer": "桂林银行",
+    "problem": "好的， 那看提个需求单呗， 我这问题单转不过去",
+    "solution": "客户目前部署的版本是这个，可以复现\nrelease_dc_xc_arm64_v7.0.2510.20251023",
+    "has_solution": true,
+    "message_count": 21
+  },
+  {
+    "ticket_id": "2026022400189",
+    "chat_name": "2026022400189上海机场AIdocs网络开小差无法使用",
+    "customer": "",
+    "problem": "这个和另外一个群是同一个问题吧",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 22
+  },
+  {
+    "ticket_id": "2026022400510",
+    "chat_name": "2026022400510【桂林银行】文档权限设置：\"仅指定成员”...",
+    "customer": "桂林银行",
+    "problem": "已经存在用户权限不能直接调用《新建文件权限项》这个接口了 ，如果用户权限已经存在了，先要调用《列举文件权限列表》接口判断该用户是已经分配权限，如果已经分配调用《批量更新文件权限项》去更新权限，否则才能调用《新建文件权限项》",
+    "solution": "已经存在用户权限不能直接调用《新建文件权限项》这个接口了 ，如果用户权限已经存在了，先要调用《列举文件权限列表》接口判断该用户是已经分配权限，如果已经分配调用《批量更新文件权限项》去更新权限，否则才能调用《新建文件权限项》",
+    "has_solution": true,
+    "message_count": 37
+  },
+  {
+    "ticket_id": "2026022400326",
+    "chat_name": "2026022400326【中再】【中台】word文件无法正常预览...",
+    "customer": "中再",
+    "problem": "这个节前的日志都没了,能确定是其中一台机器的webword容器出问题导致的,日志也没有导出来,还有其他办法查吗?",
+    "solution": "先和客户沟通看看吧，这个没日志的话，谁来也没办法呢，现在是好了是吗，做了啥操作吗，重启?",
+    "has_solution": true,
+    "message_count": 8
+  },
+  {
+    "ticket_id": "2026022400995",
+    "chat_name": "2026022400995【苏州银行】多维表问题询问",
+    "customer": "苏州银行",
+    "problem": "1、用户询问在脚本中使用RefreshSyncSheet方法来刷新同步表数据，这将是一个异步过程，需要怎么在自动化流程配置，使得全部数据刷新完成后再继续运行后续步骤呢？试过加await会报错；\n2、多维表格是否支持CreateSummarySheet方法",
+    "solution": "1、用户询问在脚本中使用RefreshSyncSheet方法来刷新同步表数据，这将是一个异步过程，需要怎么在自动化流程配置，使得全部数据刷新完成后再继续运行后续步骤呢？试过加await会报错；\n2、多维表格是否支持CreateSummarySheet方法",
+    "has_solution": true,
+    "message_count": 8
+  },
+  {
+    "ticket_id": "2026022400001",
+    "chat_name": "2026022400001【海螺集团】【V7协作】如何查询到超过指定时间已激活但长时间不活跃的账号",
+    "customer": "海螺集团",
+    "problem": "给协作老师的提问题单，会有对应的老师处理",
+    "solution": "给协作老师的提问题单，会有对应的老师处理",
+    "has_solution": true,
+    "message_count": 21
+  },
+  {
+    "ticket_id": "2026022400836",
+    "chat_name": "2026022400836中国石油集团西部钻探工程有限公司WPS文...",
+    "customer": "",
+    "problem": "事件消费问题导致的，偶发漏消息导致此问题，产研在优化这块，具体版本还没说",
+    "solution": "一般不会 但是建议在使用用户少的时候操作",
+    "has_solution": true,
+    "message_count": 21
+  },
+  {
+    "ticket_id": "2026022400464",
+    "chat_name": "2026022400464【知网】【文档中台】2601版本通过et...",
+    "customer": "知网",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026022400464\n工单标题: 【知网】【文档中台】2601版本通过etcd修改系统后台密码未生效 无法登入\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2026138766550310914\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 10
+  },
+  {
+    "ticket_id": "2026022400365",
+    "chat_name": "2026022400365【国寿投资】文档中心V6环境添加团队成员...",
+    "customer": "国寿投资",
+    "problem": "这问题年前反馈过一次吧",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 3
+  },
+  {
+    "ticket_id": "2026022501076",
+    "chat_name": "2026022501076【上交所】：目前用户反馈，只要是仿宋GB...",
+    "customer": "上交所",
+    "problem": "这个我明天发你，现在在处理服务的问题[捂脸]",
+    "solution": "换了另一个云桌面 可以用了",
+    "has_solution": true,
+    "message_count": 25
+  },
+  {
+    "ticket_id": "2026022501647",
+    "chat_name": "2026022501647【国网蒙东】-文档中心-客户领导要求提供...",
+    "customer": "国网蒙东",
+    "problem": "道通，这个sql好像还是有问题，管理后台之前查的月活是7000多，但是sql查出来按月筛选出来只有2000多",
+    "solution": "估计后够呛吧，我让客户改下试试",
+    "has_solution": true,
+    "message_count": 44
+  },
+  {
+    "ticket_id": "2026022500365",
+    "chat_name": "2026022500365【桂林银行】【文档中心V7】在移动端编辑...",
+    "customer": "桂林银行",
+    "problem": "这个暂定排公网的0409哈，如果有问题再往后挪。不对外承诺#2318905 【政企反馈】【桂林银行】【文档中心V7】【webWPS】【公网】在移动端编辑文档评论@人没有消息提醒 但是pc端评论@人是有消息提醒的\nhttps://ones.dig.kso.net/project/#/team/MuZLKcYe/task/39FsV2kihc6ePqg4",
+    "solution": "你之前测的公网环境，我可以访问吗，我在广西，没公司内网",
+    "has_solution": true,
+    "message_count": 46
+  },
+  {
+    "ticket_id": "2026022500478",
+    "chat_name": "2026022500478【京东】用户反馈某份多维表打开报错无法打开",
+    "customer": "京东",
+    "problem": "在预发验证，验证没问题的话计划近期切换，已经作为开年的重点任务了",
+    "solution": "在预发验证，验证没问题的话计划近期切换，已经作为开年的重点任务了",
+    "has_solution": true,
+    "message_count": 41
+  },
+  {
+    "ticket_id": "2026022500512",
+    "chat_name": "2026022500512奕斯伟-v7全家桶-AD域同步设置定时同...",
+    "customer": "",
+    "problem": "不是  截图里看不出原因，整个导出我晚点看看是否有其他异常",
+    "solution": "功能上是正常的 一开始的产品设计就是如此  目前项目上已经出现两次这样的反馈  后面考虑会优化产品体验",
+    "has_solution": true,
+    "message_count": 34
+  },
+  {
+    "ticket_id": "2026022501151",
+    "chat_name": "2026022501151【人保财险】【文档中心】团队成员设置，团...",
+    "customer": "人保财险",
+    "problem": "全量同步插件没有问题，增量同步会出现该问题，需要产研确认下解决方案",
+    "solution": "全量同步插件没有问题，增量同步会出现该问题，需要产研确认下解决方案",
+    "has_solution": true,
+    "message_count": 35
+  },
+  {
+    "ticket_id": "2026022501493",
+    "chat_name": "2026022501493【京东】wps_yundoc_mini库慢sql",
+    "customer": "京东",
+    "problem": "是统计表 也没啥核心业务报错吧",
+    "solution": "看ok么、可以搞的话、周四可以清理下",
+    "has_solution": true,
+    "message_count": 42
+  },
+  {
+    "ticket_id": "2026022501024",
+    "chat_name": "2026022501024【北京银行】v7文档中台后台管理系统应用...",
+    "customer": "北京银行",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026022501024\n工单标题: 【北京银行】v7文档中台后台管理系统应用的中台数据统计调用次数只有一次，且应用统计无数据\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2026554231869218818\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "这个应该是没有清理过，我直接按照文档访问下文档里的几个接口就可以吧？大佬",
+    "has_solution": true,
+    "message_count": 23
+  },
+  {
+    "ticket_id": "2026022501408",
+    "chat_name": "2026022501408【农行】【文档中心增强版】【2504a升...",
+    "customer": "农行",
+    "problem": "嗯    失败是报错nas挂载没写进fstab",
+    "solution": "我看已人工处理，是手动把状态改成了成功吧",
+    "has_solution": true,
+    "message_count": 38
+  },
+  {
+    "ticket_id": "2026022500016",
+    "chat_name": "2026022500016【拓竹】S3对象存储不支持有序遍历，和产...",
+    "customer": "拓竹",
+    "problem": "大佬，麻烦看下这个问题[递茶]",
+    "solution": "目前影响不大，已知就是清理缓存需要用到，甲方想了解下之后版本还有那些影响的功能？",
+    "has_solution": true,
+    "message_count": 15
+  },
+  {
+    "ticket_id": "2026022501209",
+    "chat_name": "2026022501209【国家管网】【文档中心v7】【客户反馈文...",
+    "customer": "国家管网",
+    "problem": "大佬  这个问题再看看？",
+    "solution": "刘老师，他这个从路径上看就已经说明找不到了这个文件了呀",
+    "has_solution": true,
+    "message_count": 40
+  },
+  {
+    "ticket_id": "2026022501739",
+    "chat_name": "2026022501739陕西交通电子智能文档插入云文档无法调整展...",
+    "customer": "",
+    "problem": "另外咨询下，私有化不支持插入本地文件吗，公网是支持插入本地文件，有入口",
+    "solution": "感谢大佬，检查已解决！[抱拳]",
+    "has_solution": true,
+    "message_count": 16
+  },
+  {
+    "ticket_id": "2026022501031",
+    "chat_name": "2026022501031dbsheet配置数据库地址提示无法连接到数据库，请先配置后重试",
+    "customer": "",
+    "problem": "2026022501031dbsheet配置数据库地址提示无法连接到数据库，请先配置后重试",
+    "solution": "可以，半年没见，有作用了 ~",
+    "has_solution": true,
+    "message_count": 12
+  },
+  {
+    "ticket_id": "2026022500269",
+    "chat_name": "2026022500269雅安市人大代表文档中台在线文档无法打开",
+    "customer": "",
+    "problem": "有的，目前问题就是出在他们https的问题上，不用https就可以访问文档了，感谢薛老师，先关单吧",
+    "solution": "有的，目前问题就是出在他们https的问题上，不用https就可以访问文档了，感谢薛老师，先关单吧",
+    "has_solution": true,
+    "message_count": 16
+  },
+  {
+    "ticket_id": "2026022501456",
+    "chat_name": "2026022501456【政长通】【文档中心】文档中台在线预览、...",
+    "customer": "政长通",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026022501456\n工单标题: 【政长通】【文档中心】文档中台在线预览、在线编辑卡顿，转圈\n工单详情链接: https://cst-ach.kso.net/workOrderList/workOrderList/info?type=info&id=2026581401064775681\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "我是直接点击的文件下面的预览按钮，之前是好用的，可以弹出预览窗口",
+    "has_solution": true,
+    "message_count": 11
+  },
+  {
+    "ticket_id": "2026022500652",
+    "chat_name": "2026022500652【完美世界】【v7协作-250814】云...",
+    "customer": "完美世界",
+    "problem": "看聊天记录是说12b修复的搜索文件接口 ，其他位置如果报错都是同一个接口那就是一样的",
+    "solution": "看聊天记录是说12b修复的搜索文件接口 ，其他位置如果报错都是同一个接口那就是一样的",
+    "has_solution": true,
+    "message_count": 39
+  },
+  {
+    "ticket_id": "2026022500926",
+    "chat_name": "2026022500926【国投证券】思维导图特殊样张xmind导...",
+    "customer": "国投证券",
+    "problem": "更新到最新版本吧，这个xmind导入不成功问题已经解决了",
+    "solution": "部署完成了，我刚才试了一下导入进去了",
+    "has_solution": true,
+    "message_count": 33
+  },
+  {
+    "ticket_id": "2026022501035",
+    "chat_name": "2026022501035【赣政通3.0】WPS 政务AI办公平台...",
+    "customer": "赣政通3.0",
+    "problem": "这个给客户带来很大的困惑，客户的理解是既然有三种查重的方式，那就应该有三种整体查重重复率结果。让客户去选择查看整体重复率。他们都说这是个BUG [捂脸]。我开始也认为是个BUG。",
+    "solution": "段落用的多吗？段落我们在新版本中就已经去掉了，只有句子和文档。对于一个文档来说不应该有多个重复率的（不然应该以哪个为准），我们在整体重复率那里鼠标hover有提示重复率是怎么计算的。句子其实就是最细颗粒度去查文档重复率了",
+    "has_solution": true,
+    "message_count": 38
+  },
+  {
+    "ticket_id": "2026022500446",
+    "chat_name": "2026022500446华为-场景AI-大文档转换-390M文件...",
+    "customer": "",
+    "problem": "如果还没到超时时间就报错了， 那就捞一下weboffice-file-cps日志看看， 根据报错响应头里面X-Request-Id捞一下",
+    "solution": "额，我内部2512版本验证这个样张是可以转换成功来着",
+    "has_solution": true,
+    "message_count": 14
+  },
+  {
+    "ticket_id": "2026022500069",
+    "chat_name": "2026022500069【工行】【V7】V7生产环境打开文件突然乱码",
+    "customer": "工行",
+    "problem": "大佬, 这问题请业务来看看。",
+    "solution": "已经转给对应组件的研发老师了",
+    "has_solution": true,
+    "message_count": 34
+  },
+  {
+    "ticket_id": "2026022500493",
+    "chat_name": "2026022500493【poms排查单】【中国五矿股份有限公司...",
+    "customer": "poms排查单",
+    "problem": "这个问题咋样了， 解决了吗",
+    "solution": "这个问题咋样了， 解决了吗",
+    "has_solution": true,
+    "message_count": 26
+  },
+  {
+    "ticket_id": "2026022501650",
+    "chat_name": "2026022501650[新华三] 开放平台API调用问题：创建...",
+    "customer": "",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026022501650\n工单标题: [新华三] 开放平台API调用问题：创建文档库的时候可以设置人员，更新文档库不能修改人员，那么，要更新人员，使用哪个接口？\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2026591143237591042\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "ACH工单沟通群创建成功\n工单编号: 2026022501650\n工单标题: [新华三] 开放平台API调用问题：创建文档库的时候可以设置人员，更新文档库不能修改人员，那么，要更新人员，使用哪个接口？\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2026591143237591042\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "has_solution": true,
+    "message_count": 3
+  },
+  {
+    "ticket_id": "2026022500979",
+    "chat_name": "2026022500979【完美世界】用户docx文件中编辑文件、...",
+    "customer": "完美世界",
+    "problem": "应该和批注作者信息绑定到云文档账户体系了，导致不同账号下载在线环境显示的用户信息不一样\n任意环境本地客户端打开应该都是一样的，没问题，具体啥和规则可以找weboffcie大佬看看哈",
+    "solution": "应该和批注作者信息绑定到云文档账户体系了，导致不同账号下载在线环境显示的用户信息不一样\n任意环境本地客户端打开应该都是一样的，没问题，具体啥和规则可以找weboffcie大佬看看哈",
+    "has_solution": true,
+    "message_count": 34
+  },
+  {
+    "ticket_id": "2026022501609",
+    "chat_name": "2026022501609【oppo】【文档中心v5】预览无法打开报错",
+    "customer": "oppo",
+    "problem": "看着是环境故障了 提故障单找实施看了吗?",
+    "solution": "问下，这个从哪里可以查，有什么文档么~后续我可以先排查一轮~",
+    "has_solution": true,
+    "message_count": 30
+  },
+  {
+    "ticket_id": "2026022501437",
+    "chat_name": "2026022501437【政长通】【文档中心】屏蔽“新建”按钮实现方案",
+    "customer": "政长通",
+    "problem": "蔡老师，咨询一下文档中心的新建按钮如何屏蔽",
+    "solution": "就是要隐藏这俩按钮，是要找服务商做二开处理是吧",
+    "has_solution": true,
+    "message_count": 15
+  },
+  {
+    "ticket_id": "2026022500424",
+    "chat_name": "2026022500424【中船】客户文件跨表格影响无效",
+    "customer": "中船",
+    "problem": "生产环境不能这样搞，这样操作有什么隐患吗",
+    "solution": "内部环境验证了，重启weboffice-calculate-engine服务，表格引用可以正常显示。",
+    "has_solution": true,
+    "message_count": 84
+  },
+  {
+    "ticket_id": "2026022500555",
+    "chat_name": "2026022500555【生态】【格式转换】otl 转txt格式失败",
+    "customer": "生态",
+    "problem": "我觉得接口应该没问题， 中台只是提供这个能力， 要是客户有otl文件， 也是可以用的。",
+    "solution": "我觉得接口应该没问题， 中台只是提供这个能力， 要是客户有otl文件， 也是可以用的。",
+    "has_solution": true,
+    "message_count": 57
+  },
+  {
+    "ticket_id": "2026022501127",
+    "chat_name": "2026022501127word文档，能否配置，默认打开【大纲】...",
+    "customer": "大纲",
+    "problem": "范野哥，新年好，帮忙看看这个问题",
+    "solution": "清理缓存重新上传文件打开试试",
+    "has_solution": true,
+    "message_count": 30
+  },
+  {
+    "ticket_id": "2026022500904",
+    "chat_name": "2026022500904【长江存储】支持用户在三方系统业务流程中...",
+    "customer": "长江存储",
+    "problem": "好的，谢谢大佬。有问题我们再问你",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 21
+  },
+  {
+    "ticket_id": "2026022500509",
+    "chat_name": "2026022500509【国能集团】【sqlhub】链接数超出集团最大限制",
+    "customer": "国能集团",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026022500509\n工单标题: 【国能集团】【sqlhub】链接数超出集团最大限制\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2026500290011799553\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 24
+  },
+  {
+    "ticket_id": "2026022500127",
+    "chat_name": "2026022500127用友 预览问题",
+    "customer": "",
+    "problem": "复现的话 基本就是版本问题了",
+    "solution": "demo上可以去测试下吗",
+    "has_solution": true,
+    "message_count": 93
+  },
+  {
+    "ticket_id": "2026022601075",
+    "chat_name": "2026022601075【中华保险】文档中台组件版本从2403升...",
+    "customer": "中华保险",
+    "problem": "IE-文字相关的问题。避免信息没对齐",
+    "solution": "中台是可以直接拿一个链接去打开的，不用登陆",
+    "has_solution": true,
+    "message_count": 135
+  },
+  {
+    "ticket_id": "2026022600004",
+    "chat_name": "2026022600004【九江银行】【文档中心V7】云文档查找内...",
+    "customer": "九江银行",
+    "problem": "宗老师，这个用户又遇到这个问题了，还是同一个用户，文档38页",
+    "solution": "可以把复现时间精确到几点几分，然后按照这个查下日志，把日志拍照看下",
+    "has_solution": true,
+    "message_count": 132
+  },
+  {
+    "ticket_id": "2026022600898",
+    "chat_name": "2026022600898【浙江交投】【V7中台】在线编辑文件内容丢失",
+    "customer": "浙江交投",
+    "problem": "我刚问了，他们没啥表格编辑需求。先上2601。报了问题再说下一步吧。",
+    "solution": "现在问题是：\n1、编辑内容丢失的问题在1月私有化版本已经修复\n2、表格这个风险说明在去年6月开始就有问题，如果用户那边没反馈。我个人感觉你们推送升级到1月问题也不大，因为对于用户来说1月也是有这个问题的",
+    "has_solution": true,
+    "message_count": 123
+  },
+  {
+    "ticket_id": "2026022601442",
+    "chat_name": "2026022601442【中华保险】【文档中台】【版本：v7】文...",
+    "customer": "中华保险",
+    "problem": "大佬  可以让客户那边配置一下能不能解决问题",
+    "solution": "强强改完了。你和客户对接下，试试是否可行？",
+    "has_solution": true,
+    "message_count": 117
+  },
+  {
+    "ticket_id": "2026022601414",
+    "chat_name": "2026022601414【中环领先】【文档中台V7】在线编辑文档...",
+    "customer": "中环领先",
+    "problem": "大佬，这个问题有啥解决办法不",
+    "solution": "这个有预期啥时间修复完成吗，我这面要给客户的答复。",
+    "has_solution": true,
+    "message_count": 132
+  },
+  {
+    "ticket_id": "2026022601349",
+    "chat_name": "2026022601349【兴业银行】【文档中心V7】数据库连接数过高",
+    "customer": "兴业银行",
+    "problem": "大佬，兴业客户今天晚上6点更换生产环境的插件，帮忙保持联系通道畅通哈~正常没啥问题，如果有啥问题需要帮忙一起看下",
+    "solution": "我看了一下，客户端断连之后，sqlhub可以主动检测客户端连接被断开，从而超时取消，释放连接。你等下上架插件之后，先不重启sqlhub，我们看看数据库的连接数有没有下降下来",
+    "has_solution": true,
+    "message_count": 123
+  },
+  {
+    "ticket_id": "2026022600821",
+    "chat_name": "2026022600821【中华保险】文档中台升级到26年1月份单...",
+    "customer": "中华保险",
+    "problem": "现在工单系统有bug",
+    "solution": "【中华保险】文档中台升级到26年1月份单元化，跨域白名单失效，需要在运维平台实现，有其他解决方案吗？",
+    "has_solution": true,
+    "message_count": 51
+  },
+  {
+    "ticket_id": "2026022600166",
+    "chat_name": "2026022600166【宜昌市中心医院】通过ExecJavaS...",
+    "customer": "宜昌市中心医院",
+    "problem": "大佬，麻烦问下这个问题目前有进展吗，客户那边在催进度[捂脸]",
+    "solution": "大佬 这边已经同步信息给研发大佬 有信息第一时间通知您",
+    "has_solution": true,
+    "message_count": 42
+  },
+  {
+    "ticket_id": "2026022600422",
+    "chat_name": "2026022600422【比亚迪】多维表中使用脚本编辑器执行“获取数组按照...",
+    "customer": "比亚迪",
+    "problem": "#2026022600422 多维表中使用脚本编辑器执行“获取数组按照业务需要转换为对象的操作”后无响应，点击暂停报错 \nhttps://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2026855523732250625",
+    "solution": "好的大佬，我沟通客户在调整一下试试",
+    "has_solution": true,
+    "message_count": 48
+  },
+  {
+    "ticket_id": "2026022601627",
+    "chat_name": "2026022601627【云南沃森】去年版本升级后，新入职员工只...",
+    "customer": "云南沃森",
+    "problem": "最好的解决办法是手动增加部门类型成员就可以解决这个问题",
+    "solution": "最好的解决办法是手动增加部门类型成员就可以解决这个问题",
+    "has_solution": true,
+    "message_count": 105
+  },
+  {
+    "ticket_id": "2026022601032",
+    "chat_name": "2026022601032【中邮人寿】【云文档v7】文件权限为可查...",
+    "customer": "中邮人寿",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026022601032\n工单标题: 【中邮人寿】【云文档v7】文件权限为可查看，但实际显示可读，且无法下载\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2026913886522253314\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "大佬，这个文件已经把所有区域权限管控的部分改成【仅查看】了，但还是没法下载",
+    "has_solution": true,
+    "message_count": 87
+  },
+  {
+    "ticket_id": "2026022601900",
+    "chat_name": "2026022601900【大家保险】v7文档中台客户反馈部分用户...",
+    "customer": "大家保险",
+    "problem": "是的，大佬，他们两台机器有一台改的有问题",
+    "solution": "然后刷新之后跑到另外一台正确的机子去了，然后就可以了",
+    "has_solution": true,
+    "message_count": 126
+  },
+  {
+    "ticket_id": "2026022601456",
+    "chat_name": "2026022601456【重庆市数字化城市运行治理中心】【文档中...",
+    "customer": "重庆市数字化城市运行治理中心",
+    "problem": "看不懂，现在是迁移那一块遇到问题，需要中台协助了",
+    "solution": "一般规范来说， 不建议复用bucket, 即使要复用bucket也是全新的， 当前项目新老混用的情况，风险已告知",
+    "has_solution": true,
+    "message_count": 111
+  },
+  {
+    "ticket_id": "2026022601114",
+    "chat_name": "2026022601114【中信银行】某台XC电脑，浏览器访问文档...",
+    "customer": "中信银行",
+    "problem": "这个问题可能是其它比较复杂的原因，我们再看看，有结论再同步你们哈",
+    "solution": "理论上应该可以，可以试一下",
+    "has_solution": true,
+    "message_count": 120
+  },
+  {
+    "ticket_id": "2026022600080",
+    "chat_name": "2026022600080【南航】咨询集成系统是否可通知文档中台注销会话",
+    "customer": "南航",
+    "problem": "可以去项目反馈群里问下萌姐或者环进大佬，中台时效性相关的问题",
+    "solution": "需求是：业务系统账号退出后，支持主动退出已打开的编辑/预览链接   ？",
+    "has_solution": true,
+    "message_count": 111
+  },
+  {
+    "ticket_id": "2026022600058",
+    "chat_name": "2026022600058【天津市委党校】接受修订和最终显示状态效果不同",
+    "customer": "天津市委党校",
+    "problem": "当时是文件里的表格跑版，客户也是测试，说后边有其他问题再说",
+    "solution": "然后当时怎么处理的呢",
+    "has_solution": true,
+    "message_count": 72
+  },
+  {
+    "ticket_id": "2026022600490",
+    "chat_name": "2026022600490【招商基金】【文档中心V7】客户安全中心...",
+    "customer": "招商基金",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026022600490\n工单标题: 【招商基金】【文档中心V7】客户安全中心暴露风险：可疑容器权限参数[{参数名:Privlege;参数值true}]，需确认是否必须授权\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2026859848525242370\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 24
+  },
+  {
+    "ticket_id": "2026022601306",
+    "chat_name": "2026022601306【海尔智家】文档问答未开启但选中内容会出...",
+    "customer": "海尔智家",
+    "problem": "客户希望尽快解决，因为操作下去会提示服务异常",
+    "solution": "李哥 就这里 可以沟通",
+    "has_solution": true,
+    "message_count": 123
+  },
+  {
+    "ticket_id": "2026022601103",
+    "chat_name": "2026022601103【新疆农信】【私有化WPS365】多维表数据丢失",
+    "customer": "新疆农信",
+    "problem": "大佬，麻烦看下这个问题",
+    "solution": "多维表的行数据   的行ID可以查出来不？",
+    "has_solution": true,
+    "message_count": 111
+  },
+  {
+    "ticket_id": "2026022600071",
+    "chat_name": "2026022600071【重庆市数字化城市运行何治理中心】【文档...",
+    "customer": "重庆市数字化城市运行何治理中心",
+    "problem": "已经定位到问题了，是一个框架bug引发的，如果上面的临时缓解方案不能解决问题只能走申请热修apiserver解决了",
+    "solution": "已经定位到问题了，是一个框架bug引发的，如果上面的临时缓解方案不能解决问题只能走申请热修apiserver解决了",
+    "has_solution": true,
+    "message_count": 99
+  },
+  {
+    "ticket_id": "2026022600343",
+    "chat_name": "2026022600343【poms排查单】【四川省人民政府办公厅...",
+    "customer": "poms排查单",
+    "problem": "昨天下架的。然后测试功能没问题。今天重新上架了 不行 就又下架了",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 114
+  },
+  {
+    "ticket_id": "2026022601486",
+    "chat_name": "2026022601486【长沙银行】文件生成AI PPT时报错500",
+    "customer": "长沙银行",
+    "problem": "只是现在有新的问题，今天测试调试期间遇到整个Ksops 都无法响应的现象，所有功能都失效。不知道是什么原因。",
+    "solution": "两位，现在改成ip后可以生成PPT勒，而且不受文档大小合适限制，都可以正常生成。",
+    "has_solution": true,
+    "message_count": 108
+  },
+  {
+    "ticket_id": "2026022601698",
+    "chat_name": "2026022601698[四川省政务云]AI校对授权问题",
+    "customer": "",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026022601698\n工单标题: [四川省政务云]AI校对授权问题\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2026951578639343617\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 27
+  },
+  {
+    "ticket_id": "2026022600972",
+    "chat_name": "2026022600972奕斯伟-客户业务系统与文档中心对接沟通支持",
+    "customer": "",
+    "problem": "一键拉群好像有bug",
+    "solution": "客户想把文档中心的消息推送给他们的企业微信，这个客户可以自己搞吗？",
+    "has_solution": true,
+    "message_count": 96
+  },
+  {
+    "ticket_id": "2026022601096",
+    "chat_name": "2026022601096睿远基金AI Docs，POC部署完成服...",
+    "customer": "",
+    "problem": "大佬问题结论参考截图，重启ai-aidocsaisvr服务临时解决了",
+    "solution": "大佬问题结论参考截图，重启ai-aidocsaisvr服务临时解决了",
+    "has_solution": true,
+    "message_count": 90
+  },
+  {
+    "ticket_id": "2026022601715",
+    "chat_name": "2026022601715【华润】【文档中台】多书签套用时出现特定...",
+    "customer": "华润",
+    "problem": "还是说有可能会出现这个问题",
+    "solution": "弄一个云字体的文件发我，我去试试",
+    "has_solution": true,
+    "message_count": 123
+  },
+  {
+    "ticket_id": "2026022601364",
+    "chat_name": "2026022601364[]四川省政务云公文AI排版报错",
+    "customer": "",
+    "problem": "再查下日志看看报错吗，根据requestid查链路日志",
+    "solution": "配置了paper_format 的接入点就好了。",
+    "has_solution": true,
+    "message_count": 45
+  },
+  {
+    "ticket_id": "2026022600915",
+    "chat_name": "2026022600915[招商局]文档中台转化大量504",
+    "customer": "",
+    "problem": "504一般都是网关超时报错",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 114
+  },
+  {
+    "ticket_id": "2026022600980",
+    "chat_name": "2026022600980【齐鲁制药】【S15】开放平台，应用能力...",
+    "customer": "齐鲁制药",
+    "problem": "大佬们这个问题是新版本修复带出吗，预计那个版本修复啊",
+    "solution": "这边在beta已经验证好了，你这边登记下发版任务",
+    "has_solution": true,
+    "message_count": 129
+  },
+  {
+    "ticket_id": "2026022600976",
+    "chat_name": "2026022600976用户反馈筛选 填写过的B段订单号数据，但...",
+    "customer": "",
+    "problem": "大佬，辛苦看看这个问题",
+    "solution": "大佬，这个能另存一份验证吗，或者还有其他方法验证吗",
+    "has_solution": true,
+    "message_count": 102
+  },
+  {
+    "ticket_id": "2026022600132",
+    "chat_name": "2026022600132【南航】IPad部分设备无法触发自动保存",
+    "customer": "南航",
+    "problem": "大佬 其他的组件有这个问题吗",
+    "solution": "其他组件还没验证呢。我去借设备试试",
+    "has_solution": true,
+    "message_count": 120
+  },
+  {
+    "ticket_id": "2026022601017",
+    "chat_name": "2026022601017【生态申乾】使用Unprotect解密如果密码错误不能及时返回异常",
+    "customer": "生态申乾",
+    "problem": "【金山文档】蔡伟 申请编辑文件《【生态】【申乾】使用Unprotect解密如果密码错误不能及时返回异常》https://365.kdocs.cn/public/fpa?a=372502213347794944&t=false&i=cvt5KZIptf11&p=write&u=1548036571\n 大佬 帮给个编辑权限",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 21
+  },
+  {
+    "ticket_id": "2026022600119",
+    "chat_name": "2026022600119【国航】插件cams-subscript...",
+    "customer": "国航",
+    "problem": "从趋势和连接总数上看都对不上，那这个问题结论更明确啦：确实是监控面板统计不正确",
+    "solution": "问题2是隗锐大佬帮忙分析的。\n1b版本订阅号已经改为pull模式，不会有这个问题",
+    "has_solution": true,
+    "message_count": 99
+  },
+  {
+    "ticket_id": "2026022602111",
+    "chat_name": "2026022602111【太平金融】【文档中心V7】客户由于审计...",
+    "customer": "太平金融",
+    "problem": "琦哥，客户要查数据库统计不同类型的文件总量，共计128个表，数据库量多的情况下会影响业务；客户咨询如果自查备库的话会影响吗？他现在就想查。",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 120
+  },
+  {
+    "ticket_id": "2026022601630",
+    "chat_name": "2026022601630中国科学院-文档中台+黑马",
+    "customer": "",
+    "problem": "2026022601630中国科学院-文档中台+黑马",
+    "solution": "已经修改了，让用户刷新看看",
+    "has_solution": true,
+    "message_count": 129
+  },
+  {
+    "ticket_id": "2026022600357",
+    "chat_name": "2026022600357【建信人寿】【woa】协作客户端登录框加载慢",
+    "customer": "建信人寿",
+    "problem": "大佬，有空看下这个问题呀~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 42
+  },
+  {
+    "ticket_id": "2026022601575",
+    "chat_name": "2026022601575【百度网盘】-用户咨询是怎么使用的网盘上...",
+    "customer": "百度网盘",
+    "problem": "这个问题，怎么又来了",
+    "solution": "最新版本都已经没有这个定制逻辑的代码了",
+    "has_solution": true,
+    "message_count": 78
+  },
+  {
+    "ticket_id": "2026022601852",
+    "chat_name": "2026022601852广东电网",
+    "customer": "",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026022601852\n工单标题: 广东电网\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2026957746132688898\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "都是文件目录，不太确定那个可以动了",
+    "has_solution": true,
+    "message_count": 45
+  },
+  {
+    "ticket_id": "2026022602113",
+    "chat_name": "2026022602113【招商永隆】【文档中心V7】咨询 ：内容...",
+    "customer": "招商永隆",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026022602113\n工单标题: 【招商永隆】【文档中心V7】咨询 ：内容合规扫描与安全检测功能的API接口\n工单详情链接: https://cst-ach.kso.net/workOrderList/workOrderList/info?type=info&id=2027045355468492801\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 9
+  },
+  {
+    "ticket_id": "2026022600930",
+    "chat_name": "2026022600930用友 压缩包预览问题",
+    "customer": "",
+    "problem": "这个不能直接转产研吗",
+    "solution": "老板这个单子麻烦转给曾煜 之前他在处理 他ach账号出问题了",
+    "has_solution": true,
+    "message_count": 33
+  },
+  {
+    "ticket_id": "2026022600884",
+    "chat_name": "2026022600884【北方华创】【云文档】【v7.2504】...",
+    "customer": "北方华创",
+    "problem": "是的，如果没有打bugfix，已经上云的图片，除非恢复历史版本找回，不然是没法触发回落的，即使etcd都设置了也不行",
+    "solution": "是的，如果没有打bugfix，已经上云的图片，除非恢复历史版本找回，不然是没法触发回落的，即使etcd都设置了也不行",
+    "has_solution": true,
+    "message_count": 120
+  },
+  {
+    "ticket_id": "2026022601183",
+    "chat_name": "2026022601183【华兴银行】【文档中台】在线预览word...",
+    "customer": "华兴银行",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026022601183\n工单标题: 【华兴银行】【文档中台】在线预览word等线文字跑版，服务端和电脑上都已安装字体。在客户demo可以复现\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2026923357357154306\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "这些个字体都不缺是可以正常显示的吧",
+    "has_solution": true,
+    "message_count": 69
+  },
+  {
+    "ticket_id": "2026022601553",
+    "chat_name": "2026022601553【环保集团】黑马校对按钮某些用户没有入口",
+    "customer": "环保集团",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026022601553\n工单标题: 【环保集团】黑马校对按钮某些用户没有入口\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2026944642715951105\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 2
+  },
+  {
+    "ticket_id": "2026022601054",
+    "chat_name": "2026022601054【中泰证券】测试环境应用管理平台-平台管理-运维监控-监控数据不显示",
+    "customer": "中泰证券",
+    "problem": "我申请个变更单，再协调下，扩容的事项，再观察下，这个问题，是否还存在",
+    "solution": "这个我们先扩一台资源后  在看看问题解决没有  没有的话  我再按你这个执行看看",
+    "has_solution": true,
+    "message_count": 20
+  },
+  {
+    "ticket_id": "2026022601345",
+    "chat_name": "2026022601345【京办】【中台】【v7.2511】客户反...",
+    "customer": "京办",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026022601345\n工单标题: 【京办】【中台】【v7.2511】客户反馈应用管理平台界面中得应用统计功能中得组件使用情况数据为0。\n工单详情链接: https://cst-ach.kso.net/workOrderList/workOrderList/info?type=info&id=2026934514994323458\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 14
+  },
+  {
+    "ticket_id": "2026022600985",
+    "chat_name": "2026022600985【交通银行股份有限公司】【文档中台v7】...",
+    "customer": "交通银行股份有限公司",
+    "problem": "从release_dc_xc_arm_x86_v7.0.2501a.20250116升级到release_dc_xc_arm_x86_v7.0.2511.20251120，升级前在应用管理平台正常，升级后使用开放平台无数据，正常搜索上报接口正常无报错，上升二线同学排查",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 22
+  },
+  {
+    "ticket_id": "2026022601025",
+    "chat_name": "2026022601025【国能集团】【文档中心】用户找不到原部门团队了",
+    "customer": "国能集团",
+    "problem": "这个可视化不能查 *",
+    "solution": "先重建下索引试试 ？",
+    "has_solution": true,
+    "message_count": 60
+  },
+  {
+    "ticket_id": "2026022600159",
+    "chat_name": "2026022600159文档中心与统一身份认证对接，做前期的单点...",
+    "customer": "",
+    "problem": "现在客户计划自己做这个完整的开发，估计过程中会有一些细节问题",
+    "solution": "内部环境都装了，可以让大家都试试",
+    "has_solution": true,
+    "message_count": 36
+  },
+  {
+    "ticket_id": "2026022601212",
+    "chat_name": "2026022601212【中华保险】文档中台升级到26年1月份单...",
+    "customer": "中华保险",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026022601212\n工单标题: 【中华保险】文档中台升级到26年1月份单元化，跨域白名单失效问题\n工单详情链接: https://cst-ach.kso.net/workOrderList/workOrderList/info?type=info&id=2026925214037123074\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "【中华保险】文档中台升级到26年1月份单元化，跨域白名单失效，需要在运维平台实现，有其他解决方案吗？",
+    "has_solution": true,
+    "message_count": 18
+  },
+  {
+    "ticket_id": "2026022600475",
+    "chat_name": "2026022600475【华泰证券】文档中台文件回撤标题导航报错",
+    "customer": "华泰证券",
+    "problem": "我看看用户那边能不能远程？",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 12
+  },
+  {
+    "ticket_id": "2026022700737",
+    "chat_name": "2026022700737【龙岗政数局】wps开放平台多维表格按页...",
+    "customer": "龙岗政数局",
+    "problem": "大佬我调用的是开放平台封装的接口， 用你的参数不太行会报错",
+    "solution": "可以的，看需要哪个日志啊",
+    "has_solution": true,
+    "message_count": 66
+  },
+  {
+    "ticket_id": "2026022700717",
+    "chat_name": "2026022700717【华泰证券】【可远程】部署AI中台",
+    "customer": "华泰证券",
+    "problem": "就重装了下，之前可能升级的时候操作顺序有点问题",
+    "solution": "es的问题是怎么解决的",
+    "has_solution": true,
+    "message_count": 84
+  },
+  {
+    "ticket_id": "2026022700077",
+    "chat_name": "2026022700077太保客户咨询文档中台附件能力",
+    "customer": "",
+    "problem": "大佬，这个问题咋样了",
+    "solution": "可以正常排，目前没有说要修复啥的",
+    "has_solution": true,
+    "message_count": 80
+  },
+  {
+    "ticket_id": "2026022700191",
+    "chat_name": "2026022700191【苏州市姑苏区政务信息中心】\"任意上传文...",
+    "customer": "苏州市姑苏区政务信息中心",
+    "problem": "因为现在hw，他们这个问题又开始说了",
+    "solution": "跟客户解释不是漏洞就可以了吧",
+    "has_solution": true,
+    "message_count": 78
+  },
+  {
+    "ticket_id": "2026022701282",
+    "chat_name": "2026022701282【赛力斯】【ProcessOn】使用思维...",
+    "customer": "赛力斯",
+    "problem": "现在的问题是证书导入后，不生效。具体用功能时提示”无坐席“等信息。",
+    "solution": "正常了 可能2601版本 有个授权字符长度的bug  重新弄下就好了",
+    "has_solution": true,
+    "message_count": 76
+  },
+  {
+    "ticket_id": "2026022700236",
+    "chat_name": "2026022700236【湖北烟草文档中心】文档中心集成企微后无法打印",
+    "customer": "湖北烟草文档中心",
+    "problem": "我们这个客户没说是我们的问题，是说企业微信要怎么兼容我们的打印",
+    "solution": "客户集成在企微无法打印 需要解决下",
+    "has_solution": true,
+    "message_count": 82
+  },
+  {
+    "ticket_id": "2026022701101",
+    "chat_name": "2026022701101【海螺】智能文档中添加本地视频时提示转码失败",
+    "customer": "海螺",
+    "problem": "大佬，那个转码过长失败的问题目前的解决方案是什么？让用户每次都传mp4 + h264编码的视频嘛",
+    "solution": "后续有针对上传其他类型视频转码的优化方案吗？",
+    "has_solution": true,
+    "message_count": 74
+  },
+  {
+    "ticket_id": "2026022702124",
+    "chat_name": "2026022702124【海尔智家】【文档中心】IM应用集成了文...",
+    "customer": "海尔智家",
+    "problem": "然后客户又补充了一个信息，只要清楚app全部数据，问题就消失了",
+    "solution": "这个还有什么继续分析的方法么？偶尔还是会报障[捂脸]",
+    "has_solution": true,
+    "message_count": 88
+  },
+  {
+    "ticket_id": "2026022701605",
+    "chat_name": "2026022701605【招商局】文档中心-多维表，联系人字段新...",
+    "customer": "招商局",
+    "problem": "没有公众号，这个我们会新建一个指令来处理，就看能不能正常发私网云文档首页消息～如果OK，这个需求就可往下推",
+    "solution": "没有公众号，这个我们会新建一个指令来处理，就看能不能正常发私网云文档首页消息～如果OK，这个需求就可往下推",
+    "has_solution": true,
+    "message_count": 82
+  },
+  {
+    "ticket_id": "2026022701426",
+    "chat_name": "2026022701426【山东通】【文档中心v7-表单地址题问题】",
+    "customer": "山东通",
+    "problem": "大佬, 这项目表单还有其他问题  我们重装了dbv 还是异常",
+    "solution": "地址题导入sql后好了，然后学院题又出现了类似情况，我们重装了dbv，还是不行",
+    "has_solution": true,
+    "message_count": 72
+  },
+  {
+    "ticket_id": "2026022701125",
+    "chat_name": "2026022701125华为-onebox-230608-在线编...",
+    "customer": "",
+    "problem": "之前好像有过类似的， 说是兼容性问题",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 12
+  },
+  {
+    "ticket_id": "2026022702221",
+    "chat_name": "2026022702221【佛山政数局】【智能文档库】智能问答和片...",
+    "customer": "佛山政数局",
+    "problem": "感谢大佬支持，我跟进下，他们没问题就结单[递茶]",
+    "solution": "感谢强哥支持，这个单可以结了",
+    "has_solution": true,
+    "message_count": 40
+  },
+  {
+    "ticket_id": "2026022700577",
+    "chat_name": "2026022700577【广东工烟】【私有化 WPS365】SY...",
+    "customer": "广东工烟",
+    "problem": "我测试客户端也是不行，提示同样的问题，我同步信息到问题单上面反馈下。",
+    "solution": "web端也能复现，先排查web端。web端可以了我客户端再进一步测试。",
+    "has_solution": true,
+    "message_count": 78
+  },
+  {
+    "ticket_id": "2026022700634",
+    "chat_name": "2026022700634【新华三】【开发平台】打开创建新版本的时...",
+    "customer": "新华三",
+    "problem": "空值的表示很难全部限定成一种格式，特别是数据嵌套层级高的时候，我们依赖的下游服务也是一样的。\n\n这种还是得看消费时能不能在一个地方收敛下对于对象或数组字段 判空 的逻辑，如果每个地方单独判断那肯定会漏的。",
+    "solution": "我晚点帮您处理，在赶火车[抱拳]",
+    "has_solution": true,
+    "message_count": 74
+  },
+  {
+    "ticket_id": "2026022700469",
+    "chat_name": "2026022700469【中国银联】【文档中心】【2507】协作记录丢失",
+    "customer": "中国银联",
+    "problem": "但是也有问题，一摸一样的配置，在国泰海通就没有出现这种情况",
+    "solution": "用清理工具的话基本恢复不了，可以问问刘宇他们",
+    "has_solution": true,
+    "message_count": 86
+  },
+  {
+    "ticket_id": "2026022700322",
+    "chat_name": "2026022700322江苏机要局中心卡慢",
+    "customer": "",
+    "problem": "我把启用状态关掉，显示service不能为空",
+    "solution": "sudo truncate -s 0 /var/log/messages可以吗？",
+    "has_solution": true,
+    "message_count": 66
+  },
+  {
+    "ticket_id": "2026022701408",
+    "chat_name": "2026022701408【上海农村商业银行】从pc端创建表单，然...",
+    "customer": "上海农村商业银行",
+    "problem": "这个是企业微信客户端的问题",
+    "solution": "可以帮忙提供个账号吗",
+    "has_solution": true,
+    "message_count": 82
+  },
+  {
+    "ticket_id": "2026022702170",
+    "chat_name": "2026022702170华为-文档解析-场景AI-解析内容存在重复",
+    "customer": "",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026022702170\n工单标题: 华为-文档解析-场景AI-解析内容存在重复\n工单详情链接: https://cst-ach.kso.net/workOrderList/workOrderList/info?type=info&id=2027348272117321729\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "大佬，这个是正常现象，在合并单元格内，按约定协议会返回的相同内容，可以通过rowindex,colindex（是否相同）判断是否为同一单元格",
+    "has_solution": true,
+    "message_count": 16
+  },
+  {
+    "ticket_id": "2026022701680",
+    "chat_name": "2026022701680东方算芯-文档中心AD域同步问题",
+    "customer": "",
+    "problem": "问题已解决，感谢各位大佬支持[抱拳][玫瑰]",
+    "solution": "问题已解决，感谢各位大佬支持[抱拳][玫瑰]",
+    "has_solution": true,
+    "message_count": 82
+  },
+  {
+    "ticket_id": "2026022701726",
+    "chat_name": "2026022701726[招商局][文档中台]回调服务出现异常日志",
+    "customer": "",
+    "problem": "不用管为什么会解析这个，只要看现在能不能解析就好了",
+    "solution": "不用管为什么会解析这个，只要看现在能不能解析就好了",
+    "has_solution": true,
+    "message_count": 62
+  },
+  {
+    "ticket_id": "2026022700972",
+    "chat_name": "2026022700972【鹰角-WPS中台】WPS中台打开文字编...",
+    "customer": "鹰角-WPS中台",
+    "problem": "帮忙看看这个，昨天cloud开debug，昨天看着是回调timeout，但是开debug之后就正常",
+    "solution": "接口文档这块写的也可以参考下",
+    "has_solution": true,
+    "message_count": 86
+  },
+  {
+    "ticket_id": "2026022701075",
+    "chat_name": "2026022701075【新华三】【开发平台】文档中心V7使用上...",
+    "customer": "新华三",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026022701075\n工单标题: 【新华三】【开发平台】文档中心V7使用上传接口时，遇到报错\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2027275318209679362\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "刘老师，  ， 客户问：http://js-doc-ts.h3c.com/weboffice/l/sOd4YpaMLU7gx 这种预览地址是不可以嵌入iframe吗 ？",
+    "has_solution": true,
+    "message_count": 14
+  },
+  {
+    "ticket_id": "2026022700595",
+    "chat_name": "2026022700595【浪潮企业云】非单元化2503升级单元化...",
+    "customer": "浪潮企业云",
+    "problem": "再提一个，问题排查单么？",
+    "solution": "明天上午看一下可以嘛？",
+    "has_solution": true,
+    "message_count": 70
+  },
+  {
+    "ticket_id": "2026022700440",
+    "chat_name": "2026022700440【中国银联】账号同步插件报错：数据库连接...",
+    "customer": "中国银联",
+    "problem": "#2026022700440 【中国银联】账号同步插件报错：数据库连接失败，超出重试次数。 \nhttps://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2027217810451468289",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 34
+  },
+  {
+    "ticket_id": "2026022702062",
+    "chat_name": "2026022702062【苏州市工业园区管委会】【文档中台】书签...",
+    "customer": "苏州市工业园区管委会",
+    "problem": "曾老师，这个问题明早看下吧",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 20
+  },
+  {
+    "ticket_id": "2026022702143",
+    "chat_name": "2026022702143【国寿投资】WPS AI功能中的全文总结...",
+    "customer": "国寿投资",
+    "problem": "还有一些另外的问题，我重新提单子",
+    "solution": "这个问题昨天实施装好模型后今天验证可以了",
+    "has_solution": true,
+    "message_count": 10
+  },
+  {
+    "ticket_id": "2026022702175",
+    "chat_name": "2026022702175【新华三】【文档中心V7.0122】文字...",
+    "customer": "新华三",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026022702175\n工单标题: 【新华三】【文档中心V7.0122】文字中审阅中没有“评论”和“修订”按钮\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2027350324507709442\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 4
+  },
+  {
+    "ticket_id": "2026022701428",
+    "chat_name": "2026022701428绿发-测试环境云文档都无法打开了",
+    "customer": "",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026022701428\n工单标题: 绿发-测试环境云文档都无法打开了\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2027296420969451522\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 30
+  },
+  {
+    "ticket_id": "2026022701093",
+    "chat_name": "2026022701093【京投】【文档中台v7】【客户反馈文档中...",
+    "customer": "京投",
+    "problem": "我怀疑是版本bug[捂脸]",
+    "solution": "那就先回答新版本修复，后面会升级",
+    "has_solution": true,
+    "message_count": 42
+  },
+  {
+    "ticket_id": "2026022701418",
+    "chat_name": "2026022701418【易方达】客户反馈需实现pdf搜索高亮显...",
+    "customer": "易方达",
+    "problem": "这里易方达反馈的功能需求问题",
+    "solution": "这个是不是直接提需求单就可以了",
+    "has_solution": true,
+    "message_count": 26
+  },
+  {
+    "ticket_id": "2026022701921",
+    "chat_name": "2026022701921【恒生电子】【文档中台v7】评论面板评论...",
+    "customer": "恒生电子",
+    "problem": "额，不能这么说，如果没用的话，直接删了面板功能呗……",
+    "solution": "http://10.217.19.185:18080/micsweb/demo/ 这个是文档中台的demo你们可以自己验证下",
+    "has_solution": true,
+    "message_count": 58
+  },
+  {
+    "ticket_id": "2026022701152",
+    "chat_name": "2026022701152华为-onebox-2511b-doc连...",
+    "customer": "",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026022701152\n工单标题: 华为-onebox-2511b-doc连页时会不显示前方空白页面，会直接跳转空白页显示有内容的页面\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2027281274247188482\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 10
+  },
+  {
+    "ticket_id": "2026022700406",
+    "chat_name": "2026022700406【交通银行】文档中心云文档下载xlsx文件报错SessionDeleted",
+    "customer": "交通银行",
+    "problem": "他这是所有的chrome都下载失败吗？",
+    "solution": "让他们对比看看 不行卸载重装试试  卸载时不保留原先设置。 卸载前面可以把标签页导出来。",
+    "has_solution": true,
+    "message_count": 16
+  },
+  {
+    "ticket_id": "2026022700340",
+    "chat_name": "2026022700340【国寿投资】文档中心部署AI能力后打开w...",
+    "customer": "国寿投资",
+    "problem": "这个trace-id的看着只有这一行报错",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 6
+  },
+  {
+    "ticket_id": "2026022701244",
+    "chat_name": "2026022701244【浙江移动V7文档中心】咨询挂载2个对象...",
+    "customer": "浙江移动V7文档中心",
+    "problem": "文档中心版本：V72504b\n问题: 用户对象存储满（A盘），且无法扩容，用户新提供一个对象存储（b盘）。，需要设置挂载2个对象存储，并设置A盘只读，写文件存B盘，但是可能在切换b存储时，文件存在原来a盘的文件，因为业务流程没走完，需要更改存在a盘的文件，如何处理？\n\n 大佬, 项目上有个存储业务咨询问题 有空看看。[递茶]",
+    "solution": "删除也不影响，只读不是对象存储设置只读吧，是我们这边不往“只读”的bucket写文件而已，保证新的文档都到可写的bucket",
+    "has_solution": true,
+    "message_count": 14
+  },
+  {
+    "ticket_id": "2026022701173",
+    "chat_name": "2026022701173【江西农信】【文档中台V7】应用集成开发...",
+    "customer": "江西农信",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026022701173\n工单标题: 【江西农信】【文档中台V7】应用集成开发支持：调用中台格式转换接口返回401\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2027282623923884033\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "说明签名错了   格式处理的有请求体报文 需要参与签名",
+    "has_solution": true,
+    "message_count": 18
+  },
+  {
+    "ticket_id": "2026022701146",
+    "chat_name": "2026022701146华为-onebox-2511B-文档预览...",
+    "customer": "",
+    "problem": "新版本调整断网提示语，核心是为了给您更清晰的风险提示（明确内容丢失风险，及时关注网络状态）、更直接的操作引导（减少被动等待，建议主动排查网络问题）、更精准的状态同步（优化网络判断逻辑，适配多场景需求），同时结合用户反馈，采用简洁一致的表述风格，提升整体体验。",
+    "solution": "新版本调整断网提示语，核心是为了给您更清晰的风险提示（明确内容丢失风险，及时关注网络状态）、更直接的操作引导（减少被动等待，建议主动排查网络问题）、更精准的状态同步（优化网络判断逻辑，适配多场景需求），同时结合用户反馈，采用简洁一致的表述风格，提升整体体验。",
+    "has_solution": true,
+    "message_count": 14
+  },
+  {
+    "ticket_id": "2026022701534",
+    "chat_name": "2026022701534中间表里的 third_company_...",
+    "customer": "",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026022701534\n工单标题: 中间表里的 third_company_id 和 platform_id 字段如何获取\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2027302119657050114\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 1
+  },
+  {
+    "ticket_id": "2026022701046",
+    "chat_name": "2026022701046【人保财险】【文档中心】理赔文档中心二级...",
+    "customer": "人保财险",
+    "problem": "另一个群 拉你了 同样的问题，可以看看",
+    "solution": "另一个群 拉你了 同样的问题，可以看看",
+    "has_solution": true,
+    "message_count": 13
+  },
+  {
+    "ticket_id": "2026022701337",
+    "chat_name": "2026022701337【香港医管局】【文档中心（演示）】演示组...",
+    "customer": "香港医管局",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026022701337\n工单标题: 【香港医管局】【文档中心（演示）】演示组件内，从模板新建幻灯片时，鼠标划去选项页面，页面会消失\n工单详情链接: https://cst-ach.kso.net/workOrderList/workOrderList/info?type=info&id=2027291880014614529\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 29
+  },
+  {
+    "ticket_id": "2026022700959",
+    "chat_name": "2026022700959[赛力斯]客户端没有AI及模板功能入口",
+    "customer": "",
+    "problem": "私有化只能这样吗？不能和web端保持一致吗",
+    "solution": "大佬有正常显示的截图不，是web端可以显示这个模板库吗",
+    "has_solution": true,
+    "message_count": 32
+  },
+  {
+    "ticket_id": "2026022701566",
+    "chat_name": "2026022701566【云南省纪委】【文档中台】在线编辑加载时...",
+    "customer": "云南省纪委",
+    "problem": "如果不是产品问题，能不能引导他们怎么正确使用不会出这个问题",
+    "solution": "他们业务要从哪方面优化，可以直接跟他说，反正我们又不给他们写代码，给个方向让他们弄呗",
+    "has_solution": true,
+    "message_count": 20
+  },
+  {
+    "ticket_id": "2026022701175",
+    "chat_name": "2026022701175华为-onebox-2511b-doc文...",
+    "customer": "",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026022701175\n工单标题: 华为-onebox-2511b-doc文档预览时选中文字，之前评论按钮是置灰的，当前评论按钮可以点击，点击后提示无权限需要联系\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2027282792367132673\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "ACH工单沟通群创建成功\n工单编号: 2026022701175\n工单标题: 华为-onebox-2511b-doc文档预览时选中文字，之前评论按钮是置灰的，当前评论按钮可以点击，点击后提示无权限需要联系\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2027282792367132673\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "has_solution": true,
+    "message_count": 6
+  },
+  {
+    "ticket_id": "2026022701203",
+    "chat_name": "2026022701203【太平金融】【文档中台】修订痕迹高清预览...",
+    "customer": "太平金融",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026022701203\n工单标题: 【太平金融】【文档中台】修订痕迹高清预览和编辑显示不一样，需要和高清预览显示一致\n工单详情链接: https://cst-ach.kso.net/workOrderList/workOrderList/info?type=info&id=2027284078038749186\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 12
+  },
+  {
+    "ticket_id": "2026022701196",
+    "chat_name": "2026022701196华为-onebox-2511b版本-do...",
+    "customer": "",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026022701196\n工单标题: 华为-onebox-2511b版本-doc文档预览时选中文字，比230608版本少了高亮按钮\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2027283909675192322\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 4
+  },
+  {
+    "ticket_id": "2026022700411",
+    "chat_name": "2026022700411【poms排查单】【63729部队】文档...",
+    "customer": "poms排查单",
+    "problem": "大佬。帮忙看下woa pod异常",
+    "solution": "如果没用到的话是可以忽略的",
+    "has_solution": true,
+    "message_count": 39
+  },
+  {
+    "ticket_id": "2026022701489",
+    "chat_name": "2026022701489【最高人民检察院】【文档中台】指导获取文...",
+    "customer": "最高人民检察院",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026022701489\n工单标题: 【最高人民检察院】【文档中台】指导获取文件id的方法\n工单详情链接: https://cst-ach.kso.net/workOrderList/workOrderList/info?type=info&id=2027299792241954817\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "ACH工单沟通群创建成功\n工单编号: 2026022701489\n工单标题: 【最高人民检察院】【文档中台】指导获取文件id的方法\n工单详情链接: https://cst-ach.kso.net/workOrderList/workOrderList/info?type=info&id=2027299792241954817\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "has_solution": true,
+    "message_count": 1
+  },
+  {
+    "ticket_id": "2026022701211",
+    "chat_name": "2026022701211【国家管网】【XC2510】按照项目组要...",
+    "customer": "国家管网",
+    "problem": "2026022701211【国家管网】【XC2510】按照项目组要...",
+    "solution": "但一般系统相关的组件我是建议由客户处理（主机是客户提供的吧？）",
+    "has_solution": true,
+    "message_count": 17
+  },
+  {
+    "ticket_id": "2026022700389",
+    "chat_name": "2026022700389【国寿投资】智能公文中的公文校对功能使用报错",
+    "customer": "国寿投资",
+    "problem": "看起来没问题 等我10分钟左右，远程看看",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 24
+  },
+  {
+    "ticket_id": "2026022700375",
+    "chat_name": "2026022700375在多维表里仪表盘柱形图，把柱状图或折线图...",
+    "customer": "",
+    "problem": "是 bug，看了下是底层 echarts 的 bug，不是很好修，麻烦提 ones 转研发吧，修复周期会比较长\nhttps://github.com/apache/echarts/issues/19985#issuecomment-3721712057",
+    "solution": "是 bug，看了下是底层 echarts 的 bug，不是很好修，麻烦提 ones 转研发吧，修复周期会比较长\nhttps://github.com/apache/echarts/issues/19985#issuecomment-3721712057",
+    "has_solution": true,
+    "message_count": 9
+  },
+  {
+    "ticket_id": "2026022800424",
+    "chat_name": "2026022800424【新华三】【文档中心V7.0122】跨表...",
+    "customer": "新华三",
+    "problem": "这个私网环境下可以看到问题\nhttp://10.217.19.253/\nzkp/Wps@1234567\n\n 之前的账号密码是树鹏发给我的",
+    "solution": "https://v7.kso.net/weboffice/l/sjhB1RbxFsAqX\n\n这套环境上也可以先验证一下",
+    "has_solution": true,
+    "message_count": 42
+  },
+  {
+    "ticket_id": "2026022801142",
+    "chat_name": "2026022801142【哈派】【雅安市生态环境局】【样张问题】预览和编辑效果不一致问题",
+    "customer": "哈派",
+    "problem": "大佬，这个问题研发已经修好了，目前在还在准备排期带出",
+    "solution": "大佬，这个问题研发已经修好了，目前在还在准备排期带出",
+    "has_solution": true,
+    "message_count": 7
+  },
+  {
+    "ticket_id": "2026022801040",
+    "chat_name": "2026022801040【国网电科院】电力科学院单点登录问题",
+    "customer": "国网电科院",
+    "problem": "云文档被下线后，再次单点登录后，state概率性重复问题  大佬，这个问题客户那边近期还有反馈吗？",
+    "solution": "已跟客户沟通，明文的userid的风险也同步给了客户。可以准备生产的插件包了",
+    "has_solution": true,
+    "message_count": 34
+  },
+  {
+    "ticket_id": "2026022800536",
+    "chat_name": "2026022800536【华泰证券】历史版本回滚不了",
+    "customer": "华泰证券",
+    "problem": "出现了相同的问题，中林大佬那边在修复",
+    "solution": "出现了相同的问题，中林大佬那边在修复",
+    "has_solution": true,
+    "message_count": 37
+  },
+  {
+    "ticket_id": "2026022801884",
+    "chat_name": "2026022801884【致同】V6升V7演练环境，轻文档附件有...",
+    "customer": "致同",
+    "problem": "sql，好像有点问题，重新导入下V6的file_attachment表，然后执行单模块迁移，再执行这个sql\nUPDATE file_attachment fa\nJOIN (\n    SELECT sha1, MIN(id) AS min_id\n    FROM file_attachment\n    GROUP BY sha1\n) g ON fa.sha1 = g.sha1\nJOIN file_attachment f2 ON f2.id = g.min_id\nSET fa.store_key = f2.store_key;",
+    "solution": "v6数据重新导入一下，然后单模块重新迁移试试",
+    "has_solution": true,
+    "message_count": 37
+  },
+  {
+    "ticket_id": "2026022800427",
+    "chat_name": "2026022800427【国元农保】【文档中台】集成应用在线编辑...",
+    "customer": "国元农保",
+    "problem": "高老师，这个问题有进展么",
+    "solution": "可以在日志里面看下，不一定有",
+    "has_solution": true,
+    "message_count": 44
+  },
+  {
+    "ticket_id": "2026022801494",
+    "chat_name": "2026022801494【重庆市数字化城市运行治理中心】【文档中...",
+    "customer": "重庆市数字化城市运行治理中心",
+    "problem": "问题搞混了吧，这个群是清理的问题",
+    "solution": "不是涉及存储迁移吗？ 不重要客户的意思可以考虑不要",
+    "has_solution": true,
+    "message_count": 30
+  },
+  {
+    "ticket_id": "2026022800935",
+    "chat_name": "2026022800935用户反馈文档设置了截断换行模式，第二天就...",
+    "customer": "",
+    "problem": "大佬、这个配置是专门修这个问题得么、如果开了关联影响是否其他得呀？",
+    "solution": "单子在研发 那，大佬可以结了哈",
+    "has_solution": true,
+    "message_count": 43
+  },
+  {
+    "ticket_id": "2026022801046",
+    "chat_name": "2026022801046浦发V5文档中台无纸化应用pad端在线预览问题",
+    "customer": "",
+    "problem": "这个问题需要排期优化",
+    "solution": "大佬，这个预计哪个版本修复了，后面也告知下我哈",
+    "has_solution": true,
+    "message_count": 44
+  },
+  {
+    "ticket_id": "2026022801466",
+    "chat_name": "2026022801466【佛山政数局】【文档中心】用户授权第一次...",
+    "customer": "佛山政数局",
+    "problem": "http://10.2.138.42/micsweb/sys/login，系统后台也无法登录，",
+    "solution": "大佬，服务商验证ok了， 测试环境单点登录和开放平台用户授权都正常，是不是可以生产环境操作了",
+    "has_solution": true,
+    "message_count": 35
+  },
+  {
+    "ticket_id": "2026022800891",
+    "chat_name": "2026022800891云文档所有权转让—权限割裂问题",
+    "customer": "",
+    "problem": "大佬，辛苦帮忙确认一下这个问题",
+    "solution": "目前修复到了常规版本V7-0326   但是还没进行验证\n理论上V7-0326带出",
+    "has_solution": true,
+    "message_count": 19
+  },
+  {
+    "ticket_id": "2026022800234",
+    "chat_name": "2026022800234【国航】多维表引用别的多维表作为数据源，...",
+    "customer": "国航",
+    "problem": "不好意思在处理别的服务器上问题，下午吧[递茶]",
+    "solution": "上午要开会，下午可以吗，大概两三点钟",
+    "has_solution": true,
+    "message_count": 37
+  },
+  {
+    "ticket_id": "2026022800896",
+    "chat_name": "2026022800896【建行】配置清理存储，pdf和图片缓存未下降",
+    "customer": "建行",
+    "problem": "大佬们，开启debug是调整这个参数吧",
+    "solution": "肯定成功了，因为已经看见存储下降了",
+    "has_solution": true,
+    "message_count": 40
+  },
+  {
+    "ticket_id": "2026022800583",
+    "chat_name": "2026022800583【v7华为】EDM-生产环境-2506b-word在线编辑通过修订",
+    "customer": "v7华为",
+    "problem": "#2319614 【政企反馈】【Web wps】【公网复现】特定样张 在线编辑接受修订记录无反应\nhttps://ones.dig.kso.net/project/#/team/MuZLKcYe/task/KwSL2LyXDArGj7nG\n大佬这个是这个问题的bug单",
+    "solution": "大佬，辛苦看看，这个问题什么时候修复",
+    "has_solution": true,
+    "message_count": 42
+  },
+  {
+    "ticket_id": "2026022801530",
+    "chat_name": "2026022801530【私有云】【X86】【V7.0.2511】【宇量昇】智能文档导出pdf，导",
+    "customer": "私有云",
+    "problem": "你在 woa 里面，然后输入一下有问题的 emjio 你看一下能显示出来吗",
+    "solution": "可以，我从文档里复制过来的...直接输入也有",
+    "has_solution": true,
+    "message_count": 31
+  },
+  {
+    "ticket_id": "2026022800939",
+    "chat_name": "2026022800939【江西银行】【AI智能问答】首次打开智能...",
+    "customer": "江西银行",
+    "problem": "这是老版本的bug， 看着界面有选中的团队，实际没有选中团队，所以发送不了也没触发获取推荐问题",
+    "solution": "好的，我在2512版本上测试是正常的，那就是要升级解决了",
+    "has_solution": true,
+    "message_count": 42
+  },
+  {
+    "ticket_id": "2026022800379",
+    "chat_name": "2026022800379【东莞银行】【文档中台】在线编辑批注内容重复",
+    "customer": "东莞银行",
+    "problem": "或者你们能否访问生产环境复现问题得时候，打开控制台录个视频什么看看",
+    "solution": "测试环境已经升级到2512版本的了",
+    "has_solution": true,
+    "message_count": 38
+  },
+  {
+    "ticket_id": "2026022800231",
+    "chat_name": "2026022800231【国航】国航云文档需要查各个部门的激活数...",
+    "customer": "国航",
+    "problem": "2026022800231【国航】国航云文档需要查各个部门的激活数...",
+    "solution": "禁用前是激活状态  统计时需要算已激活人数吗",
+    "has_solution": true,
+    "message_count": 44
+  },
+  {
+    "ticket_id": "2026022800361",
+    "chat_name": "2026022800361【大疆】【v7.2412a】获取文件下载...",
+    "customer": "大疆",
+    "problem": "哥 这两个问题帮忙看看哈",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 40
+  },
+  {
+    "ticket_id": "2026022801642",
+    "chat_name": "2026022801642【太平金科】【文档中心】OpenSSL的...",
+    "customer": "太平金科",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026022801642\n工单标题: 【太平金科】【文档中心】OpenSSL的安全漏洞CVE-2025-69421和CVE-2025-69420\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2027674644852535297\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "openssl version\n执行这个命令就可以看版本了",
+    "has_solution": true,
+    "message_count": 12
+  },
+  {
+    "ticket_id": "2026022801481",
+    "chat_name": "2026022801481【新华三】【文档中心开发平台】接口一中“...",
+    "customer": "新华三",
+    "problem": "您今天有时间吗? 客户想会议和您聊下这个问题",
+    "solution": "ACH工单沟通群创建成功\n工单编号: 2026022801481\n工单标题: 【新华三】【文档中心开发平台】接口一中“注册文件扩展属性”添加的属性，可以在“获取文件信息”中获得吗？\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2027666933335224322\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "has_solution": true,
+    "message_count": 35
+  },
+  {
+    "ticket_id": "2026022801257",
+    "chat_name": "2026022801257【海尔智家】云文档历史版本预览没反应",
+    "customer": "海尔智家",
+    "problem": "所以我说是集成的问题，他们这个是二开做的文档集成hwork吧",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 19
+  },
+  {
+    "ticket_id": "2026022801118",
+    "chat_name": "2026022801118【京东方】【云文档】【v7.2601】客...",
+    "customer": "京东方",
+    "problem": "额，那就说明是v5中台的筛选器有异常，当时客户在v5中台做完以后就有问题。",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 31
+  },
+  {
+    "ticket_id": "2026022801867",
+    "chat_name": "2026022801867【中办通信局】【文档中台】在线编辑exc...",
+    "customer": "中办通信局",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026022801867\n工单标题: 【中办通信局】【文档中台】在线编辑excel文件时提示：您没有获得授权或者登陆超时\n工单详情链接: https://cst-ach.kso.net/workOrderList/workOrderList/info?type=info&id=2027685198447013890\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 1
+  },
+  {
+    "ticket_id": "2026022800490",
+    "chat_name": "2026022800490【交通银行】某份文件占用节点内存16G，...",
+    "customer": "交通银行",
+    "problem": "大佬，目前还没强行关闭进程，客户要求查一下异常，帮忙看下呗，看看日志上能不能看出什么信息",
+    "solution": "哦哦  好的，   那王老师确定好时间给我说就行了 我来处理",
+    "has_solution": true,
+    "message_count": 36
+  },
+  {
+    "ticket_id": "2026022800672",
+    "chat_name": "2026022800672【鹰角网络-文档中心】用户调用错误提示接...",
+    "customer": "鹰角网络-文档中心",
+    "problem": "飞机刚落地，第一个问题客户在处理啦，第二个我和客户说下，谢谢大佬",
+    "solution": "飞机刚落地，第一个问题客户在处理啦，第二个我和客户说下，谢谢大佬",
+    "has_solution": true,
+    "message_count": 6
+  },
+  {
+    "ticket_id": "2026022801610",
+    "chat_name": "2026022801610【世纪超星】文档中台咨询：前端集成jss...",
+    "customer": "世纪超星",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026022801610\n工单标题: 【世纪超星】文档中台咨询：前端集成jssdk是否支持修改ppt文件内备注\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2027673184899198978\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "我知识库中找了下关于PPT演示的前端方法，没有看见这种[笑哭]",
+    "has_solution": true,
+    "message_count": 4
+  },
+  {
+    "ticket_id": "2026022801421",
+    "chat_name": "2026022801421【五矿集团】【文档中心V7】某些账号没在...",
+    "customer": "五矿集团",
+    "problem": "若符合游离用户 可以参考该问题操作删除",
+    "solution": "先把用户说2个账号处理了，剩下的下周找时间处理",
+    "has_solution": true,
+    "message_count": 32
+  },
+  {
+    "ticket_id": "2026022800601",
+    "chat_name": "2026022800601【新华三】【文档中心开发平台】云文档上传...",
+    "customer": "新华三",
+    "problem": "先让用户把这个导进去  改下环境变量里信息 然后再去调上传 若还有问题 下午在约远程哈。",
+    "solution": "用我发的这脚本和环境变量来吧。  应该就可以了",
+    "has_solution": true,
+    "message_count": 13
+  },
+  {
+    "ticket_id": "2026022801436",
+    "chat_name": "2026022801436【私有云】【XC】【V7.0.2507】...",
+    "customer": "私有云",
+    "problem": "老版本bug，要升级版本解决，2512版本时正常的，2506版本也是异常的",
+    "solution": "升级到2512或之后的版本都可以了",
+    "has_solution": true,
+    "message_count": 10
+  },
+  {
+    "ticket_id": "2026022801558",
+    "chat_name": "2026022801558【最高人民检察院】【文档中台】书签插入值、增删表格",
+    "customer": "最高人民检察院",
+    "problem": "ACH工单沟通群创建成功\n工单编号: 2026022801558\n工单标题: 【最高人民检察院】【文档中台】书签插入值、增删表格\n工单详情链接: https://wpsservice-sys.wps.cn/workOrderList/workOrderList/info?type=info&id=2027670710553440258\n帮忙把工单链接消息群置顶,方便大家后续对接问题~",
+    "solution": "",
+    "has_solution": false,
+    "message_count": 1
+  },
+  {
+    "ticket_id": "2026022801154",
+    "chat_name": "2026022801154【重庆市农业科学院】预览pdf和预览word文件时，水印显示位置不一致",
+    "customer": "重庆市农业科学院",
+    "problem": "一样的  通过file/info加水印 无法保证不同类型文件 效果一样的",
+    "solution": "我提交的工单里面有样张，demo可以复现",
+    "has_solution": true,
+    "message_count": 12
+  },
+  {
+    "ticket_id": "2026020202067",
+    "customer": "青海油田",
+    "chat_name": "2026020202067【青海油田】客户第三方大模型对接问题",
+    "chat_id": "81438291",
+    "problem_title": "2026020202067【青海油田】客户第三方大模型对接问题",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 37
+  },
+  {
+    "ticket_id": "2026020301690",
+    "customer": "贵政通文档中台",
+    "chat_name": "2026020301690【贵政通文档中台】移动端H5对接中台编辑...",
+    "chat_id": "81481386",
+    "problem_title": "2026020301690【贵政通文档中台】移动端H5对接中台编辑...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 33,
+    "text_message_count": 26
+  },
+  {
+    "ticket_id": "2026022800848",
+    "customer": "生态",
+    "chat_name": "2026022800848【生态】【百特云】【成都西南民航通信网络有限公司】zip包预览失败",
+    "chat_id": "82685761",
+    "problem_title": "2026022800848【生态】【百特云】【成都西南民航通信网络有限公司】zip包预览失败",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 44
+  },
+  {
+    "ticket_id": "2026020201042",
+    "customer": "民航局信息中心",
+    "chat_name": "2026020201042【民航局信息中心】【文档中台V7】doc...",
+    "chat_id": "81393953",
+    "problem_title": "2026020201042【民航局信息中心】【文档中台V7】doc...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 43
+  },
+  {
+    "ticket_id": "2026021001839",
+    "customer": "",
+    "chat_name": "2026021001839中山审计局智能公文公文素材、公文套红异常",
+    "chat_id": "82098294",
+    "problem_title": "2026021001839中山审计局智能公文公文素材、公文套红异常",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 29,
+    "text_message_count": 23
+  },
+  {
+    "ticket_id": "2026021300623",
+    "customer": "高优",
+    "chat_name": "【高优】2026021300623【红塔银行】账号同步插件报【数据库链接失败】",
+    "chat_id": "82221157",
+    "problem_title": "【高优】2026021300623【红塔银行】账号同步插件报【数据库链接失败】",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 31
+  },
+  {
+    "ticket_id": "2026020201175",
+    "customer": "",
+    "chat_name": "2026020201175Excel表格转PDF跑版，内容被遮盖",
+    "chat_id": "81396801",
+    "problem_title": "2026020201175Excel表格转PDF跑版，内容被遮盖",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 15,
+    "text_message_count": 13
+  },
+  {
+    "ticket_id": "2026020300306",
+    "customer": "黑龙江机关事务管理局",
+    "chat_name": "2026020300306【黑龙江机关事务管理局】文档中台极速预览...",
+    "chat_id": "81454352",
+    "problem_title": "2026020300306【黑龙江机关事务管理局】文档中台极速预览...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 42
+  },
+  {
+    "ticket_id": "2026021000351",
+    "customer": "上交所",
+    "chat_name": "2026021000351【上交所】文件名：600841_2025...",
+    "chat_id": "82034115",
+    "problem_title": "2026021000351【上交所】文件名：600841_2025...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 31,
+    "text_message_count": 21
+  },
+  {
+    "ticket_id": "2026020201272",
+    "customer": "",
+    "chat_name": "2026020201272华为-onebox-230608-ctr...",
+    "chat_id": "81397847",
+    "problem_title": "2026020201272华为-onebox-230608-ctr...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 18,
+    "text_message_count": 16
+  },
+  {
+    "ticket_id": "2026020200366",
+    "customer": "招商证券",
+    "chat_name": "2026020200366【招商证券】AI创作素材-文档上传失败",
+    "chat_id": "81375155",
+    "problem_title": "2026020200366【招商证券】AI创作素材-文档上传失败",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 35
+  },
+  {
+    "ticket_id": "2026020301632",
+    "customer": "",
+    "chat_name": "2026020301632太保文档中台问题",
+    "chat_id": "81493950",
+    "problem_title": "2026020301632太保文档中台问题",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 23,
+    "text_message_count": 22
+  },
+  {
+    "ticket_id": "2026020302144",
+    "customer": "湖北省人民政府办公厅",
+    "chat_name": "2026020302144【湖北省人民政府办公厅】文档中台编辑界面遮挡正文",
+    "chat_id": "81533306",
+    "problem_title": "2026020302144【湖北省人民政府办公厅】文档中台编辑界面遮挡正文",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 45
+  },
+  {
+    "ticket_id": "2026020302072",
+    "customer": "",
+    "chat_name": "2026020302072-用户咨询是否可以实现外部跳转到在线预览页面的指定位置",
+    "chat_id": "81494675",
+    "problem_title": "2026020302072-用户咨询是否可以实现外部跳转到在线预览页面的指定位置",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 23,
+    "text_message_count": 16
+  },
+  {
+    "ticket_id": "2026020301947",
+    "customer": "【华润",
+    "chat_name": "2026020301947【【华润】【私有云V7_8月】特定账号搜索不到",
+    "chat_id": "81493524",
+    "problem_title": "2026020301947【【华润】【私有云V7_8月】特定账号搜索不到",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 34
+  },
+  {
+    "ticket_id": "2026020302045",
+    "customer": "云南省纪委",
+    "chat_name": "2026020302045【云南省纪委】【文档中台】在线编辑正文打开报错",
+    "chat_id": "81494295",
+    "problem_title": "2026020302045【云南省纪委】【文档中台】在线编辑正文打开报错",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 10,
+    "text_message_count": 9
+  },
+  {
+    "ticket_id": "2026020201428",
+    "customer": "赣政通3.0项目",
+    "chat_name": "2026020201428【赣政通3.0项目】文档中心和赣政通完成...",
+    "chat_id": "81472626",
+    "problem_title": "2026020201428【赣政通3.0项目】文档中心和赣政通完成...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 22,
+    "text_message_count": 17
+  },
+  {
+    "ticket_id": "2026021201157",
+    "customer": "2026021201157",
+    "chat_name": "【2026021201157】【中台】厦门总工会文件预览图片显示不出来，下载下来显示正常",
+    "chat_id": "82171107",
+    "problem_title": "【2026021201157】【中台】厦门总工会文件预览图片显示不出来，下载下来显示正常",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 45
+  },
+  {
+    "ticket_id": "2026020601552",
+    "customer": "太平金融",
+    "chat_name": "2026020601552【太平金融】【文档中台】依次调用前端接口...",
+    "chat_id": "81772063",
+    "problem_title": "2026020601552【太平金融】【文档中台】依次调用前端接口...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 41
+  },
+  {
+    "ticket_id": "2026020300818",
+    "customer": "",
+    "chat_name": "2026020300818佛山市政数局",
+    "chat_id": "81459056",
+    "problem_title": "2026020300818佛山市政数局",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 45
+  },
+  {
+    "ticket_id": "2026020300781",
+    "customer": "齐鲁制药",
+    "chat_name": "2026020300781【齐鲁制药】【S15】Agentspac...",
+    "chat_id": "81534993",
+    "problem_title": "2026020300781【齐鲁制药】【S15】Agentspac...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 7,
+    "text_message_count": 4
+  },
+  {
+    "ticket_id": "2026020302126",
+    "customer": "",
+    "chat_name": "2026020302126华为-EDM-2506b-文档中台wor...",
+    "chat_id": "81518334",
+    "problem_title": "2026020302126华为-EDM-2506b-文档中台wor...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 21,
+    "text_message_count": 17
+  },
+  {
+    "ticket_id": "2026020300583",
+    "customer": "大唐集团",
+    "chat_name": "2026020300583【大唐集团】特殊样张word显示跑板",
+    "chat_id": "81472941",
+    "problem_title": "2026020300583【大唐集团】特殊样张word显示跑板",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 32,
+    "text_message_count": 24
+  },
+  {
+    "ticket_id": "2026020302192",
+    "customer": "海尔智家",
+    "chat_name": "2026020302192【海尔智家】智能文档内容显示不出来",
+    "chat_id": "81517820",
+    "problem_title": "2026020302192【海尔智家】智能文档内容显示不出来",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 41
+  },
+  {
+    "ticket_id": "2026021000228",
+    "customer": "天津能源",
+    "chat_name": "2026021000228【天津能源】客户的某个文档打不开500",
+    "chat_id": "82033086",
+    "problem_title": "2026021000228【天津能源】客户的某个文档打不开500",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 44,
+    "text_message_count": 39
+  },
+  {
+    "ticket_id": "2026020400563",
+    "customer": "卡点",
+    "chat_name": "【卡点】2026020400563【最高法】【中台】在线编辑屏幕闪烁变白",
+    "chat_id": "78868771",
+    "problem_title": "【卡点】2026020400563【最高法】【中台】在线编辑屏幕闪烁变白",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 44
+  },
+  {
+    "ticket_id": "2026022800219",
+    "customer": "国寿投资",
+    "chat_name": "2026022800219【国寿投资】智能公文的功能按钮置灰需要确认原因",
+    "chat_id": "82666173",
+    "problem_title": "2026022800219【国寿投资】智能公文的功能按钮置灰需要确认原因",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 39,
+    "text_message_count": 32
+  },
+  {
+    "ticket_id": "2026020201903",
+    "customer": "青海电信",
+    "chat_name": "2026020201903【青海电信】【文档中台v5】查询授权到期时间",
+    "chat_id": "81414971",
+    "problem_title": "2026020201903【青海电信】【文档中台v5】查询授权到期时间",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 44
+  },
+  {
+    "ticket_id": "2026020301592",
+    "customer": "中台对接",
+    "chat_name": "2026020301592【中台对接】长春市政长通项目文档中台与钉钉对接",
+    "chat_id": "81480243",
+    "problem_title": "2026020301592【中台对接】长春市政长通项目文档中台与钉钉对接",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 18,
+    "text_message_count": 17
+  },
+  {
+    "ticket_id": "2026022800259",
+    "customer": "完美世界",
+    "chat_name": "2026022800259【完美世界】【v7协作-250814】智...",
+    "chat_id": "82665945",
+    "problem_title": "2026022800259【完美世界】【v7协作-250814】智...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 13,
+    "text_message_count": 11
+  },
+  {
+    "ticket_id": "2026020200137",
+    "customer": "航天科工数字公司",
+    "chat_name": "2026020200137【航天科工数字公司】私有云文档中心V7，...",
+    "chat_id": "81359709",
+    "problem_title": "2026020200137【航天科工数字公司】私有云文档中心V7，...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 11,
+    "text_message_count": 10
+  },
+  {
+    "ticket_id": "2026020301896",
+    "customer": "中广核陆丰核电",
+    "chat_name": "2026020301896【中广核陆丰核电】【客户端】ai伴写功能...",
+    "chat_id": "81763676",
+    "problem_title": "2026020301896【中广核陆丰核电】【客户端】ai伴写功能...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 36
+  },
+  {
+    "ticket_id": "2026020301355",
+    "customer": "华能集团",
+    "chat_name": "2026020301355【华能集团】AI中台 demo无法访问，...",
+    "chat_id": "81477811",
+    "problem_title": "2026020301355【华能集团】AI中台 demo无法访问，...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 39
+  },
+  {
+    "ticket_id": "2026020901855",
+    "customer": "",
+    "chat_name": "京东-2026020901855用户反馈合并工作表提示待合并表格包含内容...",
+    "chat_id": "82009677",
+    "problem_title": "京东-2026020901855用户反馈合并工作表提示待合并表格包含内容...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 46
+  },
+  {
+    "ticket_id": "2026022800253",
+    "customer": "中邮人寿",
+    "chat_name": "2026022800253【中邮人寿】【云文档v7】pc端与移动端...",
+    "chat_id": "82665694",
+    "problem_title": "2026022800253【中邮人寿】【云文档v7】pc端与移动端...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 13,
+    "text_message_count": 8
+  },
+  {
+    "ticket_id": "2026020301888",
+    "customer": "中环领先",
+    "chat_name": "2026020301888【中环领先】【文档中台V7】文档预览时可...",
+    "chat_id": "81493179",
+    "problem_title": "2026020301888【中环领先】【文档中台V7】文档预览时可...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 42
+  },
+  {
+    "ticket_id": "2026020202049",
+    "customer": "生态",
+    "chat_name": "2026020202049【生态】【哈派】【上海杨浦商贸（集团）有限公司】word转pdf失败",
+    "chat_id": "81454030",
+    "problem_title": "2026020202049【生态】【哈派】【上海杨浦商贸（集团）有限公司】word转pdf失败",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 15,
+    "text_message_count": 11
+  },
+  {
+    "ticket_id": "2026020400199",
+    "customer": "国网江苏",
+    "chat_name": "2026020400199【国网江苏】表格AI数据分析报错",
+    "chat_id": "81519884",
+    "problem_title": "2026020400199【国网江苏】表格AI数据分析报错",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 33
+  },
+  {
+    "ticket_id": "2026020301164",
+    "customer": "",
+    "chat_name": "2026020301164管理后台云文档的使用空间统计和实际差异太大",
+    "chat_id": "81474754",
+    "problem_title": "2026020301164管理后台云文档的使用空间统计和实际差异太大",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 45
+  },
+  {
+    "ticket_id": "2026020301653",
+    "customer": "台铃",
+    "chat_name": "2026020301653【台铃】执行了更新部门第三方id，接口返...",
+    "chat_id": "81480727",
+    "problem_title": "2026020301653【台铃】执行了更新部门第三方id，接口返...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 40
+  },
+  {
+    "ticket_id": "2026022800276",
+    "customer": "泰康保险",
+    "chat_name": "2026022800276【泰康保险】v7文档中台使用文档合并失败...",
+    "chat_id": "82666050",
+    "problem_title": "2026022800276【泰康保险】v7文档中台使用文档合并失败...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 44
+  },
+  {
+    "ticket_id": "2026020202059",
+    "customer": "广东电网",
+    "chat_name": "2026020202059【广东电网】V7文档中心：浏览器访问域名...",
+    "chat_id": "81437452",
+    "problem_title": "2026020202059【广东电网】V7文档中心：浏览器访问域名...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 37
+  },
+  {
+    "ticket_id": "2026020301890",
+    "customer": "航天科技",
+    "chat_name": "2026020301890【航天科技】【文档中台】文档中台文件打印...",
+    "chat_id": "81493798",
+    "problem_title": "2026020301890【航天科技】【文档中台】文档中台文件打印...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 15,
+    "text_message_count": 11
+  },
+  {
+    "ticket_id": "2026020500598",
+    "customer": "",
+    "chat_name": "GD-PC-2026-02-020057/2026020500598 上海移动打开文件报错服务器异常",
+    "chat_id": "81378560",
+    "problem_title": "GD-PC-2026-02-020057/2026020500598 上海移动打开文件报错服务器异常",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 40
+  },
+  {
+    "ticket_id": "2026020201290",
+    "customer": "",
+    "chat_name": "2026020201290线上表格可阅读权限下，筛选后进行复制粘贴...",
+    "chat_id": "81399606",
+    "problem_title": "2026020201290线上表格可阅读权限下，筛选后进行复制粘贴...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 33,
+    "text_message_count": 21
+  },
+  {
+    "ticket_id": "2026020201785",
+    "customer": "国网天津",
+    "chat_name": "2026020201785【国网天津】【文档中心v7】【客户反馈文...",
+    "chat_id": "81414176",
+    "problem_title": "2026020201785【国网天津】【文档中心v7】【客户反馈文...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 39
+  },
+  {
+    "ticket_id": "2026020201249",
+    "customer": "平煤神马集团",
+    "chat_name": "2026020201249【平煤神马集团】-【私有化文档中台】预览...",
+    "chat_id": "81399717",
+    "problem_title": "2026020201249【平煤神马集团】-【私有化文档中台】预览...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 26,
+    "text_message_count": 19
+  },
+  {
+    "ticket_id": "2026022800570",
+    "customer": "深交所",
+    "chat_name": "2026022800570【深交所】V6文档中心 开启了安全扫描后...",
+    "chat_id": "82670541",
+    "problem_title": "2026022800570【深交所】V6文档中心 开启了安全扫描后...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 18,
+    "text_message_count": 14
+  },
+  {
+    "ticket_id": "2026022800612",
+    "customer": "东莞银行",
+    "chat_name": "2026022800612【东莞银行】【文档中心】文档中心2405...",
+    "chat_id": "82684385",
+    "problem_title": "2026022800612【东莞银行】【文档中心】文档中心2405...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 10,
+    "text_message_count": 5
+  },
+  {
+    "ticket_id": "2026022800002",
+    "customer": "",
+    "chat_name": "2026022800002测试",
+    "chat_id": "82647622",
+    "problem_title": "2026022800002测试",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 1,
+    "text_message_count": 1
+  },
+  {
+    "ticket_id": "2026020201173",
+    "customer": "完美世界",
+    "chat_name": "2026020201173【完美世界】【v7协作-250814】部...",
+    "chat_id": "81396680",
+    "problem_title": "2026020201173【完美世界】【v7协作-250814】部...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 49,
+    "text_message_count": 34
+  },
+  {
+    "ticket_id": "2026020301442",
+    "customer": "平陆运河集团",
+    "chat_name": "2026020301442【平陆运河集团】特定移动设备打开文档正文显示空白",
+    "chat_id": "81479919",
+    "problem_title": "2026020301442【平陆运河集团】特定移动设备打开文档正文显示空白",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 36,
+    "text_message_count": 28
+  },
+  {
+    "ticket_id": "2026020200265",
+    "customer": "小米玄戒",
+    "chat_name": "2026020200265【小米玄戒】-v7-管理后台是否有办法设...",
+    "chat_id": "81374692",
+    "problem_title": "2026020200265【小米玄戒】-v7-管理后台是否有办法设...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 32
+  },
+  {
+    "ticket_id": "2026021200612",
+    "customer": "",
+    "chat_name": "京东-2026021200612- wpsweb库用户反馈的慢SQL 需要优化一下",
+    "chat_id": "82171593",
+    "problem_title": "京东-2026021200612- wpsweb库用户反馈的慢SQL 需要优化一下",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 23,
+    "text_message_count": 19
+  },
+  {
+    "ticket_id": "2026021001736",
+    "customer": "生态",
+    "chat_name": "2026021001736【生态】【蓝凌】【明阳智慧能源集团股份公司】vsd文件在中台预览跑版",
+    "chat_id": "82098734",
+    "problem_title": "2026021001736【生态】【蓝凌】【明阳智慧能源集团股份公司】vsd文件在中台预览跑版",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 13,
+    "text_message_count": 10
+  },
+  {
+    "ticket_id": "2026020201651",
+    "customer": "宁波银行",
+    "chat_name": "2026020201651【宁波银行】【2512】部分表格文档协作...",
+    "chat_id": "81412741",
+    "problem_title": "2026020201651【宁波银行】【2512】部分表格文档协作...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 39
+  },
+  {
+    "ticket_id": "2026020501572",
+    "customer": "招商证券",
+    "chat_name": "2026020501572【招商证券】AI批量生成返回数据异常",
+    "chat_id": "81743221",
+    "problem_title": "2026020501572【招商证券】AI批量生成返回数据异常",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 39
+  },
+  {
+    "ticket_id": "2026020301615",
+    "customer": "海尔智家",
+    "chat_name": "2026020301615【海尔智家】客户反馈调用列举文件权限列表接口报错",
+    "chat_id": "81480287",
+    "problem_title": "2026020301615【海尔智家】客户反馈调用列举文件权限列表接口报错",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 45
+  },
+  {
+    "ticket_id": "2026020301401",
+    "customer": "生态",
+    "chat_name": "2026020301401【生态】【软航】特殊样张转pdf跑版",
+    "chat_id": "81479318",
+    "problem_title": "2026020301401【生态】【软航】特殊样张转pdf跑版",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 25,
+    "text_message_count": 17
+  },
+  {
+    "ticket_id": "2026020302179",
+    "customer": "浙江移动",
+    "chat_name": "2026020302179【浙江移动】【文档中心增强版】多维表格表...",
+    "chat_id": "81517772",
+    "problem_title": "2026020302179【浙江移动】【文档中心增强版】多维表格表...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 43,
+    "text_message_count": 36
+  },
+  {
+    "ticket_id": "2026020201800",
+    "customer": "湘办通",
+    "chat_name": "2026020201800【湘办通】文档中心，客户切换域名调用云文...",
+    "chat_id": "81414683",
+    "problem_title": "2026020201800【湘办通】文档中心，客户切换域名调用云文...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 41
+  },
+  {
+    "ticket_id": "2026022800920",
+    "customer": "",
+    "chat_name": "2026022800920WK机关—多维表自动化流程使用问题",
+    "chat_id": "82688656",
+    "problem_title": "2026022800920WK机关—多维表自动化流程使用问题",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 15,
+    "text_message_count": 11
+  },
+  {
+    "ticket_id": "2026022800316",
+    "customer": "台铃",
+    "chat_name": "2026022800316【台铃】【安集微电子】【WPS 365私...",
+    "chat_id": "82666586",
+    "problem_title": "2026022800316【台铃】【安集微电子】【WPS 365私...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 27,
+    "text_message_count": 20
+  },
+  {
+    "ticket_id": "2026022801380",
+    "customer": "",
+    "chat_name": "2026022801380雅安市人民代表大会中台预览出错",
+    "chat_id": "82691984",
+    "problem_title": "2026022801380雅安市人民代表大会中台预览出错",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 1,
+    "text_message_count": 1
+  },
+  {
+    "ticket_id": "2026020200223",
+    "customer": "环保集团",
+    "chat_name": "2026020200223【环保集团】word样张纵向会变成横向编辑页面异常",
+    "chat_id": "81372235",
+    "problem_title": "2026020200223【环保集团】word样张纵向会变成横向编辑页面异常",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 12,
+    "text_message_count": 9
+  },
+  {
+    "ticket_id": "2026020200748",
+    "customer": "东莞光茂",
+    "chat_name": "2026020200748【东莞光茂】【文档中台】在线预览表格未添...",
+    "chat_id": "81381767",
+    "problem_title": "2026020200748【东莞光茂】【文档中台】在线预览表格未添...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 15,
+    "text_message_count": 13
+  },
+  {
+    "ticket_id": "2026022800168",
+    "customer": "国电投",
+    "chat_name": "2026022800168【国电投】【云文档2504b】通过单点登...",
+    "chat_id": "82664253",
+    "problem_title": "2026022800168【国电投】【云文档2504b】通过单点登...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 15,
+    "text_message_count": 12
+  },
+  {
+    "ticket_id": "2026020300028",
+    "customer": "青浦数据局",
+    "chat_name": "2026020300028【青浦数据局】账号同步不支持修改手机号",
+    "chat_id": "81438262",
+    "problem_title": "2026020300028【青浦数据局】账号同步不支持修改手机号",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 38,
+    "text_message_count": 34
+  },
+  {
+    "ticket_id": "2026020201807",
+    "customer": "北京嗨动视觉",
+    "chat_name": "2026020201807【北京嗨动视觉】开放平台里的这个refr...",
+    "chat_id": "81413919",
+    "problem_title": "2026020201807【北京嗨动视觉】开放平台里的这个refr...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 40
+  },
+  {
+    "ticket_id": "2026020202111",
+    "customer": "",
+    "chat_name": "2026020202111[招商局][文档中台]pdf极速预览模式没法复制",
+    "chat_id": "81437039",
+    "problem_title": "2026020202111[招商局][文档中台]pdf极速预览模式没法复制",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 11,
+    "text_message_count": 10
+  },
+  {
+    "ticket_id": "2026022801140",
+    "customer": "最高人民检察院",
+    "chat_name": "2026022801140【最高人民检察院】【文档中台】对接报错4...",
+    "chat_id": "82688828",
+    "problem_title": "2026022801140【最高人民检察院】【文档中台】对接报错4...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 1,
+    "text_message_count": 1
+  },
+  {
+    "ticket_id": "2026020201981",
+    "customer": "江苏移动云文档",
+    "chat_name": "2026020201981【江苏移动云文档】云文档数据库是否存储用户敏感信息",
+    "chat_id": "81415389",
+    "problem_title": "2026020201981【江苏移动云文档】云文档数据库是否存储用户敏感信息",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 12,
+    "text_message_count": 11
+  },
+  {
+    "ticket_id": "2026020301873",
+    "customer": "中国联通",
+    "chat_name": "2026020301873【中国联通】【文档中心v7增强版】【高清...",
+    "chat_id": "81492829",
+    "problem_title": "2026020301873【中国联通】【文档中心v7增强版】【高清...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 38
+  },
+  {
+    "ticket_id": "2026020201299",
+    "customer": "",
+    "chat_name": "2026020201299曙光信息-接口问题咨询",
+    "chat_id": "81397846",
+    "problem_title": "2026020201299曙光信息-接口问题咨询",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 42
+  },
+  {
+    "ticket_id": "2026020301432",
+    "customer": "渤海钻探第三钻井公司",
+    "chat_name": "2026020301432【渤海钻探第三钻井公司】使用多维表实现审...",
+    "chat_id": "81493086",
+    "problem_title": "2026020301432【渤海钻探第三钻井公司】使用多维表实现审...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 21,
+    "text_message_count": 18
+  },
+  {
+    "ticket_id": "2026020300292",
+    "customer": "南航",
+    "chat_name": "2026020300292【南航】离线水印position参数不生效",
+    "chat_id": "81473621",
+    "problem_title": "2026020300292【南航】离线水印position参数不生效",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 35
+  },
+  {
+    "ticket_id": "2026020201002",
+    "customer": "南航",
+    "chat_name": "2026020201002【南航】咨询文档中心是否更新监听复制粘贴事件",
+    "chat_id": "81453892",
+    "problem_title": "2026020201002【南航】咨询文档中心是否更新监听复制粘贴事件",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 38
+  },
+  {
+    "ticket_id": "2026020300524",
+    "customer": "寒武纪",
+    "chat_name": "2026020300524【寒武纪】102研发内网环境-证书导入报错",
+    "chat_id": "81455441",
+    "problem_title": "2026020300524【寒武纪】102研发内网环境-证书导入报错",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 39
+  },
+  {
+    "ticket_id": "2026020200481",
+    "customer": "",
+    "chat_name": "2026020200481业务系统对接对接文档中台提示“500 I...",
+    "chat_id": "81375032",
+    "problem_title": "2026020200481业务系统对接对接文档中台提示“500 I...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 29,
+    "text_message_count": 24
+  },
+  {
+    "ticket_id": "2026020301282",
+    "customer": "雅江",
+    "chat_name": "2026020301282【雅江】【文档中台v7】【客户反馈文档中...",
+    "chat_id": "81476562",
+    "problem_title": "2026020301282【雅江】【文档中台v7】【客户反馈文档中...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 46
+  },
+  {
+    "ticket_id": "2026020201518",
+    "customer": "河北省政府",
+    "chat_name": "2026020201518【河北省政府】智能问答提问指定文档返回结果不全",
+    "chat_id": "81412360",
+    "problem_title": "2026020201518【河北省政府】智能问答提问指定文档返回结果不全",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 46
+  },
+  {
+    "ticket_id": "2026020301666",
+    "customer": "财达证券",
+    "chat_name": "2026020301666【财达证券】【dcv7.2504中台】p...",
+    "chat_id": "81480932",
+    "problem_title": "2026020301666【财达证券】【dcv7.2504中台】p...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 35,
+    "text_message_count": 32
+  },
+  {
+    "ticket_id": "2026021001180",
+    "customer": "",
+    "chat_name": "2026021001180智能问答-多发问答失败，报“网络开小差了...",
+    "chat_id": "82064976",
+    "problem_title": "2026021001180智能问答-多发问答失败，报“网络开小差了...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 38
+  },
+  {
+    "ticket_id": "2026020201679",
+    "customer": "太平金融",
+    "chat_name": "2026020201679【太平金融】【文档中台】特定样张设置限制...",
+    "chat_id": "81413786",
+    "problem_title": "2026020201679【太平金融】【文档中台】特定样张设置限制...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 45,
+    "text_message_count": 39
+  },
+  {
+    "ticket_id": "2026020301514",
+    "customer": "江西银行",
+    "chat_name": "2026020301514【江西银行】【文档中心】表单分享地址如何...",
+    "chat_id": "81481362",
+    "problem_title": "2026020301514【江西银行】【文档中心】表单分享地址如何...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 40,
+    "text_message_count": 29
+  },
+  {
+    "ticket_id": "2026020301936",
+    "customer": "生态",
+    "chat_name": "2026020301936【生态】【致远】【重庆日报】在中台多书签套用接口正文横向页套红后变竖向",
+    "chat_id": "81518211",
+    "problem_title": "2026020301936【生态】【致远】【重庆日报】在中台多书签套用接口正文横向页套红后变竖向",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 21,
+    "text_message_count": 14
+  },
+  {
+    "ticket_id": "2026021200185",
+    "customer": "紧急",
+    "chat_name": "【紧急】钉钉工作台文档中心文档跳转出app处理 2026021200185",
+    "chat_id": "82163527",
+    "problem_title": "【紧急】钉钉工作台文档中心文档跳转出app处理 2026021200185",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 44,
+    "text_message_count": 33
+  },
+  {
+    "ticket_id": "2026020201966",
+    "customer": "搜狐",
+    "chat_name": "2026020201966【搜狐】某用户文档无法编辑",
+    "chat_id": "81415101",
+    "problem_title": "2026020201966【搜狐】某用户文档无法编辑",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 41
+  },
+  {
+    "ticket_id": "2026021001579",
+    "customer": "poms排查单",
+    "chat_name": "2026021001579【poms排查单】【华润数字科技有限公司...",
+    "chat_id": "82097991",
+    "problem_title": "2026021001579【poms排查单】【华润数字科技有限公司...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 40
+  },
+  {
+    "ticket_id": "2026020201010",
+    "customer": "华润",
+    "chat_name": "2026020201010【华润】【文档中台】word文档出现部分...",
+    "chat_id": "81413550",
+    "problem_title": "2026020201010【华润】【文档中台】word文档出现部分...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 41
+  },
+  {
+    "ticket_id": "2026020300110",
+    "customer": "",
+    "chat_name": "2026020300110中国银联 文档中心 我的云文档新建文件夹...",
+    "chat_id": "81439334",
+    "problem_title": "2026020300110中国银联 文档中心 我的云文档新建文件夹...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 49,
+    "text_message_count": 45
+  },
+  {
+    "ticket_id": "2026020200908",
+    "customer": "人保集团",
+    "chat_name": "2026020200908【人保集团】管理后台设置敏感词功能页面空白",
+    "chat_id": "81381762",
+    "problem_title": "2026020200908【人保集团】管理后台设置敏感词功能页面空白",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 41,
+    "text_message_count": 31
+  },
+  {
+    "ticket_id": "2026020301884",
+    "customer": "宇量昇",
+    "chat_name": "2026020301884【宇量昇】【文档中心】【V7,11B】",
+    "chat_id": "81494453",
+    "problem_title": "2026020301884【宇量昇】【文档中心】【V7,11B】",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 38,
+    "text_message_count": 28
+  },
+  {
+    "ticket_id": "2026020301987",
+    "customer": "中石油测井",
+    "chat_name": "2026020301987【中石油测井】内存突然飙升，导致文件无法打开",
+    "chat_id": "81493888",
+    "problem_title": "2026020301987【中石油测井】内存突然飙升，导致文件无法打开",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 26,
+    "text_message_count": 22
+  },
+  {
+    "ticket_id": "2026020301245",
+    "customer": "三峡集团",
+    "chat_name": "2026020301245【三峡集团】-v7云文档-导入二开插件报错",
+    "chat_id": "81475766",
+    "problem_title": "2026020301245【三峡集团】-v7云文档-导入二开插件报错",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 41
+  },
+  {
+    "ticket_id": "2026020201640",
+    "customer": "航天科工惯性技术",
+    "chat_name": "2026020201640【航天科工惯性技术】多维表脚本问题",
+    "chat_id": "81412578",
+    "problem_title": "2026020201640【航天科工惯性技术】多维表脚本问题",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 27,
+    "text_message_count": 20
+  },
+  {
+    "ticket_id": "2026020301536",
+    "customer": "数字青海",
+    "chat_name": "2026020301536【数字青海】组织架构-人员信息维护，职务...",
+    "chat_id": "81479448",
+    "problem_title": "2026020301536【数字青海】组织架构-人员信息维护，职务...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 45
+  },
+  {
+    "ticket_id": "2026020301172",
+    "customer": "国寿海外",
+    "chat_name": "2026020301172【国寿海外】中台服务根据msg来过滤toast",
+    "chat_id": "81475818",
+    "problem_title": "2026020301172【国寿海外】中台服务根据msg来过滤toast",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 30,
+    "text_message_count": 27
+  },
+  {
+    "ticket_id": "2026020200598",
+    "customer": "申通地铁集团",
+    "chat_name": "2026020200598【申通地铁集团】客户端word模块二开能力确认",
+    "chat_id": "81376669",
+    "problem_title": "2026020200598【申通地铁集团】客户端word模块二开能力确认",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 37,
+    "text_message_count": 34
+  },
+  {
+    "ticket_id": "2026022800039",
+    "customer": "湛江政数局",
+    "chat_name": "2026022800039【湛江政数局】漏洞排查确认",
+    "chat_id": "82662580",
+    "problem_title": "2026022800039【湛江政数局】漏洞排查确认",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 10,
+    "text_message_count": 8
+  },
+  {
+    "ticket_id": "2026020200596",
+    "customer": "工银瑞信",
+    "chat_name": "2026020200596【工银瑞信】【文档中心】文件打开问题，出...",
+    "chat_id": "81396943",
+    "problem_title": "2026020200596【工银瑞信】【文档中心】文件打开问题，出...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 13,
+    "text_message_count": 8
+  },
+  {
+    "ticket_id": "2026020200475",
+    "customer": "一汽股份",
+    "chat_name": "2026020200475【一汽股份】中心生产-后台接口未授权但能调用成功",
+    "chat_id": "81397374",
+    "problem_title": "2026020200475【一汽股份】中心生产-后台接口未授权但能调用成功",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 43
+  },
+  {
+    "ticket_id": "2026020301926",
+    "customer": "上海市大数据中心",
+    "chat_name": "2026020301926【上海市大数据中心】咨询：中台sdk是否...",
+    "chat_id": "81494749",
+    "problem_title": "2026020301926【上海市大数据中心】咨询：中台sdk是否...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 7,
+    "text_message_count": 6
+  },
+  {
+    "ticket_id": "2026021100387",
+    "customer": "",
+    "chat_name": "政长通钉钉单点登录问题处理 2026021100387",
+    "chat_id": "82122172",
+    "problem_title": "政长通钉钉单点登录问题处理 2026021100387",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 44
+  },
+  {
+    "ticket_id": "2026022800469",
+    "customer": "奇安信",
+    "chat_name": "2026022800469【奇安信】-v7-多维表格本通过地上传按...",
+    "chat_id": "82669951",
+    "problem_title": "2026022800469【奇安信】-v7-多维表格本通过地上传按...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 12,
+    "text_message_count": 5
+  },
+  {
+    "ticket_id": "2026020201232",
+    "customer": "生态",
+    "chat_name": "2026020201232【生态】【金蝶云之家】【特殊样张】正文内容跑版",
+    "chat_id": "81438502",
+    "problem_title": "2026020201232【生态】【金蝶云之家】【特殊样张】正文内容跑版",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 8,
+    "text_message_count": 6
+  },
+  {
+    "ticket_id": "2026020200455",
+    "customer": "美的",
+    "chat_name": "2026020200455【美的】文档中心，ap文档执行jsapi报错",
+    "chat_id": "81376120",
+    "problem_title": "2026020200455【美的】文档中心，ap文档执行jsapi报错",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 38
+  },
+  {
+    "ticket_id": "2026020201022",
+    "customer": "京东",
+    "chat_name": "2026020201022【京东】生产指定多维表样张报错文档损坏打不开",
+    "chat_id": "81393929",
+    "problem_title": "2026020201022【京东】生产指定多维表样张报错文档损坏打不开",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 38
+  },
+  {
+    "ticket_id": "2026020300024",
+    "customer": "佛山政数局",
+    "chat_name": "2026020300024【佛山政数局】【文档中心对接】需要指导客...",
+    "chat_id": "81439167",
+    "problem_title": "2026020300024【佛山政数局】【文档中心对接】需要指导客...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 36,
+    "text_message_count": 27
+  },
+  {
+    "ticket_id": "2026020301146",
+    "customer": "璞华科技",
+    "chat_name": "2026020301146【璞华科技】在线预览的接口 后端接口测试...",
+    "chat_id": "81473961",
+    "problem_title": "2026020301146【璞华科技】在线预览的接口 后端接口测试...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 35,
+    "text_message_count": 29
+  },
+  {
+    "ticket_id": "2026020201423",
+    "customer": "中海油",
+    "chat_name": "2026020201423【中海油】【文档中台v7】【客户反馈文档...",
+    "chat_id": "81401038",
+    "problem_title": "2026020201423【中海油】【文档中台v7】【客户反馈文档...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 36
+  },
+  {
+    "ticket_id": "2026020200550",
+    "customer": "珠海市政数局",
+    "chat_name": "2026020200550【珠海市政数局】大纲成文时添加部分公文素...",
+    "chat_id": "81376094",
+    "problem_title": "2026020200550【珠海市政数局】大纲成文时添加部分公文素...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 42
+  },
+  {
+    "ticket_id": "2026022800983",
+    "customer": "新华三",
+    "chat_name": "2026022800983【新华三】【文档中心V7.0122】ht...",
+    "chat_id": "82686622",
+    "problem_title": "2026022800983【新华三】【文档中心V7.0122】ht...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 33,
+    "text_message_count": 32
+  },
+  {
+    "ticket_id": "2026020200410",
+    "customer": "工银瑞信",
+    "chat_name": "2026020200410【工银瑞信】【文档中心】告警日志排查，d...",
+    "chat_id": "81375679",
+    "problem_title": "2026020200410【工银瑞信】【文档中心】告警日志排查，d...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 41
+  },
+  {
+    "ticket_id": "2026020301693",
+    "customer": "",
+    "chat_name": "2026020301693奕斯伟-超管后台的文件操作日志是否有组合...",
+    "chat_id": "81481518",
+    "problem_title": "2026020301693奕斯伟-超管后台的文件操作日志是否有组合...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 11,
+    "text_message_count": 8
+  },
+  {
+    "ticket_id": "2026020301392",
+    "customer": "台铃",
+    "chat_name": "2026020301392【台铃】有个文件打开后报错文件不存在",
+    "chat_id": "81477749",
+    "problem_title": "2026020301392【台铃】有个文件打开后报错文件不存在",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 46
+  },
+  {
+    "ticket_id": "2026020200462",
+    "customer": "华为",
+    "chat_name": "2026020200462【华为】-EDM-生产环境-2506b-...",
+    "chat_id": "81393218",
+    "problem_title": "2026020200462【华为】-EDM-生产环境-2506b-...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 45
+  },
+  {
+    "ticket_id": "2026020202062",
+    "customer": "美的",
+    "chat_name": "2026020202062【美的】应用文档轻文档转word 电子表格导出失败",
+    "chat_id": "81455308",
+    "problem_title": "2026020202062【美的】应用文档轻文档转word 电子表格导出失败",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 40
+  },
+  {
+    "ticket_id": "2026022800129",
+    "customer": "紫金投资",
+    "chat_name": "2026022800129【紫金投资】协作中文档加密水印不生效",
+    "chat_id": "82664344",
+    "problem_title": "2026022800129【紫金投资】协作中文档加密水印不生效",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 9,
+    "text_message_count": 8
+  },
+  {
+    "ticket_id": "2026020601166",
+    "customer": "",
+    "chat_name": "京东-2026020601166-指定表格样张滑动页面显示异常",
+    "chat_id": "81766594",
+    "problem_title": "京东-2026020601166-指定表格样张滑动页面显示异常",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 38
+  },
+  {
+    "ticket_id": "2026020201959",
+    "customer": "历史任务书",
+    "chat_name": "2026020201959【历史任务书】【重庆三峡银行股份有限公司...",
+    "chat_id": "81452187",
+    "problem_title": "2026020201959【历史任务书】【重庆三峡银行股份有限公司...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 30,
+    "text_message_count": 28
+  },
+  {
+    "ticket_id": "2026021000323",
+    "customer": "上交所",
+    "chat_name": "2026021000323【上交所】文件名：600351_2025...",
+    "chat_id": "82033782",
+    "problem_title": "2026021000323【上交所】文件名：600351_2025...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 43,
+    "text_message_count": 34
+  },
+  {
+    "ticket_id": "2026020202100",
+    "customer": "容诚会所",
+    "chat_name": "2026020202100【容诚会所】私有化表格-协作-保护区域，...",
+    "chat_id": "81438283",
+    "problem_title": "2026020202100【容诚会所】私有化表格-协作-保护区域，...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 7,
+    "text_message_count": 5
+  },
+  {
+    "ticket_id": "2026020300341",
+    "customer": "百度网盘",
+    "chat_name": "2026020300341【百度网盘】-v7-用户weboffic...",
+    "chat_id": "81452995",
+    "problem_title": "2026020300341【百度网盘】-v7-用户weboffic...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 35,
+    "text_message_count": 29
+  },
+  {
+    "ticket_id": "2026020301210",
+    "customer": "中石油勘探院",
+    "chat_name": "2026020301210【中石油勘探院】调用officed接口转pdf失败",
+    "chat_id": "81475253",
+    "problem_title": "2026020301210【中石油勘探院】调用officed接口转pdf失败",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 46
+  },
+  {
+    "ticket_id": "2026020301437",
+    "customer": "招联金融",
+    "chat_name": "2026020301437【招联金融】【v7_20250925】v...",
+    "chat_id": "81478605",
+    "problem_title": "2026020301437【招联金融】【v7_20250925】v...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 8,
+    "text_message_count": 7
+  },
+  {
+    "ticket_id": "2026021000506",
+    "customer": "中邮人寿",
+    "chat_name": "2026021000506【中邮人寿】【文档中心】【AI】智能问答回复报错",
+    "chat_id": "82036152",
+    "problem_title": "2026021000506【中邮人寿】【文档中心】【AI】智能问答回复报错",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 42
+  },
+  {
+    "ticket_id": "2026020301641",
+    "customer": "立讯",
+    "chat_name": "2026020301641【立讯】Spring Framework...",
+    "chat_id": "81494017",
+    "problem_title": "2026020301641【立讯】Spring Framework...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 23,
+    "text_message_count": 19
+  },
+  {
+    "ticket_id": "2026020200115",
+    "customer": "完美世界",
+    "chat_name": "2026020200115【完美世界】kafka消息积压告警",
+    "chat_id": "81358768",
+    "problem_title": "2026020200115【完美世界】kafka消息积压告警",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 38
+  },
+  {
+    "ticket_id": "2026021001491",
+    "customer": "澳门行政公职局",
+    "chat_name": "2026021001491【澳门行政公职局】【ai 管理-模型管理...",
+    "chat_id": "82067959",
+    "problem_title": "2026021001491【澳门行政公职局】【ai 管理-模型管理...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 41
+  },
+  {
+    "ticket_id": "2026020300714",
+    "customer": "",
+    "chat_name": "2026020300714绿发-2512版本协作能否支持群里对接自...",
+    "chat_id": "81472892",
+    "problem_title": "2026020300714绿发-2512版本协作能否支持群里对接自...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 47,
+    "text_message_count": 37
+  },
+  {
+    "ticket_id": "2026021001153",
+    "customer": "中邮人寿",
+    "chat_name": "2026021001153【中邮人寿】【文档中心】【AI】2601...",
+    "chat_id": "82064475",
+    "problem_title": "2026021001153【中邮人寿】【文档中心】【AI】2601...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 40
+  },
+  {
+    "ticket_id": "2026020200384",
+    "customer": "兴业银行",
+    "chat_name": "2026020200384【兴业银行】文档中台，应用管理平台，应用...",
+    "chat_id": "81373718",
+    "problem_title": "2026020200384【兴业银行】文档中台，应用管理平台，应用...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 44
+  },
+  {
+    "ticket_id": "2026020201178",
+    "customer": "最高人民法院",
+    "chat_name": "2026020201178【最高人民法院】【中台】【v7.2506...",
+    "chat_id": "81396109",
+    "problem_title": "2026020201178【最高人民法院】【中台】【v7.2506...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 13,
+    "text_message_count": 12
+  },
+  {
+    "ticket_id": "2026022801103",
+    "customer": "国寿投资",
+    "chat_name": "2026022801103【国寿投资】WPS AI功能的智能问答功能不显示",
+    "chat_id": "82688641",
+    "problem_title": "2026022801103【国寿投资】WPS AI功能的智能问答功能不显示",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 10,
+    "text_message_count": 9
+  },
+  {
+    "ticket_id": "2026020301829",
+    "customer": "poms排查单",
+    "chat_name": "2026020301829【poms排查单】【工银瑞信基金管理有限...",
+    "chat_id": "81492579",
+    "problem_title": "2026020301829【poms排查单】【工银瑞信基金管理有限...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 30,
+    "text_message_count": 26
+  },
+  {
+    "ticket_id": "2026020201149",
+    "customer": "奇安信",
+    "chat_name": "2026020201149【奇安信】-v7-文件夹中的文档无法下载",
+    "chat_id": "81396768",
+    "problem_title": "2026020201149【奇安信】-v7-文件夹中的文档无法下载",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 32,
+    "text_message_count": 24
+  },
+  {
+    "ticket_id": "2026020201296",
+    "customer": "比亚迪",
+    "chat_name": "2026020201296【比亚迪】pdf在线预览的时候部分内容缺失",
+    "chat_id": "81399319",
+    "problem_title": "2026020201296【比亚迪】pdf在线预览的时候部分内容缺失",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 39,
+    "text_message_count": 28
+  },
+  {
+    "ticket_id": "2026020900356",
+    "customer": "中国石油国际勘探开发有限公司",
+    "chat_name": "2026020900356【中国石油国际勘探开发有限公司】【文档中...",
+    "chat_id": "81901124",
+    "problem_title": "2026020900356【中国石油国际勘探开发有限公司】【文档中...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 38,
+    "text_message_count": 31
+  },
+  {
+    "ticket_id": "2026020300646",
+    "customer": "招商永隆",
+    "chat_name": "2026020300646【招商永隆】【v4.7.2云文档】个人空...",
+    "chat_id": "81457248",
+    "problem_title": "2026020300646【招商永隆】【v4.7.2云文档】个人空...",
+    "problem_desc": "",
+    "solution": "",
+    "message_count": 50,
+    "text_message_count": 39
+  }
+]

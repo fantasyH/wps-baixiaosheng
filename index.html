@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>WPS百晓生</title>
+<style>
+/* ===== Design Tokens ===== */
+:root {
+  --primary: #1557b0;
+  --primary-hover: #1a67d4;
+  --primary-light: #e8f0fe;
+  --primary-50: rgba(21,87,176,0.08);
+  --surface: #ffffff;
+  --bg: #f8fafc;
+  --border: #e2e8f0;
+  --border-light: #f1f5f9;
+  --text-1: #0f172a;
+  --text-2: #475569;
+  --text-3: #94a3b8;
+  --green: #10b981;
+  --green-bg: rgba(16,185,129,0.08);
+  --orange: #f59e0b;
+  --orange-bg: rgba(245,158,11,0.08);
+  --red: #ef4444;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.08);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --ease: cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ===== Reset ===== */
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;font-size:14px;line-height:1.6;color:var(--text-1);background:var(--bg);height:100vh;display:flex;flex-direction:column;overflow:hidden;-webkit-font-smoothing:antialiased}
+
+/* ===== Header ===== */
+.hdr{background:linear-gradient(135deg,#1557b0 0%,#1e5cc9 50%,#2563eb 100%);color:#fff;padding:0 28px;height:56px;display:flex;align-items:center;gap:16px;box-shadow:0 1px 3px rgba(0,0,0,0.12);z-index:100;flex-shrink:0}
+.hdr-logo{width:36px;height:36px;background:rgba(255,255,255,0.15);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;backdrop-filter:blur(4px)}
+.hdr-info h1{font-size:16px;font-weight:700;margin:0;letter-spacing:-0.01em}.hdr-info p{font-size:12px;margin:1px 0 0;opacity:0.75;font-weight:400}
+.hdr-right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.pill{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:600;color:#fff;white-space:nowrap;transition:all .2s var(--ease)}
+.pill.ok{background:rgba(16,185,129,0.25)}.pill.warn{background:rgba(245,158,11,0.2)}.pill.off{background:rgba(255,255,255,0.12)}
+.auth-btn{display:inline-flex;align-items:center;gap:4px;color:#fff;text-decoration:none;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:600;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);cursor:pointer;transition:all .2s var(--ease);white-space:nowrap}
+.auth-btn svg{width:12px;height:12px;flex-shrink:0}
+.auth-btn:hover{background:rgba(255,255,255,0.22)}
+
+/* ===== Layout ===== */
+.wrap{display:flex;flex:1;overflow:hidden}
+
+/* ===== Sidebar ===== */
+.side{width:252px;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;flex-shrink:0}
+.side-hdr{padding:16px 18px;font-weight:700;font-size:13px;color:var(--text-2);text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid var(--border)}
+.side-list{flex:1;overflow-y:auto;padding:8px 10px}
+.skill-item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:var(--radius-sm);cursor:pointer;transition:all .15s var(--ease);font-size:13px}
+.skill-item:hover{background:var(--primary-light);transform:translateX(2px)}
+.skill-item .icon{width:32px;height:32px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px}
+.skill-item .icon.lead{background:rgba(59,130,246,0.1);color:#3b82f6}
+.skill-item .icon.sale{background:rgba(16,185,129,0.1);color:#10b981}
+.skill-item .icon.ops{background:rgba(245,158,11,0.1);color:#f59e0b}
+.skill-item .icon.doc{background:rgba(139,92,246,0.1);color:#8b5cf6}
+.skill-item .icon.fb{background:rgba(239,68,68,0.1);color:#ef4444}
+.skill-item .icon.bug{background:rgba(236,72,153,0.1);color:#ec4899}
+.skill-item .info{flex:1;min-width:0}
+.skill-item .name{font-weight:600;font-size:13px;color:var(--text-1)}
+.skill-item .desc{font-size:11px;color:var(--text-3);margin-top:1px}
+.side-stats{padding:12px 16px;border-top:1px solid var(--border);font-size:12px;color:var(--text-3)}
+
+/* ===== Main ===== */
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+
+/* ===== Welcome ===== */
+.welcome{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;gap:24px}
+.welcome-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:20px;background:var(--primary-light);color:var(--primary);font-size:12px;font-weight:600}
+.welcome h2{font-size:26px;font-weight:700;color:var(--text-1);text-align:center;letter-spacing:-0.02em}
+.welcome p{font-size:14px;color:var(--text-2);max-width:480px;text-align:center;line-height:1.7}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px;max-width:660px;width:100%}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-md);padding:16px;cursor:pointer;transition:all .2s var(--ease);position:relative;overflow:hidden}
+.card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(21,87,176,0.03),transparent);opacity:0;transition:opacity .2s var(--ease)}
+.card:hover{border-color:var(--primary);box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.card:hover::after{opacity:1}
+.card .c-icon{width:36px;height:36px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:10px}
+.card .c-title{font-size:13px;font-weight:700;color:var(--text-1)}
+.card .c-desc{font-size:12px;color:var(--text-3);margin-top:4px;line-height:1.5}
+
+/* ===== Chat Bar ===== */
+.chat-bar{display:none;align-items:center;gap:12px;padding:8px 20px;background:var(--surface);border-bottom:1px solid var(--border);flex-shrink:0}
+.back-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--surface);font-size:13px;color:var(--text-2);cursor:pointer;transition:all .15s var(--ease);font-weight:500}
+.back-btn:hover{background:var(--primary-light);border-color:var(--primary);color:var(--primary)}
+.back-btn svg{width:14px;height:14px;transition:transform .15s var(--ease)}
+.back-btn:hover svg{transform:translateX(-2px)}
+.chat-title{font-size:13px;color:var(--text-3);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* ===== Chat Area ===== */
+.chat-area{flex:1;overflow-y:auto;padding:20px 24px}
+
+/* ===== Messages ===== */
+.msg{margin-bottom:16px;animation:fadeSlideIn .3s var(--ease)}
+.msg.user .msg-c{max-width:72%;margin-left:auto;background:var(--primary);color:#fff;border-radius:var(--radius-lg) var(--radius-lg) 6px var(--radius-lg);padding:12px 18px;font-size:14px;line-height:1.65}
+.msg.bot .msg-c{max-width:82%;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg) var(--radius-lg) var(--radius-lg) 6px;padding:14px 20px;font-size:14px;line-height:1.75;box-shadow:var(--shadow-sm)}
+.msg .meta{font-size:11px;color:var(--text-3);margin-top:6px;padding:0 4px}
+.msg.bot .meta{text-align:right}
+.typing{display:flex;gap:5px;padding:10px 18px;align-items:center}
+.typing span{width:7px;height:7px;border-radius:50%;background:var(--text-3);animation:pulse 1.4s infinite}
+.typing span:nth-child(2){animation-delay:.2s}
+.typing span:nth-child(3){animation-delay:.4s}
+@keyframes pulse{0%,80%,100%{opacity:.25;transform:scale(0.85)}40%{opacity:1;transform:scale(1)}}
+@keyframes fadeSlideIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* ===== Markdown Content ===== */
+.md h3{font-size:17px;margin:14px 0 8px;color:var(--text-1);font-weight:700;letter-spacing:-0.01em}
+.md p{margin:6px 0}
+.md ul,.md ol{margin:6px 0 6px 20px}
+.md li{margin:4px 0;line-height:1.65}
+.md code{background:var(--bg);border:1px solid var(--border-light);padding:2px 6px;border-radius:4px;font-size:13px;font-family:"SF Mono","Fira Code",monospace}
+.md pre{background:var(--bg);border:1px solid var(--border-light);padding:14px;border-radius:var(--radius-sm);overflow-x:auto;margin:8px 0}
+.md blockquote{border-left:3px solid var(--primary);padding:8px 14px;margin:10px 0;background:var(--primary-50);border-radius:0 var(--radius-sm) var(--radius-sm) 0;color:var(--text-2);font-size:13px}
+.md strong{color:var(--primary);font-weight:600}
+.md hr{border:none;border-top:1px solid var(--border);margin:12px 0}
+
+/* ===== Input Area ===== */
+.input-area{padding:12px 24px 16px;background:var(--surface);border-top:1px solid var(--border);display:flex;gap:10px;align-items:flex-end}
+.input-area textarea{flex:1;border:1px solid var(--border);border-radius:var(--radius-md);padding:10px 16px;font-size:14px;font-family:inherit;resize:none;outline:none;max-height:120px;line-height:1.5;transition:border-color .2s var(--ease),box-shadow .2s var(--ease);background:var(--bg)}
+.input-area textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(21,87,176,0.1);background:var(--surface)}
+.input-area textarea::placeholder{color:var(--text-3)}
+.send-btn{display:inline-flex;align-items:center;gap:4px;background:var(--primary);color:#fff;border:none;border-radius:var(--radius-md);padding:10px 22px;font-size:14px;font-weight:600;cursor:pointer;transition:all .15s var(--ease);white-space:nowrap;height:42px}
+.send-btn svg{width:16px;height:16px;flex-shrink:0}
+.send-btn:hover{background:var(--primary-hover);box-shadow:var(--shadow-md)}
+.send-btn:active{transform:scale(0.97)}
+.send-btn:disabled{opacity:.4;cursor:not-allowed}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border);border-radius:10px}
+::-webkit-scrollbar-thumb:hover{background:var(--text-3)}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-logo">百</div>
+  <div class="hdr-info"><h1>WPS百晓生</h1><p>智能产品问题诊断助手</p></div>
+  <div class="hdr-right">
+    <a id="authBtn" class="auth-btn" href="#" onclick="return false" style="display:none" title="登录 ACH 获取实时数据">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg> <span style="margin-left:2px">登录 ACH</span>
+    </a>
+    <div id="connIndicator" class="pill off">检测中...</div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="side">
+    <div class="side-hdr">智能技能路由</div>
+    <div class="side-list">
+      <div class="skill-item" onclick="triggerSkill('我需要做WPS产品方案和功能对比分析')"><div class="icon lead"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12,2 2,7 12,12 22,7"/></svg></div><div class="info"><div class="name">售前咨询</div><div class="desc">产品对比、方案推荐、权益配置</div></div></div>
+      <div class="skill-item" onclick="triggerSkill('WPS功能异常排查与诊断')"><div class="icon sale"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div class="info"><div class="name">售后问题诊断</div><div class="desc">Bug排查、工单分析、根因定位</div></div></div>
+      <div class="skill-item" onclick="triggerSkill('私有化部署资源规划')"><div class="icon ops"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><div class="info"><div class="name">运维部署</div><div class="desc">部署规划、环境配置、性能优化</div></div></div>
+      <div class="skill-item" onclick="triggerSkill('查找WPS相关技术文档')"><div class="icon doc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12,2 2,7 12,12 22,7"/></svg></div><div class="info"><div class="name">知识库检索</div><div class="desc">技术文档、操作指南、最佳实践</div></div></div>
+      <div class="skill-item" onclick="triggerSkill('分析最近的用户崩溃反馈')"><div class="icon fb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><div class="info"><div class="name">反馈分析</div><div class="desc">崩溃分析、趋势检测、用户反馈</div></div></div>
+      <div class="skill-item" onclick="triggerSkill('追踪某个Bug的全链路根因')"><div class="icon bug"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2l1.88 1.88M14.12 3.88 16 2M9 7.13v-1a3.003 3.003 0 0 1 6 0v1M12 20c-3.3 0-6-2.7-6-6v-3a6 6 0 1 1 12 0v3c0 3.3-2.7 6-6 6M12 20v-9M6.53 9C4.6 8.8 3 7.1 3 5M6 13H2M18 13h4M3 17c0 2.2 1.8 4 4 4M21 17c0 2.2-1.8 4-4 4"/></svg></div><div class="info"><div class="name">Bug分析</div><div class="desc">代码影响面、改动分析、修复追踪</div></div></div>
+    </div>
+    <div class="side-stats" id="sideStats">
+      <div>加载中...</div>
+    </div>
+  </div>
+  <div class="main">
+    <div id="chatBar" class="chat-bar">
+      <button class="back-btn" onclick="goHome()">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        <span>返回首页</span>
+      </button>
+      <span id="chatTitle" class="chat-title"></span>
+    </div>
+    <div id="welcomeBox" class="welcome">
+      <div class="welcome-badge">AI 驱动</div>
+      <h2>有什么 WPS 问题需要帮助？</h2>
+      <p>输入任何关于 WPS 的问题，我会自动路由到最合适的技能模块，从知识库、工单系统和文档中检索精准方案。</p>
+      <div class="cards" id="quickCards">
+        <div class="card" onclick="triggerSkill('WPS打不开文件，提示文件格式不支持')">
+          <div class="c-icon" style="background:rgba(59,130,246,0.1);color:#3b82f6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg></div>
+          <div class="c-title">文件打不开</div>
+          <div class="c-desc">格式不支持、损坏、加密等问题</div>
+        </div>
+        <div class="card" onclick="triggerSkill('WPS激活失败，显示许可证验证错误')">
+          <div class="c-icon" style="background:rgba(245,158,11,0.1);color:#f59e0b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg></div>
+          <div class="c-title">激活失败</div>
+          <div class="c-desc">许可证错误、试用到期等</div>
+        </div>
+        <div class="card" onclick="triggerSkill('WPS打开大文件时崩溃闪退kernelbase')">
+          <div class="c-icon" style="background:rgba(239,68,68,0.1);color:#ef4444"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+          <div class="c-title">崩溃闪退</div>
+          <div class="c-desc">内核崩溃、内存溢出等</div>
+        </div>
+        <div class="card" onclick="triggerSkill('WPS字体显示不一致仿宋GB2312变方框')">
+          <div class="c-icon" style="background:rgba(139,92,246,0.1);color:#8b5cf6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+          <div class="c-title">字体问题</div>
+          <div class="c-desc">字体缺失、渲染异常等</div>
+        </div>
+        <div class="card" onclick="triggerSkill('私有化WPS365部署需要什么服务器')">
+          <div class="c-icon" style="background:rgba(16,185,129,0.1);color:#10b981"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12,2 2,7 12,12 22,7"/></svg></div>
+          <div class="c-title">部署规划</div>
+          <div class="c-desc">服务器配置、信创环境等</div>
+        </div>
+        <div class="card" onclick="triggerSkill('搜索WPS相关技术文档操作指南')">
+          <div class="c-icon" style="background:rgba(236,72,153,0.1);color:#ec4899"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2l1.88 1.88M14.12 3.88 16 2M9 7.13v-1a3.003 3.003 0 0 1 6 0v1M12 20c-3.3 0-6-2.7-6-6v-3a6 6 0 1 1 12 0v3c0 3.3-2.7 6-6 6M12 20v-9M6.53 9C4.6 8.8 3 7.1 3 5M6 13H2M18 13h4M3 17c0 2.2 1.8 4 4 4M21 17c0 2.2-1.8 4-4 4"/></svg></div>
+          <div class="c-title">知识搜索</div>
+          <div class="c-desc">技术文档、最佳实践等</div>
+        </div>
+      </div>
+    </div>
+    <div id="chatBox" class="chat-area" style="display:none"></div>
+    <div class="input-area">
+      <textarea id="userInput" rows="1" placeholder="输入 WPS 相关问题..." onkeydown="handleKey(event)"></textarea>
+      <button class="send-btn" id="sendBtn" onclick="sendMessage()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22,2 15,22 11,13 2,9"/></svg> <span style="margin-left:4px">发送</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+
+var API = (location.origin === 'null' || location.protocol === 'file:') ? 'http://localhost:5099/api' : location.origin + '/api';
+var mode = '';
+
+function setConnMode(m, text, cls) {
+    mode = m;
+    var pill = document.getElementById('connIndicator');
+    pill.textContent = text;
+    pill.className = 'pill ' + cls;
+    var btn = document.getElementById('authBtn');
+    btn.style.display = (m === 'token_ok') ? 'none' : 'inline-flex';
+}
+
+function detectBackend() {
+    fetch(API + '/health', {signal: AbortSignal.timeout(3000)})
+    .then(function(r) { if (!r.ok) throw new Error(); return r.json(); })
+    .then(function(d) {
+        if (d.status === 'ok') {
+            updateStats(d.cached_tickets || 0);
+            if (d.token_valid) {
+                setConnMode('token_ok', '\u{1f7e2} 实时模式 \u2014 已授权', 'ok');
+            } else {
+                setConnMode('realtime', '\u{1f7e1} 未授权', 'warn');
+            }
+            fetchAuthStatus();
+        }
+    })
+    .catch(function() {
+        setConnMode('cache', '\u{1f7e1} 离线模式', 'warn');
+        document.getElementById('authBtn').style.display = 'none';
+    });
+}
+
+function fetchAuthStatus() {
+    fetch(API + '/auth/status', {signal: AbortSignal.timeout(3000)})
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+        if (d.authorized) {
+            setConnMode('token_ok', '\u{1f7e2} 实时模式 \u2014 已授权', 'ok');
+            var u = d.user || {};
+            var name = u.nickName || u.userName || '';
+            var el = document.getElementById('achUser');
+            if (el) el.textContent = name ? '\u{1f3e0} ' + name : '';
+            // updateStats(d.cached_tickets || 0);
+        } else {
+            setConnMode('realtime', '\u{1f7e1} 未授权 \u2014 点击登录', 'warn');
+            document.getElementById('authBtn').style.display = 'inline-flex';
+        }
+    })
+    .catch(function() {});
+}
+
+function updateStats(n) {
+    var el = document.getElementById('sideStats');
+    if (el) el.innerHTML = '<div>\u{1f4ca} ACH工单: ' + n + ' 条</div><div id="achUser"></div>';
+}
+
+function initDone() {
+    fetch(API + '/ach-data', {signal: AbortSignal.timeout(10000)})
+    .then(function(r) { return r.json(); })
+    .then(function(d) { updateStats(d.count || 0); })
+    .catch(function() {});
+    setTimeout(detectBackend, 200);
+    document.getElementById('authBtn').onclick = function(e) {
+        e.preventDefault();
+        window.location.href = API + '/auth/start';
+    };
+}
+
+function classifyQuestion(q) {
+    var rules = [
+        {keys:['打不开','无法打开','格式不支持','损坏','文件损坏'],cat:'file_open',skill:'文件打不开',conf:0.98},
+        {keys:['激活','许可证','license','试用','过期','验证失败'],cat:'activation',skill:'激活/许可证',conf:0.95},
+        {keys:['崩溃','闪退','crash','停止工作','异常退出'],cat:'crash',skill:'崩溃/闪退',conf:0.97},
+        {keys:['字体','仿宋','GB2312','字体缺失','字体不一致'],cat:'font',skill:'字体问题',conf:0.98},
+        {keys:['部署','服务器','安装','配置','POC','生产环境'],cat:'deploy',skill:'部署规划',conf:0.9},
+        {keys:['反馈','崩溃趋势','堆栈','用户反馈'],cat:'feedback',skill:'反馈分析',conf:0.88},
+        {keys:['bug','缺陷','根因','代码','影响面'],cat:'bug',skill:'Bug分析',conf:0.85},
+        {keys:['登录','单点','SSO','LDAP'],cat:'login',skill:'登录问题',conf:0.85},
+        {keys:['打印','导出','PDF'],cat:'print',skill:'打印/导出',conf:0.85},
+        {keys:['卡顿','卡死','慢','性能','响应'],cat:'perf',skill:'性能问题',conf:0.8},
+        {keys:['兼容','wps365','信创','linux'],cat:'compat',skill:'兼容性',conf:0.75},
+    ];
+    for (var i = 0; i < rules.length; i++) {
+        for (var j = 0; j < rules[i].keys.length; j++) {
+            if (q.indexOf(rules[i].keys[j]) >= 0) return {category: rules[i].cat, skill: rules[i].skill, confidence: rules[i].conf};
+        }
+    }
+    return {category: 'general', skill: '知识库检索', confidence: 0.7};
+}
+
+function sendMessage() {
+    var input = document.getElementById('userInput');
+    var q = input.value.trim();
+    if (!q) return;
+    input.value = '';
+    input.style.height = 'auto';
+    document.getElementById('welcomeBox').style.display = 'none';
+    document.getElementById('chatBox').style.display = 'block';
+    document.getElementById('chatBar').style.display = 'flex';
+    addMsg(q, 'user');
+    showTyping();
+    var cls = classifyQuestion(q);
+    document.getElementById('chatTitle').textContent = cls.skill;
+    var isAfterSales = ['file_open','activation','crash','font','login','print','perf','compat'].indexOf(cls.category) >= 0;
+    if (isAfterSales) fetchAfterSales(q, cls);
+    else if (cls.category === 'deploy') fetchOther('/skill/deploy', q, cls, '\u2699\ufe0f 运维部署');
+    else if (cls.category === 'feedback') fetchOther('/skill/feedback', q, cls, '\u{1f4ca} 反馈分析');
+    else if (cls.category === 'bug') fetchOther('/skill/bug', q, cls, '\u{1f41b} Bug分析');
+    else fetchGeneral(q, cls);
+    document.getElementById('sendBtn').disabled = true;
+    setTimeout(function() { document.getElementById('sendBtn').disabled = false; }, 2000);
+}
+
+function fetchAfterSales(q, cls) {
+    fetch(API + '/skill/after-sales', {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({question: q}), signal: AbortSignal.timeout(20000)
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+        var parts = [];
+        if (d.answer) parts.push(d.answer);
+        else parts.push('暂无匹配方案，请提供更多信息（WPS版本、操作系统、具体错误提示）。');
+        if (d.tracks && d.tracks.length > 0) {
+            parts.push('\n---\n### 检索轨道');
+            d.tracks.forEach(function(t) { parts.push('- ' + t); });
+        }
+        if (d.sources && d.sources.length > 0) {
+            parts.push('\n---\n### 数据来源');
+            d.sources.forEach(function(s) { parts.push('- ' + s.name + ' \u2014 ' + s.detail + ' ' + s.weight); });
+        }
+        if (d.classification) parts.push('\n> 分类: ' + d.classification + ' | 问题: ' + (d.skill || ''));
+        hideTyping();
+        addMsg(parts.join('\n'), 'bot', d.skill || cls.skill);
+    })
+    .catch(function(e) {
+        hideTyping();
+        addMsg('分析模块暂不可用: ' + e.message, 'bot', '错误');
+    });
+}
+
+function fetchOther(path, q, cls, label) {
+    fetch(API + path, {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({question: q}), signal: AbortSignal.timeout(15000)
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+        var answer = d.answer || d.analysis || d.suggestions || '请提供更多详细信息，我将为您分析。';
+        hideTyping();
+        addMsg(answer, 'bot', label);
+    })
+    .catch(function() {
+        hideTyping();
+        addMsg('该模块暂不可用，请描述具体问题。', 'bot', label);
+    });
+}
+
+function fetchGeneral(q, cls) {
+    fetch(API + '/kb/search', {
+        method: 'POST', headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({question: q}), signal: AbortSignal.timeout(10000)
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+        var parts = ['### 知识库检索结果\n'];
+        if (d.solutions && d.solutions.length > 0) {
+            d.solutions.forEach(function(s) { parts.push(s); });
+        } else if (d.results && d.results.length > 0) {
+            d.results.forEach(function(r) { parts.push('**' + r.title + '** (置信度: ' + r.confidence + '%)\n' + r.solution); });
+        } else {
+            parts.push('暂未匹配到相关知识文章。请尝试更详细地描述您的问题。');
+        }
+        hideTyping();
+        addMsg(parts.join('\n'), 'bot', '知识检索');
+    })
+    .catch(function() {
+        hideTyping();
+        addMsg('知识库暂不可用，请描述具体问题。', 'bot', '知识检索');
+    });
+}
+
+function addMsg(text, role, label) {
+    var chat = document.getElementById('chatBox');
+    var div = document.createElement('div');
+    div.className = 'msg ' + role;
+    if (role === 'bot') {
+        var lbl = label ? '<strong style="color:var(--primary)">' + esc(label) + '</strong>\n\n' : '';
+        div.innerHTML = '<div class="msg-c md">' + lbl + renderMd(text) + '</div><div class="meta">' + timeStr() + '</div>';
+    } else {
+        div.innerHTML = '<div class="msg-c">' + esc(text) + '</div><div class="meta">' + timeStr() + '</div>';
+    }
+    chat.appendChild(div);
+    chat.scrollTop = chat.scrollHeight;
+}
+
+function timeStr() { return new Date().toLocaleTimeString('zh-CN', {hour:'2-digit',minute:'2-digit'}); }
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function renderMd(t) {
+    var md = esc(t);
+    md = md.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+    md = md.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    md = md.replace(/`([^`]+)`/g, '<code>$1</code>');
+    md = md.replace(/^- (.+)$/gm, '<li>$1</li>');
+    md = md.replace(/(<li>.*<\/li>)/gs, '<ul>$1</ul>');
+    md = md.replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>');
+    md = md.replace(/^---$/gm, '<hr>');
+    md = md.replace(/\n{2,}/g, '</p><p>');
+    md = md.replace(/\n/g, '<br>');
+    return '<p>' + md + '</p>';
+}
+
+function showTyping() {
+    var chat = document.getElementById('chatBox');
+    var div = document.createElement('div');
+    div.id = 'typingIndicator';
+    div.className = 'msg bot';
+    div.innerHTML = '<div class="msg-c"><div class="typing"><span></span><span></span><span></span></div></div>';
+    chat.appendChild(div);
+    chat.scrollTop = chat.scrollHeight;
+}
+
+function hideTyping() { var el = document.getElementById('typingIndicator'); if (el) el.remove(); }
+
+function goHome() {
+    document.getElementById('welcomeBox').style.display = 'flex';
+    document.getElementById('chatBox').style.display = 'none';
+    document.getElementById('chatBar').style.display = 'none';
+    document.getElementById('chatBox').innerHTML = '';
+    document.getElementById('chatTitle').textContent = '';
+    setTimeout(function() { document.getElementById('userInput').focus(); }, 100);
+}
+
+function triggerSkill(text) {
+    document.getElementById('userInput').value = text;
+    sendMessage();
+}
+
+function handleKey(e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); } }
+
+document.addEventListener('DOMContentLoaded', function() { setTimeout(initDone, 100); });
+
+</script>
+</body>
+</html>

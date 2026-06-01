@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Data caches
+ach_min.json
+.ach_token.json
+tunnel_url.txt
+
+# Build scripts (not needed for deployment)
+build_*.py
+clean_*.py
+fix_*.py
+patch*.py
+restart*.py
+install_autostart.py
+
+# Backup files
+*.bak
+*.bak2
+nul
+
+# OS
+*.bat
+*.ps1
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Config (local-only, Render uses env vars)
+comate.json
