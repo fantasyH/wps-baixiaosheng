@@ -1,0 +1,35 @@
+#!/bin/bash
+# WPS百晓生 — 云部署一键安装脚本
+set -e
+
+echo "📦 安装依赖..."
+pip install -r requirements.txt
+
+echo "✅ 完成！"
+echo ""
+echo "🚀 启动方式："
+echo ""
+echo "  1. 本地测试："
+echo "     python app.py"
+echo "     → http://localhost:5099"
+echo ""
+echo "  2. 生产部署（Render.com）："
+echo "     git push 后 Render 自动部署"
+echo "     需设置环境变量："
+echo "       WPS_SID=xxx        # WPS 登录态"
+echo "       LLM_API_KEY=xxx    # LLM API Key"
+echo "       LLM_PROVIDER=deepseek"
+echo "       LLM_MODEL=deepseek-chat"
+echo "       AI_DOCS_DRIVE_ID=2343012230"
+echo ""
+echo "  3. 本地生产模式："
+echo "     gunicorn app:app --bind 0.0.0.0:5099 --workers 2 --timeout 120"
+echo ""
+echo "📋 环境变量说明："
+echo "  WPS_SID         → 必填。WPS 登录 Cookie，用于访问知识库"
+echo "  LLM_API_KEY     → 选填。LLM 服务商 API Key"
+echo "  LLM_PROVIDER    → 选填。LLM 服务商（deepseek/openai/zhipu/qwen）"
+echo "  LLM_MODEL       → 选填。模型名称"
+echo "  LLM_API_BASE    → 选填。自定义 API 地址"
+echo "  AI_DOCS_DRIVE_ID→ 选填。产品技术服务知识库 ID"
+echo "  PORT            → 选填。端口号（默认 5099）"

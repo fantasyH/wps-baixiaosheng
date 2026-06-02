@@ -6,7 +6,7 @@ WPS百晓生 — 售后问题金牌辅助 (云端版)
 import os, json, sys, re, time, threading
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from skill_engine import classify_question, expand_query, search_local_knowledge_base, synthesize_answer
+from skill_engine import run_skill, classify_question, expand_query, search_local_knowledge_base, synthesize_answer, recall_ai_knowledge
 from llm_synthesis import LLMSynthesizer
 
 app = Flask(__name__)
@@ -15,6 +15,28 @@ CORS(app)
 # ===== Config from Environment =====
 WPS_SID = os.environ.get('WPS_SID', '')
 ACH_TOKEN = os.environ.get('ACH_TOKEN', '')
+ACH_TOKEN_LOCAL = ''  # loaded from .ach_token.json
+ACH_USER = ''
+
+# Load local ACH token if available
+_ach_token_path = os.path.join(os.path.dirname(__file__), '.ach_token.json')
+if os.path.exists(_ach_token_path):
+    try:
+        with open(_ach_token_path, 'r') as f:
+            _td = json.load(f)
+            ACH_TOKEN_LOCAL = (_td.get('access_token') or _td.get('token') or '')
+            if _td.get('user_info'):
+                ACH_USER = _td.get('user_info', {}).get('nickName', '')
+            elif _td.get('userName'):
+                ACH_USER = _td.get('userName', '')
+            else:
+                ACH_USER = '付树晖'
+        if ACH_TOKEN_LOCAL:
+            print(f'[ACH] 已从本地加载Token, 用户: {ACH_USER}')
+    except Exception as e:
+        print(f'[ACH] 加载本地Token失败: {e}')
+
+_has_real_token = bool(ACH_TOKEN or ACH_TOKEN_LOCAL)
 ACH_CLIENT_ID = os.environ.get('ACH_CLIENT_ID', '2238f5902cf06e2e30317de35b8c432f')
 ACH_BASE = os.environ.get('ACH_BASE', 'https://wpsservice-sys.wps.cn/achserver')
 AI_DOCS_DRIVE_ID = os.environ.get('AI_DOCS_DRIVE_ID', '2343012230')
@@ -28,38 +50,14 @@ PORT = int(os.environ.get('PORT', 5099))
 llm = LLMSynthesizer(provider=LLM_PROVIDER, api_key=LLM_API_KEY, 
                      model=LLM_MODEL, api_base=LLM_API_BASE)
 
-# ===== Knowledge Base Recall (direct V7 API, no subprocess) =====
+# ===== Knowledge Base Recall (via kb-retriever subprocess) =====
 def recall_knowledge_base(query: str, drive_id: str = None, topk: int = 5) -> list:
-    """直接调 V7 API 召回知识库"""
+    """通过 kb-retriever 召回知识库"""
     if not WPS_SID:
         return []
     try:
-        import requests as req
-        drive_id = drive_id or AI_DOCS_DRIVE_ID
-        url = f'https://365.kdocs.cn/v7/docqa/instore/recall/rank'
-        headers = {
-            'Content-Type': 'application/json',
-            'Cookie': f'wps_sid={WPS_SID}',
-        }
-        body = {
-            'query': query,
-            'drives': [{'drive_id': drive_id}],
-            'topk': topk,
-        }
-        r = req.post(url, json=body, headers=headers, timeout=10)
-        data = r.json()
-        if data.get('code') == 0:
-            items = data.get('data', {}).get('items', [])
-            chunks = []
-            for item in items[:topk]:
-                chunks.append({
-                    'title': item.get('title', item.get('file_name', '')),
-                    'score': item.get('score', 0),
-                    'content': item.get('content', '')[:500],
-                    'source': '产品技术服务知识库',
-                })
-            return chunks
-        return []
+        results = recall_ai_knowledge(query, topk=topk, drive_id=drive_id or AI_DOCS_DRIVE_ID)
+        return results
     except Exception as e:
         print(f'[KB] Recall error: {e}')
         return []
@@ -165,49 +163,35 @@ def health():
         'ones_bugs': len(ONES_CACHE),
         'llm_configured': bool(LLM_API_KEY),
         'kb_available': bool(WPS_SID),
+        'token_valid': _has_real_token,
         'version': '5.0.0-cloud',
     })
 
 
 @app.route('/api/skill/after-sales', methods=['POST'])
 def after_sales():
-    """售后问题诊断 — 完整管道"""
+    """售后问题诊断 — 完整管道
+    使用 skill_engine.run_skill() 实现多查询词并行检索
+    """
     question = request.json.get('question', '')
     if not question:
         return jsonify({'error': 'missing question'}), 400
 
     t0 = time.time()
     
-    # Step 1: Classify
-    classification = classify_question(question)
+    # 使用 skill_engine 的 run_skill 完整管道
+    # 传入 ach_search / ones_search 作为回调
+    result = run_skill(
+        question,
+        ach_search_fn=search_ach,
+        ones_search_fn=search_ones
+    )
     
-    # Step 2: Expand queries
-    queries = expand_query(question, classification)
+    # 不再调用 recall_knowledge_base (已由 run_skill 内部处理)
+    # 不再手动 dedup (已由 run_skill 内部处理)
+    # 不再手动 synthesize (已由 run_skill 内部处理)
     
-    # Step 3: Parallel search
-    ai_kb_results = recall_knowledge_base(queries[0])  # Main query
-    for q in queries[1:3]:  # First 2 expanded queries
-        more = recall_knowledge_base(q, topk=3)
-        ai_kb_results.extend(more)
-    # Dedup
-    seen = set()
-    deduped = []
-    for c in sorted(ai_kb_results, key=lambda x: -x['score']):
-        if c['title'] not in seen:
-            seen.add(c['title'])
-            deduped.append(c)
-    ai_kb_results = deduped[:8]
-    
-    local_kb_results = search_local_knowledge_base(question)
-    ach_results = search_ach(question)
-    ones_results = search_ones(question)
-    
-    # Step 4: Synthesize answer
-    result = synthesize_answer(question, classification, queries,
-                               ai_kb_results, local_kb_results,
-                               ach_results, ones_results)
-    
-    # Step 5: LLM polish (if configured)
+    # Step 5: LLM polish (if configured) — 在 run_skill 结果之上再增强
     if LLM_API_KEY and result.get('answer'):
         try:
             polished = llm.synthesize(question, result['answer'], result.get('sources', []))
@@ -235,7 +219,13 @@ def stats():
 # Stub routes for frontend compatibility
 @app.route('/api/auth/status')
 def auth_status():
-    return jsonify({'authorized': False, 'mode': 'cloud', 'message': '云端模式无需ACH授权'})
+    return jsonify({
+        'authorized': _has_real_token,
+        'user': {'nickName': ACH_USER} if ACH_USER else {},
+        'cached_tickets': len(ACH_CACHE),
+        'token_saved_at': os.path.getmtime('.ach_token.json') if os.path.exists('.ach_token.json') else None,
+        'mode': 'local' if _has_real_token else 'cloud',
+    })
 
 
 @app.route('/api/ach-data')

@@ -224,6 +224,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","P
 <script>
 
 var API = (location.origin === 'null' || location.protocol === 'file:') ? 'http://localhost:5099/api' : location.origin + '/api';
+var TUNNEL_API = 'https://gentle-cups-appear.loca.lt/api';
 var mode = '';
 
 function setConnMode(m, text, cls) {
@@ -236,6 +237,7 @@ function setConnMode(m, text, cls) {
 }
 
 function detectBackend() {
+    // Step 1: try local server
     fetch(API + '/health', {signal: AbortSignal.timeout(3000)})
     .then(function(r) { if (!r.ok) throw new Error(); return r.json(); })
     .then(function(d) {
@@ -250,8 +252,21 @@ function detectBackend() {
         }
     })
     .catch(function() {
-        setConnMode('cache', '\u{1f7e1} 离线模式', 'warn');
-        document.getElementById('authBtn').style.display = 'none';
+        // Step 2: try tunnel (for o.wpsgo.com users)
+        fetch(TUNNEL_API + '/health', {signal: AbortSignal.timeout(3000)})
+        .then(function(r) { if (!r.ok) throw new Error(); return r.json(); })
+        .then(function(d) {
+            if (d.status === 'ok') {
+                API = TUNNEL_API;
+                updateStats(d.cached_tickets || 0);
+                setConnMode('realtime', '\u{1f7e2} 远程实时', 'ok');
+                fetchAuthStatus();
+            }
+        })
+        .catch(function() {
+            setConnMode('cache', '\u{1f7e1} 离线模式', 'warn');
+            document.getElementById('authBtn').style.display = 'none';
+        });
     });
 }
 
@@ -339,7 +354,7 @@ function sendMessage() {
 function fetchAfterSales(q, cls) {
     fetch(API + '/skill/after-sales', {
         method: 'POST', headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({question: q}), signal: AbortSignal.timeout(20000)
+        body: JSON.stringify({question: q}), signal: AbortSignal.timeout(90000)
     })
     .then(function(r) { return r.json(); })
     .then(function(d) {

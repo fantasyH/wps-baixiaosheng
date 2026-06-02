@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WPS百晓生</title>
+<style>
+:root{--primary:#1557b0;--primary-light:#e3f2fd;--bg:#f5f7fa;--border:#e5e7eb;--text:#1f2937;--text2:#6b7280;--green:#10b981;--orange:#f59e0b;--red:#ef4444}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);height:100vh;display:flex;flex-direction:column;overflow:hidden}
+.hdr{background:linear-gradient(135deg,#1557b0,#1a67d4);color:#fff;padding:10px 20px;display:flex;align-items:center;gap:14px;box-shadow:0 2px 8px rgba(0,0,0,.15);z-index:100;flex-shrink:0}
+.hdr-logo{width:42px;height:42px;background:rgba(255,255,255,.2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700}
+.hdr-info h1{font-size:18px;margin:0}.hdr-info p{font-size:13px;margin:2px 0 0;opacity:.85}
+.hdr-right{margin-left:auto;display:flex;align-items:center;gap:8px}
+.pill{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;background:rgba(255,255,255,.2);color:#fff;white-space:nowrap}
+.pill.ok{background:rgba(16,185,129,.25)}.pill.warn{background:rgba(255,165,0,.2)}.pill.half{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3)}
+.auth-link{color:#fff;text-decoration:none;padding:5px 12px;border-radius:20px;font-size:12px;font-weight:600;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);cursor:pointer}
+.auth-link:hover{background:rgba(255,255,255,.3)}
+.wrap{display:flex;flex:1;overflow:hidden;min-height:0}
+.side{width:240px;background:#fff;border-right:1px solid var(--border);display:flex;flex-direction:column;overflow-y:auto;flex-shrink:0}
+.side-h{padding:12px}.side-h h3{font-size:13px;color:var(--text2);margin-bottom:10px}
+.sc{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;transition:all .2s;margin-bottom:4px}
+.sc:hover{background:#f1f5f9}.sc.on{background:var(--primary-light);border-left:3px solid var(--primary)}
+.si{font-size:22px;background:#f8fafc;border-radius:8px;padding:4px}
+.sm h4{font-size:13px;margin:0}.sm p{font-size:12px;color:var(--text2);margin:1px 0 0}
+.sbox{padding:12px;background:#f8fafc;margin:8px 12px;border-radius:10px}
+.sbox h3{font-size:13px;color:var(--text2);margin-bottom:8px}
+.sr{display:flex;justify-content:space-between;padding:4px 0;font-size:13px}.sv{font-weight:600;color:var(--primary)}
+.hist{padding:12px}.hist h3{font-size:13px;color:var(--text2);margin-bottom:8px}
+.hi{padding:8px 10px;border-radius:6px;cursor:pointer;font-size:12px;margin-bottom:4px;border-left:3px solid transparent}
+.hi:hover{background:#f1f5f9}
+.badge{font-size:10px;padding:2px 6px;border-radius:8px;margin-left:4px;font-weight:600}
+.b-as{background:#e8f5e9;color:#065f46}.b-pr{background:#fef7e0;color:#92400e}
+.b-op{background:#e3f2fd;color:#1e40af}.b-kb{background:#f3e5f5;color:#6b21a8}
+.chat{flex:1;display:flex;flex-direction:column;background:#fff;min-width:0}
+.msgs{flex:1;overflow-y:auto;padding:16px 20px;scroll-behavior:smooth}
+.wc{text-align:center;padding:60px 20px;max-width:600px;margin:0 auto}
+.wc-icon{width:72px;height:72px;background:linear-gradient(135deg,#1557b0,#3b82f6);color:#fff;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:700;margin:0 auto 16px}
+.wc h2{font-size:22px;margin-bottom:8px}.wc p{color:var(--text2);line-height:1.7;font-size:14px;margin-bottom:20px}
+.qa{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.qac{display:flex;align-items:center;gap:10px;padding:12px;border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:all .2s;text-align:left;background:#fff}
+.qac:hover{border-color:var(--primary);transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.qai{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.qac h4{font-size:13px;margin:0}.qac p{font-size:12px;color:var(--text2);margin:2px 0 0}
+.msg{display:flex;gap:10px;margin-bottom:12px;animation:fi .3s}.msg.user{justify-content:flex-end}
+.ma{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;margin-top:4px}
+.msg.user .ma{background:var(--primary);color:#fff;order:1}.msg.assistant .ma{background:#e8f5e9;color:#059669}
+.mb{max-width:80%;padding:10px 14px;border-radius:12px;font-size:14.5px;line-height:1.75}
+.msg.user .mb{background:var(--primary);color:#fff;border-bottom-right-radius:4px}
+.msg.assistant .mb{background:#f8fafc;border:1px solid var(--border);border-bottom-left-radius:4px}
+.mb p{margin:6px 0}.mb h1,.mb h2{font-size:17px;margin:10px 0 6px;color:var(--primary)}.mb h3{font-size:15px;margin:8px 0 4px}
+.mb code{background:#eef2ff;padding:1px 4px;border-radius:3px;font-size:12px;color:var(--primary)}
+.mb pre{background:#1e293b;color:#e2e8f0;padding:12px;border-radius:8px;overflow-x:auto;font-size:12px;margin:6px 0}
+.mb ul,.mb ol{padding-left:18px;margin:4px 0}.mb li{margin:2px 0}
+.mb blockquote{border-left:3px solid var(--primary);padding:4px 10px;margin:6px 0;background:#f0f7ff;border-radius:0 6px 6px 0;font-size:13px}
+.mm{font-size:12px;margin-top:6px;padding-top:5px;border-top:1px solid var(--border);color:var(--text2);display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.mm .tag{padding:1px 6px;border-radius:6px;font-weight:600;font-size:11px}
+.lds{display:flex;gap:4px;padding:8px 12px}.lds span{width:6px;height:6px;background:#6b7280;border-radius:50%;animation:bo .6s infinite alternate}
+.lds span:nth-child(2){animation-delay:.2s}.lds span:nth-child(3){animation-delay:.4s}
+@keyframes bo{to{opacity:.3;transform:translateY(-4px)}}@keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.cin{padding:10px 16px;border-top:1px solid var(--border);background:#fff;flex-shrink:0}
+.iw{display:flex;align-items:center;background:#f1f5f9;border-radius:12px;padding:6px 6px 6px 10px;gap:8px}
+.iw:focus-within{box-shadow:0 0 0 2px var(--primary);background:#fff}
+.iw textarea{flex:1;border:none;background:transparent;resize:none;font-size:14px;line-height:1.5;padding:6px 0;outline:none;font-family:inherit;max-height:120px;min-height:24px}
+.sbtn{width:36px;height:36px;border-radius:10px;border:none;background:var(--primary);color:#fff;font-size:15px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.sbtn:hover{background:#13479a}.sbtn:disabled{opacity:.5;cursor:not-allowed}
+.chint{font-size:12px;color:var(--text2);margin-top:5px;text-align:center}
+.ptog{position:fixed;right:8px;top:60px;background:var(--primary);color:#fff;border:none;border-radius:50%;width:40px;height:40px;font-size:16px;cursor:pointer;z-index:999;box-shadow:0 2px 8px rgba(21,87,176,.3)}
+.ap{position:fixed;right:0;top:50px;width:300px;background:#fff;border-left:1px solid var(--border);height:calc(100vh - 50px);box-shadow:-4px 0 16px rgba(0,0,0,.08);z-index:1000;transform:translateX(100%);transition:transform .3s;overflow-y:auto}
+.ap.open{transform:translateX(0)}
+.ap-h{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-bottom:1px solid var(--border);position:sticky;top:0;background:#fff;z-index:1}
+.ap-h h3{font-size:13px;margin:0}.ap-x{background:none;border:none;font-size:16px;cursor:pointer;color:var(--text2);padding:4px}
+.ac{padding:10px 14px}.ac h4{font-size:12px;color:var(--text2);margin-bottom:6px}.achc{background:#f8fafc;border:1px solid var(--border);border-radius:8px;padding:8px 10px;margin-bottom:8px}
+.achc h5{font-size:12px;margin:0 0 2px}.achc p{font-size:11px;color:var(--text2);margin:0}
+@media(max-width:768px){.side{display:none}.qa{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="hdr-logo">百</div>
+  <div class="hdr-info"><h1>WPS百晓生</h1><p>产品全能问答助手 · 覆盖售前/售后/运维全场景</p></div>
+  <div class="hdr-right">
+    <a href="https://twenty-olives-double.loca.lt/api/auth/start" id="abtn" class="auth-link" style="display:none" title="登录后实时查询最新ACH工单">🔑 登录 ACH</a>
+    <div class="pill half" id="sp">⏳ 检测中...</div>
+  </div>
+</div>
+<div class="wrap">
+  <div class="side">
+    <div class="side-h">
+      <h3>🎯 技能路由</h3>
+      <div class="sc" onclick="selSkill(this,'presales')"><div class="si">📋</div><div class="sm"><h4>售前咨询</h4><p>产品对比·方案推荐·竞品分析</p></div></div>
+      <div class="sc" onclick="selSkill(this,'aftersales')"><div class="si">🔧</div><div class="sm"><h4>售后支持</h4><p>Bug排查·功能异常·兼容性</p></div></div>
+      <div class="sc" onclick="selSkill(this,'ops')"><div class="si">⚙️</div><div class="sm"><h4>运维部署</h4><p>私有化·服务器·信创环境</p></div></div>
+      <div class="sc" onclick="selSkill(this,'kb')"><div class="si">📚</div><div class="sm"><h4>知识检索</h4><p>技术文档·操作指南·API</p></div></div>
+    </div>
+    <div class="sbox">
+      <h3>📊 数据能力</h3>
+      <div class="sr"><span>🎫 ACH工单</span><span class="sv" id="acnt">--</span></div>
+      <div class="sr"><span>📚 知识库</span><span class="sv">6大类</span></div>
+      <div class="sr"><span>🔍 模式</span><span class="sv" id="mode">--</span></div>
+    </div>
+    <div class="hist"><h3>📝 历史</h3><div id="hlist"></div></div>
+  </div>
+  <div class="chat">
+    <div class="msgs" id="msgs">
+      <div class="wc" id="welcome">
+        <div class="wc-icon">百</div>
+        <h2>WPS百晓生</h2>
+        <p>涵盖售前咨询、售后问题诊断、运维部署指导。输入问题自动识别并调用最佳解决方案。</p>
+        <div class="qa">
+          <div class="qac" onclick="askQ('WPS字体显示不一致仿宋GB2312变成fangsong怎么解决')"><div class="qai" style="background:#e8f5e9">🔧</div><div><h4>字体问题</h4><p>字体不一致、缺失、乱码</p></div></div>
+          <div class="qac" onclick="askQ('WPS打开大文件崩溃闪退kernelbase.dll错误')"><div class="qai" style="background:#fef7e0">🐛</div><div><h4>崩溃排查</h4><p>闪退、崩溃、DLL错误</p></div></div>
+          <div class="qac" onclick="askQ('私有化WPS激活后提示许可证验证失败怎么解决')"><div class="qai" style="background:#e3f2fd">🔐</div><div><h4>激活问题</h4><p>许可证、激活码异常</p></div></div>
+          <div class="qac" onclick="askQ('WPS365私有化部署需要什么服务器配置')"><div class="qai" style="background:#f3e5f5">🏢</div><div><h4>部署运维</h4><p>私有化、信创环境</p></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="cin">
+      <div class="iw">
+        <textarea id="inp" rows="1" placeholder="输入关于WPS产品的任何问题..." onkeydown="hk(event)" oninput="arz(this)"></textarea>
+        <button class="sbtn" id="sbtn" onclick="ask()">➤</button>
+      </div>
+      <div class="chint">自动分类 · 六轨道并行检索 · <a href="https://twenty-olives-double.loca.lt/api/auth/start" id="ahint" style="color:var(--primary);text-decoration:none;display:none">🔑 登录 ACH（实时查询工单）</a></div>
+    </div>
+  </div>
+</div>
+<button class="ptog" onclick="document.getElementById('apanel').classList.toggle('open')" title="分析面板">📊</button>
+<div class="ap" id="apanel">
+  <div class="ap-h"><h3>🔍 分析面板</h3><button class="ap-x" onclick="document.getElementById('apanel').classList.remove('open')">✕</button></div>
+  <div id="actrl"></div>
+</div>
+
+<script>
+/* ===== ACH Data (loaded from API) ===== */
+var AD={t:[],k:{},count:0};
+
+/* ===== Immediate env detect ===== */
+var ISLOCAL=(location.protocol==='file:'||location.hostname===''||location.hostname==='localhost');
+
+/* ===== Init ===== */
+document.addEventListener('DOMContentLoaded',function(){
+  var pill=document.getElementById('sp');
+  pill.textContent='\u23f3 \u8fde\u63a5\u4e2d...';
+  var tunnelBase='https://twenty-olives-double.loca.lt';
+
+  function tryLocal(){
+    fetch('/api/auth/status').then(function(r){return r.json()}).then(function(a){
+      window._AB='';initDone(a);
+    }).catch(function(){tryTunnel();});
+  }
+  function tryTunnel(){
+    fetch(tunnelBase+'/api/auth/status').then(function(r){return r.json()}).then(function(a){
+      window._AB=tunnelBase;initDone(a);
+    }).catch(function(){
+      window._AB='';pill.textContent='\ud83d\udfe1 \u79bb\u7ebf\u6a21\u5f0f';pill.className='pill warn';
+      document.getElementById('mode').textContent='\u79bb\u7ebf';
+      document.getElementById('abtn').style.display='none';
+      document.getElementById('ahint').style.display='none';
+      loadCache();
+    });
+  }
+  function initDone(a){
+    if(a.authorized){pill.textContent='\ud83d\udfe2 \u5b9e\u65f6';pill.className='pill ok';
+      document.getElementById('abtn').style.display='none';document.getElementById('ahint').style.display='none';
+      document.getElementById('mode').textContent='\u5b9e\u65f6API';
+    }else{pill.textContent='\ud83d\udfe1 \u7f13\u5b58';pill.className='pill half';
+      document.getElementById('abtn').style.display='inline-flex';document.getElementById('abtn').className='auth-link';
+      document.getElementById('ahint').style.display='inline';document.getElementById('mode').textContent='\u7f13\u5b58';
+    }
+    loadACH();
+  }
+  tryLocal();
+});
+
+/* ===== ACH Data Loading ===== */
+function loadACH(){
+  var pill=document.getElementById('sp');
+  fetch((window._AB||'')+'/api/ach-data').then(function(r){return r.json()}).then(function(d){
+    AD=d;
+    try{localStorage.setItem('wach',JSON.stringify(d))}catch(e){}
+    document.getElementById('acnt').textContent=d.count+'条';
+  }).catch(function(){
+    if(pill.textContent.indexOf('实时')>=0){pill.textContent='🟡 缓存模式';pill.className='pill half';}
+    loadCache();
+  });
+}
+
+function loadCache(){
+  try{
+    var c=localStorage.getItem('wach');
+    if(c){var d=JSON.parse(c);AD=d;document.getElementById('acnt').textContent=(d.count||0)+'条'}
+    else{document.getElementById('acnt').textContent='0条'}
+  }catch(e){document.getElementById('acnt').textContent='0条'}
+}
+
+/* ===== Question Classification ===== */
+function cls(q){
+  var t=q.toLowerCase();
+  var as=['崩溃','闪退','字体','dll','kernelbase','激活','许可证','报错','异常','bug','打不开','不显示','闪白','乱码','仿宋','gb2312','方框','缺字','flicker','crash','error'];
+  var ops=['部署','服务器','内存','docker','k8s','mysql','redis','内网','私有化','信创','nginx'];
+  var pre=['对比','区别','推荐','哪个好','多少钱','版本','功能介绍'];
+  var S=0,O=0,P=0;
+  as.forEach(function(k){if(t.indexOf(k)>=0)S++});
+  ops.forEach(function(k){if(t.indexOf(k)>=0)O++});
+  pre.forEach(function(k){if(t.indexOf(k)>=0)P++});
+  var cat='kb',conf=60;
+  if(S>=2){cat='aftersales';conf=Math.min(95,70+S*5)}
+  else if(S===1&&O===0&&P===0){cat='aftersales';conf=75}
+  else if(O>=2){cat='ops';conf=Math.min(95,65+O*8)}
+  else if(P>=2){cat='presales';conf=Math.min(95,70+P*5)}
+  else if(O===1){cat='ops';conf=70}
+  else if(P===1){cat='presales';conf=70}
+  if(cat==='aftersales'&&(t.indexOf('kernelbase')>=0||t.indexOf('dll')>=0||t.indexOf('gb2312')>=0))conf=Math.min(98,conf+10);
+  if(cat==='aftersales'&&(t.indexOf('仿宋')>=0||t.indexOf('字体显示')>=0))conf=Math.min(98,conf+15);
+  return{category:cat,confidence:conf};
+}
+
+/* ===== KB Search ===== */
+var KB={
+  'font':{title:'字体显示不一致/缺失',solution:'### 根本原因\n在Linux/Mac/信创环境打开Windows文档时缺字体自动替代\n\n### 解决方案\n1. 安装缺失字体\n2. fc-cache -fv\n3. 参考知识库搜"字体"'},
+  'crash':{title:'WPS崩溃/闪退',solution:'### 常见原因\nkernelbase.dll崩溃/内存不足/插件冲突\n\n### 解决方案\n1. 清理kingsoft缓存\n2. 禁用插件测试\n3. 降低自动保存频率'},
+  'activation':{title:'许可证验证失败',solution:'### 解决方案\n1. 检查系统时间\n2. 重新导入证书\n3. 防火墙放行\n4. 联系管理员'},
+  'file':{title:'文件打开失败',solution:'### 解决方案\n1. WPS打开并修复\n2. 另存为新格式'},
+  'perf':{title:'WPS性能问题',solution:'### 优化\n减少记录次数 · 禁用插件 · 清理临时文件'},
+  'deploy':{title:'部署问题',solution:'### 排查\n系统要求 · 管理员权限 · 离线安装包'}
+};
+function sKB(q){
+  var t=q.toLowerCase();var best=null,bs=0;
+  var kw=['font','字体','方框','仿宋','crash','崩溃','闪退','kernel','dll','activation','激活','许可证','file','打开','卡','deploy','部署','私有化'];
+  for(var k in KB){
+    var s=0;kw.forEach(function(w){if(t.indexOf(w)>=0)s+=3});
+    if(s>bs){bs=s;best=KB[k]}
+  }
+  return best;
+}
+
+/* ===== ACH Search ===== */
+function sACH(q,limit){
+  if(!AD||!AD.k||!AD.t)return[];
+  var words=q.split(/\s+/);var sc={};
+  AD.t.forEach(function(item,idx){
+    if(!item)return;
+    var s=0;var txt=(item.p||'')+item.s+item.c+item.g;
+    words.forEach(function(w){if(w.length>=2&&txt.toLowerCase().indexOf(w.toLowerCase())>=0)s+=10});
+    if(s>0)sc[idx]=s;
+  });
+  return Object.keys(sc).sort(function(a,b){return sc[b]-sc[a]}).slice(0,limit||8).map(function(i){return AD.t[parseInt(i)]});
+}
+
+/* ===== Markdown ===== */
+function md(s){
+  if(!s)return'';
+  s=s.replace(/```(\w*)\n([\s\S]*?)```/g,'<pre><code>$2</code></pre>');
+  s=s.replace(/`([^`]+)`/g,'<code>$1</code>');
+  s=s.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
+  s=s.replace(/### (.+)/g,'<h3>$1</h3>');
+  s=s.replace(/## (.+)/g,'<h2>$1</h2>');
+  s=s.replace(/\n/g,'<br>');
+  return s;
+}
+
+/* ===== History ===== */
+var hist=[];
+function addH(q,cat){
+  hist.unshift({q:q.length>25?q.slice(0,25)+'...':q,c:cat});
+  if(hist.length>15)hist.pop();
+  var el=document.getElementById('hlist');
+  el.innerHTML=hist.map(function(h){
+    var bc={aftersales:'b-as',presales:'b-pr',ops:'b-op',kb:'b-kb'}[h.c]||'b-kb';
+    var bl={aftersales:'售后',presales:'售前',ops:'运维',kb:'知识'}[h.c]||'知识';
+    return '<div class="hi" onclick="askQ(this.getAttribute(\'data-q\'))" data-q="'+h.q.replace(/"/g,'&quot;')+'">'+h.q+'<span class="badge '+bc+'">'+bl+'</span></div>';
+  }).join('');
+}
+
+/* ===== Messages ===== */
+function addMsg(role,content,meta){
+  var box=document.getElementById('msgs');
+  var wc=document.getElementById('welcome');
+  if(wc)wc.style.display='none';
+  var div=document.createElement('div');
+  div.className='msg '+role;
+  var av=role==='user'?'你':'百';
+  var mh='';
+  if(role==='assistant'&&meta&&meta.category){
+    var cl={aftersales:['售后诊断','#e8f5e9','#065f46'],presales:['售前咨询','#fef7e0','#92400e'],ops:['运维部署','#e3f2fd','#1e40af'],kb:['知识检索','#f3e5f5','#6b21a8']}[meta.category]||['知识检索','#f3e5f5','#6b21a8'];
+    mh='<div class="mm"><span class="tag" style="background:'+cl[1]+';color:'+cl[2]+'">'+cl[0]+'</span><span>置信度 <strong>'+(meta.confidence||80)+'%</strong></span>'+(meta.sources?'<span>'+meta.sources+'</span>':'')+'</div>';
+  }
+  div.innerHTML='<div class="ma">'+av+'</div><div class="mb">'+md(content)+mh+'</div>';
+  box.appendChild(div);
+  box.scrollTop=box.scrollHeight;
+  return div;
+}
+function addLoad(){return addMsg('assistant','<div class="lds"><span></span><span></span><span></span></div> 正在检索知识库和工单数据...',null)}
+
+/* ===== Analysis Panel ===== */
+function showPanel(cat,conf,sources,achN){
+  var el=document.getElementById('actrl');
+  var lb={aftersales:'🔧 售后诊断',presales:'📋 售前咨询',ops:'⚙️ 运维部署',kb:'📚 知识检索'}[cat]||'📚 知识检索';
+  var h='<div class="ac"><h4>🏷️ 问题分类</h4><p style="font-weight:600;font-size:13px">'+lb+' <span style="color:var(--primary);font-weight:700">'+conf+'%</span></p></div>';
+  if(sources&&sources.length){
+    h+='<div class="ac" style="border-top:1px solid #e5e7eb"><h4>🔍 数据源</h4>';
+    sources.forEach(function(s){h+='<div style="font-size:12px;padding:4px 0;border-bottom:1px solid #f3f4f6">'+s+'</div>'});
+    h+='</div>';
+  }
+  if(achN)h+='<div class="ac" style="border-top:1px solid #e5e7eb"><h4>🎫 ACH工单</h4><p style="font-size:13px;font-weight:600">'+achN+'条匹配</p></div>';
+  el.innerHTML=h;
+  document.getElementById('apanel').classList.add('open');
+}
+
+/* ===== Send ===== */
+function askQ(q){document.getElementById('inp').value=q;ask()}
+function hk(e){if(e.key==='Enter'&&!e.shiftKey&&!e.isComposing){e.preventDefault();ask()}}
+function arz(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,120)+'px'}
+function selSkill(el,cat){document.querySelectorAll('.sc').forEach(function(e){e.classList.remove('on')});el.classList.add('on')}
+
+async function ask(){
+  var inp=document.getElementById('inp');
+  var txt=inp.value.trim();
+  if(!txt)return;
+  inp.value='';inp.style.height='auto';
+  document.getElementById('sbtn').disabled=true;
+  addMsg('user',txt);
+  var ld=addLoad();
+  var c=cls(txt);
+  var src=[];
+
+  /* Try server API for aftersales */
+  if(c.category==='aftersales'){
+    try{
+      var r=await fetch((window._AB||'')+'/api/skill/after-sales',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question:txt,category:c.category,confidence:c.confidence})});
+      if(r.ok){
+        var d=await r.json();
+        ld.remove();
+        var answer=d.answer||'';
+        var achN=d.ach_tickets?d.ach_tickets.length:0;
+        if(d.sources){
+          d.sources.forEach(function(s){
+            src.push((s.name||s)+' '+(s.detail||'')+' '+(s.weight||''));
+          });
+        }
+        addMsg('assistant',answer,{category:c.category,confidence:d.confidence||c.confidence,sources:src.join(' · ')});
+        if(achN)showPanel(c.category,d.confidence||c.confidence,src,achN);
+        addH(txt,c.category);
+        document.getElementById('sbtn').disabled=false;
+        return;
+      }
+    }catch(e){}
+  }
+
+  /* Local search fallback */
+  var kb=sKB(txt);
+  var ach=sACH(txt,5);
+  ld.remove();
+  var ans='';
+  if(kb){src.push('📚 知识库');ans+='## '+kb.title+'\n\n'+kb.solution+'\n\n';}
+  if(ach.length>0){
+    src.push('🎫 ACH工单('+ach.length+'条)');
+    ans+='### 🎫 相关历史工单\n\n';
+    ach.forEach(function(r,i){
+      var line=(i+1)+'. '+(r.c||'?')+' | '+(r.p||'\u2014');
+      if(r.s)line+='   > '+r.s.substring(0,120);
+      ans+=line+'\n';
+    });
+  if(!src.length){ans='🤔 关于"**'+txt.slice(0,50)+'**"的诊断\n\n建议：1. 检查WPS版本 2. 清理缓存 3. 联系技术支持';src.push('💡 通用建议');}
+  addMsg('assistant',ans,{category:c.category,confidence:c.confidence,sources:src.join(' · ')});
+  showPanel(c.category,c.confidence,src,ach.length);
+  addH(txt,c.category);
+  document.getElementById('sbtn').disabled=false;
+}
+</script>
+</body>
+</html>

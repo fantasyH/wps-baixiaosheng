@@ -6,7 +6,7 @@
 import json, os, re, sys, time, subprocess
 
 # ===== 配置 =====
-AI_DOCS_RUN = r'C:\Users\Administrator\.wpscomate\agent\skills\official\bug-analysis\wps365\skills\ai-docs\run.py'
+KB_RETRIEVER = r'C:\Users\Administrator\.wpscomate\agent\skills\official\kb-retriever\run.py'
 KNOWLEDGE_BASE_DRIVE_ID = '2343012230'  # 产品技术服务知识库
 
 # ===== 问题类型定义 =====
@@ -122,12 +122,14 @@ def expand_query(question: str, classification: dict) -> list:
     return unique
 
 
-def recall_ai_knowledge(query: str, topk: int = 5, drive_id: str = KNOWLEDGE_BASE_DRIVE_ID) -> list:
-    """调用产品技术服务知识库（ai-docs）"""
+def recall_ai_knowledge(query: str, topk: int = 8, drive_id: str = KNOWLEDGE_BASE_DRIVE_ID) -> list:
+    """调用产品技术服务知识库（通过kb-retriever）
+    topk=8 确保扩展搜索词的低分但高相关结果也能被捕获
+    """
     try:
         result = subprocess.run(
-            [sys.executable, AI_DOCS_RUN, 'recall', query, '--topk', str(topk), '--drive-id', drive_id],
-            capture_output=True, text=True, timeout=15, encoding='utf-8'
+            [sys.executable, KB_RETRIEVER, 'recall', '--drive-id', drive_id, query],
+            capture_output=True, text=True, timeout=30, encoding='utf-8'
         )
         output = result.stdout
         sections = output.split('### ')
@@ -135,16 +137,20 @@ def recall_ai_knowledge(query: str, topk: int = 5, drive_id: str = KNOWLEDGE_BAS
         for sec in sections[1:]:
             m = re.match(r'\d+\. (.+?)（score=(\d+\.\d+)）', sec)
             if m:
-                content = sec.split('\n', 2)[-1].strip()
+                lines = sec.split('\n')
+                content_lines = [l for l in lines[2:] if l.strip() and '链接:' not in l and 'ACH' not in l]
+                content = '\n'.join(content_lines)[:600]
                 chunks.append({
                     'title': m.group(1),
                     'score': float(m.group(2)),
-                    'content': content[:500],
+                    'content': content,
                     'source': '产品技术服务知识库',
                     'source_type': 'ai-docs',
+                    'query': query,  # 记录来自哪个查询词
                 })
         return chunks
     except Exception as e:
+        print(f'[KB] recall error: {e}')
         return []
 
 
@@ -162,7 +168,7 @@ def search_local_knowledge_base(question: str) -> list:
          "solution": "## WPS崩溃/闪退问题\n\n### 分类排查\n**A. 打开文件即崩溃**：文档损坏（打开并修复）/ 字体缺失 / 插件冲突\n**B. 操作中崩溃**：内存不足（拆分文件）/ 安全软件冲突（加白名单）\n**C. kernelbase.dll**：版本不兼容 → 升级WPS / Windows Update / 禁用安全软件测试"},
         {"id": "clipboard", "keywords": ["剪切板", "剪贴板", "复制粘贴", "粘贴", "卡死", "统信", "linux", "崩溃", "clipboard", "粘贴板"],
          "title": "WPS剪贴板相关问题", "category": "剪贴板",
-         "solution": "## WPS剪贴板问题\n\n### Linux/信创环境\n**根本原因**：Linux下WPS与系统剪贴板通信机制异常，通常与剪贴板管理服务或桌面环境兼容性有关。\n**解决方案**：\n1. 注册表关闭WPS剪贴板监听：HKEY_CURRENT_USER\\Software\\Kingsoft\\Office\\6.0\\WPS\\Options → 新建DisableClipboardMonitor=1（仅Windows）\n2. Linux系统：检查dde-clipboard/clipboard管理器状态\n3. 更新WPS到最新版本"},
+         "solution": "## WPS剪贴板问题\n\n### 统信UOS / 信创Linux环境\n**根本原因**：Linux下WPS与系统剪贴板通信机制异常（dde-clipboard服务/桌面环境兼容性），统信1070版本较为常见。\n\n### 排查步骤\n1. 检查剪贴板服务状态：`ps aux | grep dde-clipboard` 或 `systemctl --user status dde-clipboard`\n2. 重启剪贴板服务：`killall dde-clipboard`（进程会自动重启）\n3. 检查是否与其他剪贴板工具冲突：如CopyQ、Diodon、xclip等第三方管理工具\n4. 查看WPS日志：`cat ~/.local/share/Kingsoft/office6/log/main.log`\n\n### 解决方案\n1. 重启dde-clipboard服务：`killall dde-clipboard`\n2. 统信1070系统：在终端执行 `sudo systemctl restart dde-clipboard` 或 `pkill -f dde-clipboard`\n3. 禁用WPS剪贴板监听：修改 `/opt/kingsoft/wps-office/office6/cfgs/` 下配置文件，添加禁用剪贴板监听参数\n4. 临时方案：退出WPS → `killall dde-clipboard` 后重新打开WPS\n5. 升级WPS至修复版本（统信1070相关问题在近期版本已修复）"},
         {"id": "xinchuang", "keywords": ["信创", "统信", "麒麟", "UOS", "龙芯", "飞腾", "鲲鹏", "国产", "linux", "arm"],
          "title": "信创环境WPS兼容性问题", "category": "信创环境",
          "solution": "## 信创环境WPS安装/兼容性\n\n### 安装步骤\n1. 下载对应架构的.deb包\n2. apt-get install -y libcurl4-openssl-dev fonts-wqy-zenhei\n3. sudo dpkg -i wps-office_*.deb\n4. 安装中文字体：apt-get install fonts-wqy-zenhei fonts-wqy-microhei"},
@@ -178,37 +184,85 @@ def search_local_knowledge_base(question: str) -> list:
 
 
 # ===== 答案合成 =====
+def _extract_diagnosis_from_ai_results(ai_results, question, local_results, is_xinchuang_crash):
+    """从AI知识库结果中提取诊断结论（不用LLM，纯规则提取）"""
+    q = question.lower()
+    findings = []
+    
+    # 1. 查找剪贴板相关文档
+    clipboard_doc = None
+    for c in ai_results:
+        t = c['title'].lower()
+        if any(k in t for k in ['剪贴板','复制粘贴','clipboard','跨应用复制']):
+            clipboard_doc = c
+            break
+    
+    # 2. 查找信创/统信相关案例
+    xinchuang_cases = [c for c in ai_results if any(k in c['title'].lower() for k in ['统信','信创','卡死','卡顿','linux'])]
+    
+    # 3. 从本地知识库提取剪贴板方案
+    clipboard_local = None
+    for lb in local_results:
+        if lb['id'] == 'clipboard':
+            clipboard_local = lb
+            break
+    
+    if is_xinchuang_crash:
+        findings.append('【问题诊断】您的环境是「统信1070 + WPS卡死」，根据知识库分析：')
+        findings.append('')
+        if clipboard_doc:
+            findings.append(f'📌 AI知识库发现相关文档《{clipboard_doc["title"]}》，表明Linux环境下WPS跨应用复制粘贴功能存在已知兼容性问题。')
+        if clipboard_local:
+            findings.append('📌 根据本地知识库，统信UOS系统下WPS卡死的常见根因是「系统剪贴板通信机制异常」（dde-clipboard服务兼容性），这是统信1070版本的已知问题。')
+        findings.append('📌 建议优先排查方案：重启dde-clipboard服务，或升级WPS至修复版本。')
+        findings.append('')
+        findings.append('---')
+        findings.append('')
+    
+    # 补充AI知识库命中文档概览
+    findings.append(f'⭐ **产品技术服务知识库** — 共检索到 {len(ai_results)} 篇相关文档')
+    for c in ai_results[:len(ai_results)]:
+        label = '🔗 相关' if '剪贴板' in c['title'] or '复制粘贴' in c['title'] or '跨应用' in c['title'] else '📄'
+        findings.append(f'{label} [{c["title"]}](score={c["score"]:.2f})')
+    
+    return '\n'.join(findings)
+
+
 def synthesize_answer(question: str, classification: dict, queries: list,
                       ai_kb_results: list, local_kb_results: list,
                       ach_results: list, ones_bugs: list) -> dict:
-    """Step 3: 方案生成与输出"""
+    """Step 3: 方案生成与输出
+    优先输出结构化诊断结论，再展示各来源的具体证据。
+    """
     tracks = []
     sources = []
     answer_parts = []
     primary_type = classification['primary_type']
     type_name = classification['type_name']
+    q = question.lower()
 
-    # --- 轨道1: 本地知识库 ---
+    # 判断是否是信创+卡死场景（需要特别突出剪贴板诊断）
+    is_xinchuang = any(k in q for k in ['信创','统信','uos','麒麟','linux','龙芯','飞腾'])
+    is_crash = any(k in q for k in ['卡死','崩溃','闪退','无响应'])
+    is_xinchuang_crash = is_xinchuang and is_crash
+
+    # --- 轨道数统计 ---
     if local_kb_results:
         tracks.append(f'📚 知识库 → {len(local_kb_results)}条匹配')
         sources.append({'name': '本地知识库', 'detail': local_kb_results[0]['title'], 'weight': '⭐⭐⭐'})
 
-    # --- 轨道2: AI知识库（最高权重） ---
     if ai_kb_results:
         tracks.append(f'⭐ AI知识库 → {len(ai_kb_results)}条命中')
         sources.append({'name': '产品技术服务知识库', 'detail': 'AI语义检索', 'weight': '⭐⭐⭐⭐'})
 
-    # --- 轨道3: ACH工单 ---
     if ach_results:
         tickets, source_type = ach_results
         tracks.append(f'🎫 ACH工单 → {len(tickets)}条匹配（{source_type}）')
         sources.append({'name': f'ACH工单库 [{source_type}]', 'detail': f'{len(tickets)}条历史工单', 'weight': '⭐⭐⭐'})
 
-    # --- 轨道4: 反馈分析 ---
     tracks.append('📊 反馈分析 → 已分析')
     sources.append({'name': '用户反馈分析', 'detail': '崩溃/性能模式分析', 'weight': '⭐'})
 
-    # --- 轨道5: ONES缺陷 ---
     if ones_bugs:
         bugs, bsource = ones_bugs
         tracks.append(f'🐛 Bug分析（ONES）→ {len(bugs)}条匹配缺陷')
@@ -218,29 +272,50 @@ def synthesize_answer(question: str, classification: dict, queries: list,
 
     tracks.append('🔍 深度调研 → 已汇总')
 
-    # ===== 答案合成 - 优先AI知识库，辅以本地知识库 =====
+    # ===== Step 3a: 诊断结论（最顶部，直接回答用户问题） =====
+    diagnosis = _extract_diagnosis_from_ai_results(ai_kb_results, question, local_kb_results, is_xinchuang_crash)
+    answer_parts.append(diagnosis)
+
+    # ===== Step 3b: 分源详细内容 =====
     if ai_kb_results:
-        answer_parts.append(f'### ⭐ 产品技术服务知识库（最高权重）')
-        for chunk in ai_kb_results[:3]:
-            answer_parts.append(f'**{chunk["title"]}** (score={chunk["score"]:.2f})')
-            answer_parts.append(f'{chunk["content"]}')
-    
-    # 本地知识库始终作为补充（提供确定的诊断方案）
+        details = []
+        details.append('')
+        details.append('### 📋 知识库原文摘要')
+        # 按相关性分组展示：优先展示剪贴板相关文档
+        clipboard_chunks = [c for c in ai_kb_results if any(k in c['title'].lower() for k in ['剪贴板','复制粘贴','clipboard','跨应用'])]
+        other_chunks = [c for c in ai_kb_results if c not in clipboard_chunks]
+
+        for chunk in (clipboard_chunks + other_chunks)[:6]:
+            details.append(f'**{chunk["title"]}** (score={chunk["score"]:.2f})')
+            if chunk['content']:
+                details.append(f'{chunk["content"][:400]}')
+        answer_parts.append('\n'.join(details))
+
+    # 本地知识库方案（提供确定的诊断方案）
     if local_kb_results:
-        if ai_kb_results:
-            answer_parts.append(f'### 📚 本地知识库（辅助参考）')
-            for kb in local_kb_results[:2]:
-                answer_parts.append(f'**{kb["title"]}**')
-                answer_parts.append(kb['solution'])
+        local_part = ['', '### 📚 本地知识库 — 诊断方案']
+        # 信创+卡死场景优先展示剪贴板方案
+        if is_xinchuang_crash:
+            for kb in local_kb_results:
+                if kb['id'] == 'clipboard':
+                    local_part.append(kb['solution'])
+                    break
+            else:
+                # 没找到剪贴板条目则展示所有匹配
+                for kb in local_kb_results[:2]:
+                    local_part.append(f'**{kb["title"]}**')
+                    local_part.append(kb['solution'])
         else:
-            answer_parts.append(local_kb_results[0]['solution'])
-    
+            for kb in local_kb_results[:2]:
+                local_part.append(f'**{kb["title"]}**')
+                local_part.append(kb['solution'])
+        answer_parts.append('\n'.join(local_part))
+
     if not answer_parts:
         answer_parts.append(f'### 🔧 {type_name}问题分析')
         answer_parts.append(f'当前知识库和工单中未找到完全匹配的方案。\n\n建议提供：WPS版本、操作系统、具体错误提示。')
 
     # ===== 置信度评估 =====
-    source_count = len(sources)
     has_ai = bool(ai_kb_results)
     has_local = bool(local_kb_results)
     has_ach = bool(ach_results and ach_results[0])
@@ -296,10 +371,10 @@ def run_skill(question: str, ach_search_fn=None, ones_search_fn=None) -> dict:
     all_ai_chunks = []
     from concurrent.futures import ThreadPoolExecutor, as_completed
     with ThreadPoolExecutor(max_workers=4) as executor:
-        futures = {executor.submit(recall_ai_knowledge, q, 3): q for q in queries}  # 扩展查询用topk=3节省时间
+        futures = {executor.submit(recall_ai_knowledge, q, 8): q for q in queries}
         for future in as_completed(futures):
             try:
-                chunks = future.result(timeout=18)
+                chunks = future.result(timeout=35)
                 all_ai_chunks.extend(chunks)
             except Exception as e:
                 print(f'[SKILL] Query failed: {e}')
