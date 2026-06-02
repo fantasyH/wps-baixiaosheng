@@ -19,6 +19,14 @@ patch*.py
 restart*.py
 install_autostart.py
 
+# Docker (Render uses native Python env)
+Dockerfile
+setup.sh
+
+# IDE
+.vscode/
+.idea/
+
 # Backup files
 *.bak
 *.bak2
