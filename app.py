@@ -4,7 +4,7 @@ WPS百晓生 — 售后问题金牌辅助 (云端版)
 架构：Flask + WPS V7 API + LLM 合成
 """
 import os, json, sys, re, time, threading
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 from skill_engine import run_skill, classify_question, expand_query, search_local_knowledge_base, synthesize_answer, recall_ai_knowledge
 from llm_synthesis import LLMSynthesizer
@@ -145,14 +145,33 @@ def search_ones(question: str) -> tuple:
 
 # ===== API Routes =====
 
+# ----- React Frontend (v2) -----
+FRONTEND_DIR = os.path.join(os.path.dirname(__file__), 'frontend', 'dist')
+
 @app.route('/')
 def index():
-    """Serve frontend"""
-    idx_path = os.path.join(os.path.dirname(__file__), 'index.html')
-    if os.path.exists(idx_path):
-        with open(idx_path, 'r', encoding='utf-8') as f:
+    """Serve React frontend"""
+    idx = os.path.join(FRONTEND_DIR, 'index.html')
+    if os.path.exists(idx):
+        resp = send_from_directory(FRONTEND_DIR, 'index.html')
+        resp.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+        resp.headers['Pragma'] = 'no-cache'
+        resp.headers['Expires'] = '0'
+        return resp
+    # Fallback to old index.html
+    fallback = os.path.join(os.path.dirname(__file__), 'index.html')
+    if os.path.exists(fallback):
+        with open(fallback, 'r', encoding='utf-8') as f:
             return f.read(), 200, {'Content-Type': 'text/html; charset=utf-8'}
-    return jsonify({'error': 'index.html not found'}), 404
+    return jsonify({'error': 'frontend not found'}), 404
+
+
+@app.route('/assets/<path:filename>')
+def serve_assets(filename):
+    """Serve React build assets"""
+    resp = send_from_directory(os.path.join(FRONTEND_DIR, 'assets'), filename)
+    resp.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    return resp
 
 
 @app.route('/health')

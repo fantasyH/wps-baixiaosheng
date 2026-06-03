@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Layout Test</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;font-size:14px;background:#f2f3f5;height:100vh;overflow:hidden}
+.page{height:100vh;display:flex;flex-direction:column;background:#f2f3f5}
+
+/* HEADER */
+header{flex-shrink:0;background:#fff;border-bottom:1px solid #e5e6eb}
+.hdr-inner{margin:0 auto;max-width:640px;display:flex;align-items:center;justify-content:space-between;height:48px;padding:0 16px}
+
+/* MAIN */
+main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+.content{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow-y:auto;padding:40px 16px}
+.content-inner{max-width:640px;width:100%;display:flex;flex-direction:column;align-items:center;gap:32px}
+
+/* BADGE */
+.badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:999px;background:rgba(36,104,242,0.06);color:#2468f2;font-size:12px;font-weight:500}
+
+/* HERO */
+.hero{text-align:center;max-width:520px}
+.hero h1{font-size:26px;font-weight:700;color:#1d2129;letter-spacing:-0.025em;margin-bottom:8px}
+.hero p{font-size:14px;color:#4e5969;line-height:1.6}
+
+/* PILLS */
+.pills{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:999px;font-size:12px;font-weight:500;cursor:pointer;background:#fff;color:#4e5969;border:1px solid #e5e6eb}
+.pill:hover{border-color:#2468f2;color:#2468f2}
+.pill.on{background:#2468f2;color:#fff;border-color:#2468f2}
+
+/* CARDS */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:100%;max-width:640px}
+.card{background:#fff;border:1px solid #e5e6eb;border-radius:12px;padding:16px;text-align:left;cursor:pointer;transition:all .2s}
+.card:hover{border-color:#c9cdd4;box-shadow:0 1px 2px rgba(0,0,0,0.04)}
+.card-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;background:rgba(36,104,242,0.06);color:#2468f2;font-size:12px}
+.card-title{font-size:14px;font-weight:600;color:#1d2129;margin-bottom:2px}
+.card-desc{font-size:12px;color:#86909c}
+
+/* INPUT */
+.input-area{flex-shrink:0;background:#fff;border-top:1px solid #e5e6eb}
+.input-inner{margin:0 auto;max-width:640px;padding:12px 16px 16px}
+.input-wrap{display:flex;align-items:center;background:#fff;border:1px solid #e5e6eb;border-radius:12px;padding:0 14px;transition:all .2s}
+.input-wrap:focus-within{border-color:#2468f2;box-shadow:0 0 0 2px rgba(36,104,242,0.06)}
+.input-wrap textarea{flex:1;border:none;outline:none;resize:none;font-size:14px;line-height:1.5;color:#1d2129;padding:9px 0;min-height:36px;max-height:150px;font-family:inherit;background:transparent}
+.input-wrap button{width:30px;height:30px;border-radius:50%;background:#2468f2;color:#fff;border:none;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:16px;transition:background .2s}
+.input-wrap button:hover{background:#3c7ef5}
+.hint{text-align:center;font-size:10px;color:#86909c;margin-top:8px}
+
+/* DEBUG GUIDE LINES */
+.guide{position:fixed;top:0;left:50%;width:640px;height:100vh;transform:translateX(-50%);border-left:1px dashed rgba(255,0,0,0.3);border-right:1px dashed rgba(255,0,0,0.3);pointer-events:none;z-index:9999}
+.guide-center{position:fixed;top:0;left:50%;width:1px;height:100vh;background:rgba(0,0,255,0.2);transform:translateX(-50%);pointer-events:none;z-index:9999}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="hdr-inner">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="width:28px;height:28px;border-radius:8px;background:#2468f2;color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:bold">W</span>
+        <span style="font-size:14px;font-weight:600;color:#1d2129">WPS百晓生</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:#86909c">
+          <span style="width:6px;height:6px;border-radius:50%;background:#30d158"></span> 已授权
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="content">
+      <div class="content-inner">
+        <div class="badge">✦ AI 驱动 · 智能诊断</div>
+        <div class="hero">
+          <h1>有什么 WPS 问题？</h1>
+          <p>输入问题，自动匹配技能模块，从知识库和工单中检索方案。</p>
+        </div>
+        <div class="pills">
+          <span class="pill on">售前咨询</span>
+          <span class="pill">售后诊断</span>
+          <span class="pill">运维部署</span>
+          <span class="pill">知识检索</span>
+          <span class="pill">反馈分析</span>
+          <span class="pill">Bug分析</span>
+        </div>
+        <div class="cards">
+          <div class="card"><div class="card-icon">📄</div><div class="card-title">文件打不开</div><div class="card-desc">格式不支持·损坏·加密</div></div>
+          <div class="card"><div class="card-icon">⚡</div><div class="card-title">激活失败</div><div class="card-desc">许可证错误·试用到期</div></div>
+          <div class="card"><div class="card-icon">🐛</div><div class="card-title">崩溃闪退</div><div class="card-desc">内核崩溃·内存溢出</div></div>
+          <div class="card"><div class="card-icon">🔍</div><div class="card-title">字体问题</div><div class="card-desc">字体缺失·渲染异常</div></div>
+          <div class="card"><div class="card-icon">🖥</div><div class="card-title">部署规划</div><div class="card-desc">服务器配置·信创环境</div></div>
+          <div class="card"><div class="card-icon">📖</div><div class="card-title">知识搜索</div><div class="card-desc">技术文档·最佳实践</div></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="input-area">
+    <div class="input-inner">
+      <div class="input-wrap">
+        <textarea rows="1" placeholder="输入 WPS 相关问题..."></textarea>
+        <button>→</button>
+      </div>
+      <div class="hint">↵ Enter · ⇧ Enter 换行</div>
+    </div>
+  </div>
+</div>
+
+<!-- Debug guides -->
+<div class="guide"></div>
+<div class="guide-center"></div>
+</body>
+</html>

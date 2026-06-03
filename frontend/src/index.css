@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+/* ===== Design Tokens (Qianwen-inspired) ===== */
+:root {
+  --bg-page: #f2f3f5;
+  --bg-surface: #ffffff;
+  --bg-hover: #f7f8fa;
+  --border: #e5e6eb;
+  --border-light: #f0f0f5;
+  --text-primary: #1d2129;
+  --text-secondary: #4e5969;
+  --text-tertiary: #86909c;
+  --accent: #2468f2;
+  --accent-hover: #3c7ef5;
+  --accent-subtle: rgba(36,104,242,0.06);
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+  --radius: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 999px;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC",
+    "SF Pro Display", "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  color: var(--text-primary);
+  background: var(--bg-page);
+  height: 100vh;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== Surface ===== */
+.surface {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  transition: all 0.2s var(--ease);
+}
+.surface:hover {
+  border-color: #c9cdd4;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ===== Input ===== */
+.input-wrapper {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  transition: all 0.2s var(--ease);
+}
+.input-wrapper:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-subtle);
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #c9cdd4; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #a9aeb8; }
+
+/* ===== Markdown ===== */
+.md h3 { font-size: 16px; margin: 16px 0 8px; font-weight: 600; color: var(--text-primary); }
+.md p { margin: 6px 0; color: var(--text-secondary); line-height: 1.7; }
+.md ul, .md ol { margin: 8px 0 8px 20px; }
+.md li { margin: 4px 0; line-height: 1.7; color: var(--text-secondary); }
+.md code {
+  background: #f7f8fa; border: 1px solid var(--border-light);
+  padding: 2px 6px; border-radius: 4px; font-size: 13px;
+  font-family: "SF Mono", "Fira Code", monospace; color: var(--accent);
+}
+.md pre {
+  background: #f7f8fa; border: 1px solid var(--border-light);
+  padding: 14px; border-radius: var(--radius-lg);
+  overflow-x: auto; margin: 10px 0;
+}
+.md blockquote {
+  border-left: 3px solid var(--accent);
+  padding: 8px 16px; margin: 10px 0;
+  background: var(--accent-subtle);
+  border-radius: 0 6px 6px 0;
+  color: var(--text-secondary); font-size: 13px;
+}
+.md strong { font-weight: 600; }
+.md hr { border: none; border-top: 1px solid var(--border-light); margin: 14px 0; }
+
+/* ===== Animations ===== */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+.anim-in { animation: fadeSlideUp 0.25s var(--ease); }
+
+@keyframes dotPulse {
+  0%, 80%, 100% { opacity: 0.2; transform: scale(0.85); }
+  40% { opacity: 0.6; transform: scale(1); }
+}
+.dot { width: 6px; height: 6px; border-radius: 50%; background: var(--text-tertiary); animation: dotPulse 1.4s infinite; }
+.dot:nth-child(2) { animation-delay: 0.16s; }
+.dot:nth-child(3) { animation-delay: 0.32s; }
