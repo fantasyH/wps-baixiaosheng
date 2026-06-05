@@ -1,9 +1,13 @@
 const LOCAL_API = 'http://localhost:5099/api';
 
+// Cloud backend URL - set VITE_API_URL env var to point to deployed backend
+// Falls back to same-origin for local/dev mode
 function getApiBase() {
-  // If running inside Vite dev server proxy
+  // Explicit cloud URL via env var
+  if (import.meta.env.VITE_API_URL) return import.meta.env.VITE_API_URL + '/api';
+  // Vite dev server proxy
   if (window.location.port === '5173') return '/api';
-  // Otherwise try same-origin first
+  // Same-origin (backend serves frontend)
   return window.location.origin + '/api';
 }
 

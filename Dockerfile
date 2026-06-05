@@ -4,8 +4,8 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY app.py skill_engine.py llm_synthesis.py ./
 COPY data/ ./data/
-COPY .env* ./
-COPY .ach_token.json* ./
+COPY .env ./
+COPY .ach_token.json ./
 
 FROM node:20-alpine AS frontend
 WORKDIR /build
