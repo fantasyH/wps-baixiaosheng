@@ -235,6 +235,66 @@ def stats():
     })
 
 
+@app.route('/api/skill/deploy', methods=['POST'])
+def deploy():
+    """部署问题路由 — 复用 after-sales 引擎"""
+    question = request.json.get('question', '')
+    if not question:
+        return jsonify({'error': 'missing question'}), 400
+    t0 = time.time()
+    result = run_skill(question, ach_search_fn=search_ach, ones_search_fn=search_ones)
+    if LLM_API_KEY and result.get('answer'):
+        try:
+            polished = llm.synthesize(question, result['answer'], result.get('sources', []))
+            if polished:
+                result['answer'] = polished
+                result['llm_enhanced'] = True
+        except Exception as e:
+            print(f'[LLM] Synthesis error: {e}')
+    result['elapsed'] = round(time.time() - t0, 1)
+    return jsonify(result)
+
+
+@app.route('/api/skill/feedback', methods=['POST'])
+def feedback():
+    """反馈分析路由 — 复用 after-sales 引擎"""
+    question = request.json.get('question', '')
+    if not question:
+        return jsonify({'error': 'missing question'}), 400
+    t0 = time.time()
+    result = run_skill(question, ach_search_fn=search_ach, ones_search_fn=search_ones)
+    if LLM_API_KEY and result.get('answer'):
+        try:
+            polished = llm.synthesize(question, result['answer'], result.get('sources', []))
+            if polished:
+                result['answer'] = polished
+                result['llm_enhanced'] = True
+        except Exception as e:
+            print(f'[LLM] Synthesis error: {e}')
+    result['elapsed'] = round(time.time() - t0, 1)
+    return jsonify(result)
+
+
+@app.route('/api/skill/bug', methods=['POST'])
+def bug():
+    """Bug分析路由 — 复用 after-sales 引擎"""
+    question = request.json.get('question', '')
+    if not question:
+        return jsonify({'error': 'missing question'}), 400
+    t0 = time.time()
+    result = run_skill(question, ach_search_fn=search_ach, ones_search_fn=search_ones)
+    if LLM_API_KEY and result.get('answer'):
+        try:
+            polished = llm.synthesize(question, result['answer'], result.get('sources', []))
+            if polished:
+                result['answer'] = polished
+                result['llm_enhanced'] = True
+        except Exception as e:
+            print(f'[LLM] Synthesis error: {e}')
+    result['elapsed'] = round(time.time() - t0, 1)
+    return jsonify(result)
+
+
 # Stub routes for frontend compatibility
 @app.route('/api/auth/status')
 def auth_status():
